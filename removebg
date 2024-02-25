@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+from os import path
+from pathlib import Path
+
+import click
+from rembg import remove
+
+def remove_background(image_path, output_path):
+    """Remove the background from an image using rembg.
+
+    :param image_path: The path of the input image file.
+    :type image_path: str
+    :param output_path: The path of the output image file.
+    If not given, it will be the same as the input file name
+    with the suffix "_removed".
+    :type output_path: str, optional
+    :return: The path of the output image file.
+    :rtype: str
+    """
+    if not output_path:
+        filename = Path(image_path).stem
+        output_path = f"{filename}_removed.png"
+
+    with open(image_path, "rb") as i:
+        with open(output_path, "wb") as o:
+            input_data = i.read()
+            output_data = remove(input_data)
+            o.write(output_data)
+
+    return output_path
+
+@click.group()
+def cli():
+    pass
+
+@cli.command()
+@click.argument('image_src')
+@click.argument('image_dst', default='')
+def removebg(image_src, image_dst):
+    """Remove background from image"""
+    if not image_src:
+        click.echo('You need to indicate an image to remove background.')
+    else:
+        try:
+            output = remove_background(image_src, image_dst)
+            if path.isfile(path.join(path.dirname(image_src), output)):
+                click.echo(f"The file {output} has been created successfully.")
+            else:
+                click.echo(f"Something went wrong when creating the file {output}.")
+                click.echo(f"Please check that {image_src} is an image file.")
+        except ImportError:
+            click.echo('The "rembg" module is not installed. Please install it first: ')
+            click.echo('\tpip install rembg')
+
+if __name__ == '__main__':
+    cli()
