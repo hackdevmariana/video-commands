@@ -29,11 +29,7 @@ def remove_background(image_path, output_path):
 
     return output_path
 
-@click.group()
-def cli():
-    pass
-
-@cli.command()
+@click.command()
 @click.argument('image_src')
 @click.argument('image_dst', default='')
 def removebg(image_src, image_dst):
@@ -53,4 +49,5 @@ def removebg(image_src, image_dst):
             click.echo('\tpip install rembg')
 
 if __name__ == '__main__':
-    cli()
+    removebg()
+
