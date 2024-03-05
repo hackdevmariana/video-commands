@@ -1,0 +1,101 @@
+#!/usr/bin/env python3
+from os import path
+from pathlib import Path
+import re
+
+import click
+import colorama
+from PIL import Image, ImageOps, ImageColor
+
+def normalize_color(color):
+    """Normalize and validate the input color.
+
+    This function accepts color values in different formats: RGB hexadecimal,
+    hexadecimal with a hashtag, or standard color names. It normalizes the color
+    to the RGB hexadecimal format with a hashtag. If the provided color is not
+    valid, it returns False.
+
+    Args:
+        color (str): The input color value.
+
+    Returns:
+        str or False: The normalized color if valid, False otherwise.
+    """
+    hex_color_pattern = re.compile(r'^[0-9a-fA-F]{6}$')
+    hex_color_pattern_with_hastag = re.compile(r'^#[0-9a-fA-F]{6}$')
+    if hex_color_pattern.match(color):
+        color = f"#{color}"
+        return color
+    elif hex_color_pattern_with_hastag.match(color):
+        return color
+    else:
+        try:
+            ImageColor.getrgb(color)
+            return color
+        except:
+            return False
+
+
+def tint_image(image_path, output_path, color, mode):
+    """Tints an image with the indicated color.
+
+    Args:
+        image_path (str): Original image.
+        output_path (str): Generated image.
+        color (str): Color to tint.
+        mode (str): Tinting mode (light or dark).
+
+    Returns:
+        str: Path to generated image.
+    """
+
+    if not output_path:
+        filename = Path(image_path).stem
+        output_path = f"{filename}_tinted.png"
+
+    img = Image.open(image_path).convert("L")
+    if mode.lower() == "dark":
+        new_img = ImageOps.colorize(img, black="black", white=color)
+    else:
+        new_img = ImageOps.colorize(img, black=color, white="white")
+
+    new_img.save(output_path)
+
+    return output_path
+
+@click.command()
+@click.argument('image_src')
+@click.argument('color', default='black')
+@click.argument('mode', default='light')
+@click.argument('image_dst', default='')
+def tintimage(image_src, color, image_dst, mode):
+    """Tints an image with the indicated color. By default, black."""
+
+    normalized_color = normalize_color(color)
+
+    if not normalized_color:
+        click.echo(f"The provided color {color} is not valid.")
+        return
+
+    if not image_src:
+        click.echo('You need to indicate an image to tint.')
+    else:
+        try:
+            source = Path(image_src)
+            if source.is_file():
+                output = tint_image(image_src, image_dst, normalized_color, mode)
+                output_path = Path(image_src).parent / output
+                if output_path.is_file():
+                    click.echo(f"The file { output_path } has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }.")
+                else:
+                    click.echo(f"Error: {colorama.Fore.RED}Something went wrong{colorama.Style.RESET_ALL} when creating the file {output_path}.")
+                    click.echo(f"Please check that { image_src } is an image file.")
+            else:
+                click.echo(f"Error: {colorama.Fore.RED}The file {image_src} does not exist. Check the path.{colorama.Style.RESET_ALL}")
+
+        except ImportError:
+            click.echo('The "PILLOW" module is not installed. Please install it first: ')
+            click.echo('\tpip install pillow')
+
+if __name__ == '__main__':
+    tintimage()
