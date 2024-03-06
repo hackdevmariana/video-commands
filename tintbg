@@ -4,28 +4,43 @@ from os import path
 from pathlib import Path
 
 import click
+import colorama
+from PIL import Image, ImageOps
 
-# Importa los dos comandos existentes
-from removebg import remove_background, removebg
-from tintimage import tint_image, tintimage
+import video_commands_lib as vlc
 
 @click.command()
 @click.argument('image_src')
 @click.argument('color', default='black')
 @click.argument('mode', default='light')
-@click.argument('output_path', default='')
-def process_image(image_src, color, mode, output_path):
-    """Remove background and tint image."""
+@click.argument('image_dst', default='')
+def tintbg(image_src, color, mode, image_dst):
+    """Tint background from image and overlay on colored background"""
+    normalized_color = vlc.normalize_color(color)
 
-    # Llama al primer comando para remover el fondo
-    # Puedes ajustar los argumentos según sea necesario
-    removebg(image_src, output_path)
+    if not normalized_color:
+        click.echo(f"The provided color {color} is not valid.")
+        return
+    if not image_src:
+        click.echo('You need to indicate an image to process.')
+    else:
+        try:
+            output_removebg = vlc.remove_background(image_src, "")
+            output_tint = vlc.tint_image(image_src, "", normalized_color, mode)
 
-    # Llama al segundo comando para tintar la imagen
-    # Puedes ajustar los argumentos según sea necesario
-    tintimage(output_path, color, output_path, mode)
+            img_removebg = Image.open(output_removebg).convert("RGBA")
+            img_tint = Image.open(output_tint).convert("RGBA")
 
-    click.echo(f"Image processing completed. Result saved to {output_path}")
+            img_combined = Image.alpha_composite(img_tint, img_removebg)
+
+            img_combined_path = image_dst or f"{Path(image_src).stem}_combined.png"
+            img_combined.save(img_combined_path)
+
+            click.echo(f"The combined image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {img_combined_path}")
+
+        except ImportError:
+            click.echo(f'The required modules are {colorama.Fore.RED}not installed{ colorama.Style.RESET_ALL }. Please install them first: ')
+            click.echo('\tpip install rembg pillow')
 
 if __name__ == '__main__':
-    process_image()
+    tintbg()
