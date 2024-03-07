@@ -103,6 +103,28 @@ def chessboard(width, height, color1, color2, square_size, gaussian, output_path
 @cli.command()
 @click.option('--width', type=int, default=default_width, help='Canvas width')
 @click.option('--height', type=int, default=default_height, help='Canvas height')
+@click.option('--color1', default='white', help='Color of the first square (name or hexadecimal code)')
+@click.option('--color2', default='black', help='Color of the second square (name or hexadecimal code)')
+@click.option('--square_size', type=int, default=20, help='Size of each square')
+@click.option('--gaussian', type=int, default=0, help='Gaussian blur')
+@click.option('--output_path', default='cross_pattern.png', help='Path to output file')
+def x(width, height, color1, color2, square_size, gaussian, output_path):
+    """Create a canvas with a cross pattern."""
+    img = Image.new('RGB', (width, height), color=color1)
+    draw = ImageDraw.Draw(img)
+
+    draw.line([0, 0, width, height], fill=color2, width=square_size)
+    draw.line([0, height, width, 0], fill=color2, width=square_size)
+
+    if gaussian:
+        img = img.filter(ImageFilter.GaussianBlur(radius=gaussian))
+
+    img.save(output_path)
+    click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output_path}")
+
+@cli.command()
+@click.option('--width', type=int, default=default_width, help='Canvas width')
+@click.option('--height', type=int, default=default_height, help='Canvas height')
 @click.option('--color', default='white', help='Background color (name or hexadecimal code)')
 @click.option('--line_color', default='black', help='Lines color (name or hexadecimal code)')
 @click.option('--line_width', type=int, default=default_line_width, help='Lines width')
