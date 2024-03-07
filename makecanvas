@@ -2,6 +2,8 @@
 
 import click
 import colorama
+import math
+
 from PIL import Image, ImageDraw, ImageFilter
 
 import video_commands_lib as vlc
@@ -69,5 +71,75 @@ def horizontallines(width, height, color, line_color, line_width, line_separatio
 
     img.save(output_path)
     click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output_path}")
+
+@cli.command()
+@click.option('--width', type=int, default=default_width, help='Canvas width')
+@click.option('--height', type=int, default=default_height, help='Canvas height')
+@click.option('--color', default='white', help='Background color (name or hexadecimal code)')
+@click.option('--line_color', default='black', help='Lines color (name or hexadecimal code)')
+@click.option('--line_width', type=int, default=default_line_width, help='Lines width')
+@click.option('--line_separation', type=int, default=default_line_width, help='Lines separation')
+@click.option('--gaussian', type=int, default=0, help='Gaussian blur')
+@click.option('--angle', type=int, default=45, help='Angle of the lines')
+@click.option('--output_path', default='canvas_with_diagonal_lines_up.png', help='Path to output file')
+def wayofheaven(width, height, color, line_color, line_width, line_separation, gaussian, angle, output_path):
+    """Create a canvas with diagonal lines."""
+    normalized_color = vlc.normalize_color(color)
+    img = Image.new('RGB', (width, height), color=normalized_color)
+    draw = ImageDraw.Draw(img)
+
+    m = math.tan(math.radians(angle))
+
+    # Calcular el punto base x
+    x_base = 0
+
+    for y in range(0, img.height, line_separation):
+        x1 = round(x_base)
+        x2 = round(x_base + m * (y + line_separation))
+        y2 = y + line_separation
+
+        print(f"Line: ({x1}, {y}) to ({x2}, {y2})")
+        draw.line((x1, y, x2, y2), fill=line_color, width=line_width)
+
+        x_base += line_separation
+
+    if gaussian:
+        img = img.filter(ImageFilter.GaussianBlur(radius=gaussian))
+
+    img.save(output_path)
+    click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output_path}")
+
+
+@cli.command()
+@click.option('--width', type=int, default=default_width, help='Canvas width')
+@click.option('--height', type=int, default=default_height, help='Canvas height')
+@click.option('--color', default='white', help='Background color (name or hexadecimal code)')
+@click.option('--line_color', default='black', help='Lines color (name or hexadecimal code)')
+@click.option('--line_width', type=int, default=2, help='Lines width')
+@click.option('--line_separation', type=int, default=20, help='Lines separation')
+@click.option('--gaussian', type=int, default=0, help='Gaussian blur')
+@click.option('--angle', type=int, default=45, help='Angle of the lines')
+@click.option('--output_path', default='canvas_with_diagonal_lines_up.png', help='Path to output file')
+def diagonal(width, height, color, line_color, line_width, line_separation, gaussian, angle, output_path):
+    """Create a canvas with diagonal lines."""
+    normalized_color = vlc.normalize_color(color)
+    img = Image.new('RGB', (width * 3, height * 3), color=normalized_color)
+    draw = ImageDraw.Draw(img)
+    for x in range(0, img.height, line_separation):
+        draw.line((0, x, img.width, x), fill=line_color, width=line_width)
+    if gaussian:
+        img = img.filter(ImageFilter.GaussianBlur(radius = gaussian))
+    img = img.rotate(angle, expand=True)
+
+    x1 = (img.width - width) // 2
+    y1 = (img.height - height) // 2
+    x2 = x1 + width
+    y2 = y1 + height
+
+    img = img.crop((x1, y1, x2, y2))
+
+    img.save(output_path)
+    click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output_path}")
+
 if __name__ == '__main__':
     cli()
