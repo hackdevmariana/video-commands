@@ -154,9 +154,9 @@ def cross(width, height, color1, color2, line_size, gaussian, output_path):
 @click.option('--color_frame', default='black', help='Color of the frame (name or hexadecimal code)')
 @click.option('--line_size', type=int, default=20, help='Size of frame line')
 @click.option('--gaussian', type=int, default=0, help='Gaussian blur')
-@click.option('--output_path', default='cross_canvas.png', help='Path to output file')
+@click.option('--output_path', default='frame_canvas.png', help='Path to output file')
 def withframe(width, height, color, color_frame, line_size, gaussian, output_path):
-    """Create a canvas with a cross pattern."""
+    """Create a canvas with a frame."""
     img = Image.new('RGB', (width, height), color=color)
     draw = ImageDraw.Draw(img)
 
@@ -175,16 +175,43 @@ def withframe(width, height, color, color_frame, line_size, gaussian, output_pat
 @click.option('--color_frame', default='black', help='Color of the frame (name or hexadecimal code)')
 @click.option('--color_frame_2', default='blue', help='Color of the second frame (name or hexadecimal code)')
 @click.option('--line_size', type=int, default=20, help='Size of frame line')
-@click.option('--line_size_2', type=int, default=10, help='Size of frame line')
+@click.option('--line_size_2', type=int, default=10, help='Size of second frame line')
 @click.option('--gaussian', type=int, default=0, help='Gaussian blur')
-@click.option('--output_path', default='cross_canvas.png', help='Path to output file')
+@click.option('--output_path', default='double_frame_canvas.png', help='Path to output file')
 def doubleframe(width, height, color, color_frame, color_frame_2, line_size, line_size_2, gaussian, output_path):
-    """Create a canvas with a cross pattern."""
+    """Create a canvas with double frame."""
     img = Image.new('RGB', (width, height), color=color)
     draw = ImageDraw.Draw(img)
 
     draw.rectangle([0, 0, width, height], outline=color_frame, width=line_size)
     draw.rectangle([line_size, line_size, width - line_size, height - line_size], outline=color_frame_2, width=line_size_2)
+
+    if gaussian:
+        img = img.filter(ImageFilter.GaussianBlur(radius=gaussian))
+
+    img.save(output_path)
+    click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output_path}")
+
+@cli.command()
+@click.option('--width', type=int, default=default_width, help='Canvas width')
+@click.option('--height', type=int, default=default_height, help='Canvas height')
+@click.option('--color', default='white', help='Color of the background (name or hexadecimal code)')
+@click.option('--color_frame', default='black', help='Color of the frame (name or hexadecimal code)')
+@click.option('--color_frame_2', default='blue', help='Color of the second frame (name or hexadecimal code)')
+@click.option('--color_frame_3', default='red', help='Color of the third frame (name or hexadecimal code)')
+@click.option('--line_size', type=int, default=20, help='Size of frame line')
+@click.option('--line_size_2', type=int, default=10, help='Size of second frame line')
+@click.option('--line_size_3', type=int, default=20, help='Size of third frame line')
+@click.option('--gaussian', type=int, default=0, help='Gaussian blur')
+@click.option('--output_path', default='double_frame_canvas.png', help='Path to output file')
+def tripleframe(width, height, color, color_frame, color_frame_2, color_frame_3, line_size, line_size_2, line_size_3, gaussian, output_path):
+    """Create a canvas with double frame."""
+    img = Image.new('RGB', (width, height), color=color)
+    draw = ImageDraw.Draw(img)
+
+    draw.rectangle([0, 0, width, height], outline=color_frame, width=line_size)
+    draw.rectangle([line_size, line_size, width - line_size, height - line_size], outline=color_frame_2, width=line_size_2)
+    draw.rectangle([line_size + line_size_2, line_size + line_size_2, width - (line_size + line_size_2), height - (line_size + line_size_2)], outline=color_frame_3, width=line_size_3)
 
     if gaussian:
         img = img.filter(ImageFilter.GaussianBlur(radius=gaussian))
