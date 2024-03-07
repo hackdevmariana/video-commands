@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+
+import click
+import colorama
+from PIL import Image, ImageDraw, ImageFilter
+
+import video_commands_lib as vlc
+
+default_width = 1920
+default_height = 1080
+
+default_line_width = default_width // 200
+
+@click.group()
+def cli():
+    pass
+
+@cli.command()
+@click.option('--width', type=int, default=default_width, help='Canvas width')
+@click.option('--height', type=int, default=1080, help='Canvas height')
+@click.option('--color', default='white', help='Background color (name or hexadecimal code)')
+@click.option('--output_path', default='canvas.png', help='Path to output file')
+def solid(width, height, color, output_path):
+    """Create a canvas with solid color."""
+    normalized_color = vlc.normalize_color(color)
+    img = Image.new('RGB', (width, height), color=normalized_color)
+    img.save(output_path)
+    click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output_path}")
+
+@cli.command()
+@click.option('--width', type=int, default=default_width, help='Canvas width')
+@click.option('--height', type=int, default=default_height, help='Canvas height')
+@click.option('--color', default='white', help='Background color (name or hexadecimal code)')
+@click.option('--line_color', default='black', help='Lines color (name or hexadecimal code)')
+@click.option('--line_width', type=int, default=default_line_width, help='Lines width')
+@click.option('--line_separation', type=int, default=default_line_width, help='Lines separation')
+@click.option('--gaussian', type=int, default=0, help='Gaussian blur')
+@click.option('--output_path', default='canvas_with_vertical_lines.png', help='Path to output file')
+def verticallines(width, height, color, line_color, line_width, line_separation, gaussian, output_path):
+    """Create a canvas with vertical lines."""
+    normalized_color = vlc.normalize_color(color)
+    img = Image.new('RGB', (width, height), color=normalized_color)
+    draw = ImageDraw.Draw(img)
+    for x in range(0, img.width, line_separation):
+        draw.line((x, 0, x, img.height), fill=line_color, width=line_width)
+    if gaussian:
+        img = img.filter(ImageFilter.GaussianBlur(radius = gaussian))
+    img.save(output_path)
+    click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output_path}")
+
+@cli.command()
+@click.option('--width', type=int, default=default_width, help='Canvas width')
+@click.option('--height', type=int, default=default_height, help='Canvas height')
+@click.option('--color', default='white', help='Background color (name or hexadecimal code)')
+@click.option('--line_color', default='black', help='Lines color (name or hexadecimal code)')
+@click.option('--line_width', type=int, default=default_line_width, help='Lines width')
+@click.option('--line_separation', type=int, default=default_line_width, help='Lines separation')
+@click.option('--gaussian', type=int, default=0, help='Gaussian blur')
+@click.option('--output_path', default='canvas_with_horizontal_lines.png', help='Path to output file')
+def horizontallines(width, height, color, line_color, line_width, line_separation, gaussian, output_path):
+    """Create a canvas with vertical lines."""
+    normalized_color = vlc.normalize_color(color)
+    img = Image.new('RGB', (width, height), color=normalized_color)
+    draw = ImageDraw.Draw(img)
+    for x in range(0, img.height, line_separation):
+        draw.line((0, x, img.width, x), fill=line_color, width=line_width)
+    if gaussian:
+        img = img.filter(ImageFilter.GaussianBlur(radius = gaussian))
+
+    img.save(output_path)
+    click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output_path}")
+if __name__ == '__main__':
+    cli()
