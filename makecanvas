@@ -203,10 +203,10 @@ def doubleframe(width, height, color, color_frame, color_frame_2, line_size, lin
 @click.option('--line_size_2', type=int, default=10, help='Size of second frame line')
 @click.option('--line_size_3', type=int, default=20, help='Size of third frame line')
 @click.option('--gaussian', type=int, default=0, help='Gaussian blur')
-@click.option('--output_path', default='double_frame_canvas.png', help='Path to output file')
+@click.option('--output_path', default='trile_frame_canvas.png', help='Path to output file')
 def tripleframe(width, height, color, color_frame, color_frame_2, color_frame_3, line_size, line_size_2, line_size_3, gaussian, output_path):
     """Create a canvas with double frame."""
-    img = Image.new('RGB', (width, height), color=color)
+    img = Image.new('RGBA', (width, height), color=color)
     draw = ImageDraw.Draw(img)
 
     draw.rectangle([0, 0, width, height], outline=color_frame, width=line_size)
