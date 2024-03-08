@@ -18,6 +18,42 @@ Descargue el proyecto git:
 git clone https://github.com/hackdevmariana/video-commands.git
 ```
 
+O, individualmente, los comandos que desee utilizar:
+
+``` sh
+git clone https://github.com/hackdevmariana/video-commands.git
+```
+
+Cree el entorno virtual:
+
+``` sh
+python3 -m venv venv
+```
+
+Active el entorno virtual. En GNU/Linux y otros sistemas Unix:
+
+``` sh
+source venv/bin/activate
+```
+
+En Windows:
+
+``` sh
+.\venv\Scripts\activate
+```
+
+Para desactivar el entorno virtual:
+
+``` sh
+deactivate
+```
+
+Instale las dependencias:
+
+``` sh
+pip install -r requirements.txt
+```
+
 Y dele permisos de ejecución a los comandos. En GNU/Linux, puede hacerlo con `chmod`:
 
 ``` sh
@@ -46,7 +82,7 @@ removebg imagen.jpg sin_fondo.png
 
 Genera un fichero sin fondo llamado `imagen_removed.png`.
 
-Es importante que le indiquemos un formato que admita transparencia para poder generar una imagen sin fondo. 
+Es importante que le indiquemos un formato que admita transparencia para poder generar una imagen sin fondo.
 
 ### tintimage
 

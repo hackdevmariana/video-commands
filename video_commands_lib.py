@@ -4,8 +4,28 @@ from pathlib import Path
 
 from PIL import Image, ImageOps, ImageColor
 from rembg import remove
+# import autotrace
 
-def remove_background(image_path, output_path):
+def vectorize_image(input_path, output_path):
+    """Vectorize an image.
+
+    If not given, it will be the same as the input file name
+    with the extension ".svg".
+    Args:
+        image_path (str): The original file to process.
+        output_path (str): The name of the file to generate.
+
+    Returns:
+        output_path (str): The name of the generated file.
+    """
+    if not output_path:
+        filename = Path(image_path).stem
+        output_path = f"{filename}.svg"
+    autotrace.svg(input_path, output_path)
+    return output_path
+
+
+def remove_background(image_path, output_path=""):
     """Remove the background from an image using rembg.
 
     If not given, it will be the same as the input file name
@@ -43,6 +63,8 @@ def normalize_color(color):
     Returns:
         str or False: The normalized color if valid, False otherwise.
     """
+    # TODO: Add transparent color.
+
     hex_color_pattern = re.compile(r'^[0-9a-fA-F]{6}$')
     hex_color_pattern_with_hastag = re.compile(r'^#[0-9a-fA-F]{6}$')
     if hex_color_pattern.match(color):
@@ -50,6 +72,8 @@ def normalize_color(color):
         return color
     elif hex_color_pattern_with_hastag.match(color):
         return color
+    # elif color.lower() == "transparent":
+    #     return (0, 0, 0, 0)
     else:
         try:
             ImageColor.getrgb(color)
