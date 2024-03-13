@@ -14,13 +14,21 @@ Escribe un texto en una imagen.
 
 - typewriter: crea una animación con las letras apareciendo de una en una.
 
+- list: lista las animaciones, efectos, colores o las tipografías disponibles (según el valor recibido).
+
 ## Parámetros
 
 - --size: tamaño de la imagen a generar con el subcomando `new`. Por defecto: 1920x1080.
 
+- --width: anchura de la imagen a generar con el subcomando `new`. Por defecto: 1920.
+
+- --height: altura de la imagen a generar con el subcomando `new`. Por defecto: 1080.
+
 - --bgcolor: recibe el color de fondo para el subcomando `new` o para el fondo del letrero.
 
 - --color: color de las letras.
+
+- --text: texto a escribir.
 
 - --font: tipografía del letrero.
 
@@ -28,7 +36,7 @@ Escribe un texto en una imagen.
 
 - --text-size: tamaño del letrero a escribir sobre la imagen, en caso de que no se indique --font-size.
 
-- --gravity: posición de letrero: N, NE, E, SE, S, SW, W, NW o C (North, North-East, East, South, South-West, West, North-West o Center).
+- --gravity: posición del letrero: N, NE, E, SE, S, SW, W, NW o C (North, North-East, East, South, South-West, West, North-West o Center).
 
 - --margin: margen respecto al punto gravity.
 
@@ -48,7 +56,7 @@ Escribe un texto en una imagen.
 
 - --effect: efecto sobre las letras.
 
-- --list: lista las animaciones, efectos, colores o las tipografías disponibles (según el valor recibido).
+- --list: lista a mostrar.
 
 ## Fichero de configuración
 
