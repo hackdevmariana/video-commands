@@ -64,6 +64,10 @@ chmod +x makecanvas removebg tintbg tintimage
 
 ### [removebg](./docs-es/removebg.md)
 
-### tintimage
+### [tintimage](./docs-es/tintimage.md)
 
-### tintbg
+### [tintbg](./docs-es/tintbg.md)
+
+## Comandos con subcomandos
+
+### [writeinimage](./docs-es/writeinimage.md)
