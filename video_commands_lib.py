@@ -2,9 +2,22 @@ from os import path
 import re
 from pathlib import Path
 
+import tkinter
+from tkinter import font
 from PIL import Image, ImageOps, ImageColor
 from rembg import remove
 # import autotrace
+
+def list_fonts():
+    """ Lists the fonts available in the system."""
+    root = tkinter.Tk()
+    root.withdraw()
+
+    available_fonts = list(font.families())
+    available_fonts.sort()
+
+    for font_ in available_fonts:
+        print(font_)
 
 def vectorize_image(input_path, output_path):
     """Vectorize an image.

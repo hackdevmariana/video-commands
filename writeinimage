@@ -6,7 +6,7 @@ import click
 import colorama
 from PIL import Image
 
-from video_commands_lib import normalize_color, normalize_size
+from video_commands_lib import normalize_color, normalize_size, list_fonts
 
 default_width = 1920
 default_height = 1080
@@ -41,6 +41,24 @@ def new(width, height, x, y, size, bgcolor, color, text, font, font_size, text_s
     width, height = normalize_size(width, height, size, default_width, default_height)
     print(width, height, x, y, size, bgcolor, color, text, font, font_size, text_size, gravity, margin, config, effect, input, output)
 
+    if font:
+        font_var = ImageFont.truetype(font, font_size)
+    else:
+        font_var = ImageFont.load_default()
+
+    # Define the coordinates of the text based on the starting point and gravity
+    # N, NE, E, SE, S, SW, W, NW or C
+    text_width, text_height = draw.textsize(text, font=font)
+    if gravity.lower() == 'c' or gravity.lower() == 'center':
+        text_x = (width - text_width) // 2
+        text_y = (height - text_height) // 2
+    elif gravity.lower() == 'n' or gravity.lower() == 'north':
+        text_x = (width - text_width) // 2
+        text_y = margin
+    elif gravity.lower() == 's' or gravity.lower() == 'south':
+        text_x = margin
+        text_y = (height - text_height) // 2
+
     img = Image.new('RGB', (width, height), color=bgcolor)
     img.save(output)
     output_path = Path(output)
@@ -68,6 +86,13 @@ def animated():
 def typewriter():
     """ """
     pass
+
+@cli.command()
+@click.argument('element')
+def list(element):
+    """Lists the elements available to work with the command."""
+    if element.lower() == "fonts":
+        list_fonts()
 
 if __name__ == '__main__':
     cli()
