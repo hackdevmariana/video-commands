@@ -2,6 +2,8 @@
 
 import click
 
+from video_commands_lib import normalize_color, normalize_size
+
 default_width = 1920
 default_height = 1080
 default_size = f"{default_width}x{default_height}"
@@ -11,11 +13,11 @@ def cli():
     pass
 
 @cli.command()
-@click.option('--width', type=int, default=default_width, help='Canvas width')
-@click.option('--height', type=int, default=default_height, help='Canvas height')
+@click.option('--width', type=int, default=0, help='Canvas width')
+@click.option('--height', type=int, default=0, help='Canvas height')
 @click.option('--x', type=int, default=0, help='Horizontal position of the beginning of writing')
 @click.option('--y', type=int, default=0, help='Vertical position of the beginning of writing')
-@click.option('--size', default=default_size, help='Canvas height')
+@click.option('--size', default="", help='Canvas height')
 @click.option('--bgcolor', default='white', help='Color of the background (name or hexadecimal code)')
 @click.option('--color', default='black', help='Color of the text (name or hexadecimal code)')
 @click.option('--text', help='Text to write.')
@@ -31,7 +33,11 @@ def cli():
 def new(width, height, x, y, size, bgcolor, color, text, font, font_size, text_size, gravity, margin, config, effect, input, output):
     """ Create a new image file with the indicated text. """
     print(width, height, x, y, size, bgcolor, color, text, font, font_size, text_size, gravity, margin, config, effect, input, output)
-    pass
+    bgcolor = normalize_color(bgcolor)
+    color = normalize_color(color)
+    width, height = normalize_size(width, height, size, default_width, default_height, default_size)
+
+    img = Image.new('RGB', (width, height), color=color1)
 
 @cli.command()
 def simple():

@@ -49,6 +49,40 @@ def remove_background(image_path, output_path=""):
 
     return output_path
 
+def normalize_size(width, height, size, default_width, default_height):
+    """ Checks if the user has indicated a certain image size, returning width and height.
+
+    Args:
+        width (int): The input width.
+        height (int): The input height.
+        size (str): The input size (in {width}x{height} format)
+        default_width (int): Default width.
+        default_height (int): Default height.
+
+    Returns:
+        width, height: The normalized size of image.
+    """
+
+    if not (width or height or size):
+        return default_width, default_height
+    elif width and height:
+        if isinstance(width, int) and isinstance(height, int) and width > 0 and height > 0:
+            return width, height
+        else:
+            return default_width, default_height
+    elif size and "x" in size:
+        try:
+            width, height = map(int, size.split('x'))
+            return width, height
+        except ValueError:
+            return default_width, default_height
+    elif width and not height:
+        return width, width
+    elif not width and height:
+        return height, height
+    else:
+        return default_width, default_height
+
 def normalize_color(color):
     """Normalize and validate the input color.
 
