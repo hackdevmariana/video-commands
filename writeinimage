@@ -4,9 +4,9 @@ from pathlib import Path
 
 import click
 import colorama
-from PIL import Image
+from PIL import Image, ImageFont, ImageDraw
 
-from video_commands_lib import normalize_color, normalize_size, list_fonts
+from video_commands_lib import normalize_color, normalize_size, list_fonts, path_to_font
 
 default_width = 1920
 default_height = 1080
@@ -41,31 +41,36 @@ def new(width, height, x, y, size, bgcolor, color, text, font, font_size, text_s
     width, height = normalize_size(width, height, size, default_width, default_height)
     print(width, height, x, y, size, bgcolor, color, text, font, font_size, text_size, gravity, margin, config, effect, input, output)
 
+    print(font)
     if font:
-        font_var = ImageFont.truetype(font, font_size)
-    else:
-        font_var = ImageFont.load_default()
-
-    # Define the coordinates of the text based on the starting point and gravity
-    # N, NE, E, SE, S, SW, W, NW or C
-    text_width, text_height = draw.textsize(text, font=font)
-    if gravity.lower() == 'c' or gravity.lower() == 'center':
-        text_x = (width - text_width) // 2
-        text_y = (height - text_height) // 2
-    elif gravity.lower() == 'n' or gravity.lower() == 'north':
-        text_x = (width - text_width) // 2
-        text_y = margin
-    elif gravity.lower() == 's' or gravity.lower() == 'south':
-        text_x = margin
-        text_y = (height - text_height) // 2
-
-    img = Image.new('RGB', (width, height), color=bgcolor)
-    img.save(output)
-    output_path = Path(output)
-    if output_path.is_file():
-        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
-    else:
-        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+        font_path = path_to_font(font)
+        print(font_path)
+    #     font_var = ImageFont.truetype(font_path, font_size)
+    # else:
+    #     font_var = ImageFont.load_default()
+    #
+    # img = Image.new('RGB', (width, height), color=bgcolor)
+    #
+    # draw = ImageDraw.Draw(img)
+    # # Define the coordinates of the text based on the starting point and gravity
+    # # N, NE, E, SE, S, SW, W, NW or C
+    # text_width, text_height = draw.textsize(text, font=font)
+    # if gravity.lower() == 'c' or gravity.lower() == 'center':
+    #     text_x = (width - text_width) // 2
+    #     text_y = (height - text_height) // 2
+    # elif gravity.lower() == 'n' or gravity.lower() == 'north':
+    #     text_x = (width - text_width) // 2
+    #     text_y = margin
+    # elif gravity.lower() == 's' or gravity.lower() == 'south':
+    #     text_x = margin
+    #     text_y = (height - text_height) // 2
+    #
+    # img.save(output)
+    # output_path = Path(output)
+    # if output_path.is_file():
+    #     click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    # else:
+    #     click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
 @cli.command()
 def simple():

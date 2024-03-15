@@ -1,22 +1,22 @@
+import os
 from os import path
 import re
 from pathlib import Path
 
 
+from fontTools.ttLib import TTFont
 from PIL import Image, ImageOps, ImageColor
 from rembg import remove
 # import autotrace
 
 
-from fontTools.ttLib import TTFont
-import os
 
 if os.name == 'posix' and os.path.isdir('/usr/share/fonts'):
     fonts_directory = '/usr/share/fonts'
 
 
 def list_fonts():
-    """ Lists all TTF font variations in the given directory. """
+    """ Lists all font variations in the given directory. """
 
     for dir, dirs, files in os.walk(fonts_directory):
         for filename in files:
@@ -33,6 +33,21 @@ def list_fonts():
                     pass
 
 
+def path_to_font(font_to_search):
+    """ Return the path to font. """
+
+    for dir, dirs, files in os.walk(fonts_directory):
+        for filename in files:
+            font_path = os.path.join(dir, filename)
+            if os.access(font_path, os.R_OK):
+                try:
+                    font = TTFont(font_path)
+                    font_name = font['name'].getName(4, 3, 1, 1033)
+                    if font_name is not None and font_to_search.lower().strip() == font_name.toUnicode().lower().strip():
+                        return font_path
+                except:
+                    pass
+    return None
 
 def vectorize_image(input_path, output_path):
     """Vectorize an image.
