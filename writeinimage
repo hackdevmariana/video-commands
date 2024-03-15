@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 
+from pathlib import Path
+
 import click
+import colorama
+from PIL import Image
 
 from video_commands_lib import normalize_color, normalize_size
 
@@ -20,7 +24,7 @@ def cli():
 @click.option('--size', default="", help='Canvas height')
 @click.option('--bgcolor', default='white', help='Color of the background (name or hexadecimal code)')
 @click.option('--color', default='black', help='Color of the text (name or hexadecimal code)')
-@click.option('--text', help='Text to write.')
+@click.option('--text', default='Lorem Ipsum', help='Text to write.')
 @click.option('--font', help='Typography with which to write the text.')
 @click.option('--font_size', type=int, default=20, help='Size of letters')
 @click.option('--text_size', type=int, default=default_width * 80 // 100, help='size of the sign to write on the image, in case --font-size is not indicated')
@@ -29,15 +33,21 @@ def cli():
 @click.option('--config', help='Path to config file')
 @click.option('--effect', help='Effect on letters')
 @click.option('--input', help='Path to input file')
-@click.option('--output', help='Path to output file')
+@click.option('--output', default='sign.png', help='Path to output file')
 def new(width, height, x, y, size, bgcolor, color, text, font, font_size, text_size, gravity, margin, config, effect, input, output):
     """ Create a new image file with the indicated text. """
-    print(width, height, x, y, size, bgcolor, color, text, font, font_size, text_size, gravity, margin, config, effect, input, output)
     bgcolor = normalize_color(bgcolor)
     color = normalize_color(color)
-    width, height = normalize_size(width, height, size, default_width, default_height, default_size)
+    width, height = normalize_size(width, height, size, default_width, default_height)
+    print(width, height, x, y, size, bgcolor, color, text, font, font_size, text_size, gravity, margin, config, effect, input, output)
 
-    img = Image.new('RGB', (width, height), color=color1)
+    img = Image.new('RGB', (width, height), color=bgcolor)
+    img.save(output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
 @cli.command()
 def simple():
