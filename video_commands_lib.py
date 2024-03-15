@@ -2,22 +2,37 @@ from os import path
 import re
 from pathlib import Path
 
-import tkinter
-from tkinter import font
+
 from PIL import Image, ImageOps, ImageColor
 from rembg import remove
 # import autotrace
 
+
+from fontTools.ttLib import TTFont
+import os
+
+if os.name == 'posix' and os.path.isdir('/usr/share/fonts'):
+    fonts_directory = '/usr/share/fonts'
+
+
 def list_fonts():
-    """ Lists the fonts available in the system."""
-    root = tkinter.Tk()
-    root.withdraw()
+    """ Lists all TTF font variations in the given directory. """
 
-    available_fonts = list(font.families())
-    available_fonts.sort()
+    for dir, dirs, files in os.walk(fonts_directory):
+        for filename in files:
+            font_path = os.path.join(dir, filename)
+            if os.access(font_path, os.R_OK):
+                try:
+                    font = TTFont(font_path)
+                    font_name = font['name'].getName(4, 3, 1, 1033)
+                    if font_name is not None:
+                        print(font_name.toUnicode())
+                    else:
+                        print(f"No name found for {filename}")
+                except:
+                    pass
 
-    for font_ in available_fonts:
-        print(font_)
+
 
 def vectorize_image(input_path, output_path):
     """Vectorize an image.
