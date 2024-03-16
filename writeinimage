@@ -5,6 +5,7 @@ from pathlib import Path
 import click
 import colorama
 from PIL import Image, ImageFont, ImageDraw
+import yaml
 
 from video_commands_lib import normalize_color, normalize_size, list_fonts, path_to_font
 
@@ -36,6 +37,30 @@ def cli():
 @click.option('--output', default='sign.png', help='Path to output file')
 def new(width, height, x, y, size, bgcolor, color, text, font, font_size, text_size, gravity, margin, config, effect, input, output):
     """ Create a new image file with the indicated text. """
+
+    # TODO: Delete input option
+
+    if config:
+        with open(config, 'r') as f:
+            config_data = yaml.safe_load(f)
+
+        for key, value in config_data.items():
+            width = value.get('width', 0)
+            height = value.get('height', 0)
+            x = value.get('x', 0)
+            y = value.get('y', 0)
+            size = value.get('size', '')
+            bgcolor = value.get('bgcolor', 'white')
+            color = value.get('color', 'black')
+            text = value.get('text', 'Lorem Ipsum')
+            font = value.get('font', None)
+            font_size = value.get('font_size', 20)
+            text_size = value.get('text_size', default_width * 80 // 100)
+            gravity = value.get('gravity', 'C')
+            margin = value.get('margin', 0)
+            effect = value.get('effect', None)
+            output = f"{key}.png"
+
     bgcolor = normalize_color(bgcolor)
     color = normalize_color(color)
     width, height = normalize_size(width, height, size, default_width, default_height)

@@ -1,0 +1,15 @@
+sign:
+  width: 1920
+  height: 1080
+  x: 0
+  y: 0
+  size: "1920x1080"
+  bgcolor: "white"
+  color: "black"
+  text: "Lorem Ipsum"
+  font: "Lato-Regular.ttf"
+  font_size: 20
+  text_size: 1536
+  gravity: "C"
+  margin: 0
+  effect: "shadow"
