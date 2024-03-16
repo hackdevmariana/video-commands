@@ -57,18 +57,33 @@ def new(width, height, x, y, size, bgcolor, color, text, font, font_size, text_s
     # Define the coordinates of the text based on the starting point and gravity
     # N, NE, E, SE, S, SW, W, NW or C
     text_width, text_height = draw.textsize(text, font=font_var)
-    if gravity.lower() == 'c' or gravity.lower() == 'center':
+    if gravity.lower() in ['c', 'center']:
         text_x = (width - text_width) // 2
         text_y = (height - text_height) // 2
-    elif gravity.lower() == 'n' or gravity.lower() == 'north':
+    elif gravity.lower() in ['n', 'north']:
         text_x = (width - text_width) // 2
         text_y = margin
-    elif gravity.lower() == 's' or gravity.lower() == 'south':
+    elif gravity.lower() in ['s', 'south']:
         text_x = (width - text_width) // 2
         text_y = height - text_height - margin
-    elif gravity.lower() == 'w' or gravity.lower() == 'west':
+    elif gravity.lower() in ['w', 'west']:
         text_x = margin
         text_y = (height - text_height) // 2
+    elif gravity.lower() in ['e', 'east']:
+        text_x = width - text_width - margin
+        text_y = (height - text_height) // 2
+    elif gravity.lower() in ['nw', 'northwest', 'north west']:
+        text_x = margin
+        text_y = margin
+    elif gravity.lower() in ['ne', 'northeast', 'north east']:
+        text_x = width - text_width - margin
+        text_y = margin
+    elif gravity.lower() in ['sw', 'southwest', 'south west']:
+        text_x = margin
+        text_y = height - text_height - margin
+    elif gravity.lower() in ['se', 'southeast', 'south east']:
+        text_x = width - text_width - margin
+        text_y = height - text_height - margin
 
     draw.text((text_x, text_y), text, fill=color, font=font_var)
 
