@@ -9,6 +9,7 @@ import textwrap
 import yaml
 
 from video_commands_lib import normalize_color, normalize_size, list_fonts, path_to_font, calculate_text_position
+import text_effects_on_images as text_effects
 
 default_width = 1920
 default_height = 1080
@@ -78,7 +79,8 @@ def new(width, height, x, y, size, bgcolor, color, text, font, font_size, max_ch
         font_var = ImageFont.load_default()
 
     img = Image.new('RGB', (width, height), color=bgcolor)
-    draw = ImageDraw.Draw(img)
+    text_layer = Image.new('RGBA', (width, height), color=(0, 0, 0, 0))
+    draw = ImageDraw.Draw(text_layer)
 
     text_x, text_y = calculate_text_position(width, height, margin, gravity, text, font_var, draw)
     lines = textwrap.wrap(text, width=max_chars_line)
@@ -91,6 +93,10 @@ def new(width, height, x, y, size, bgcolor, color, text, font, font_size, max_ch
         line_width, line_height = draw.textsize(line, font=font_var)
         draw.text((text_x, text_y), line, fill=color, font=font_var)
 
+    if effect:
+        text_layer = text_effects.apply_effect(text_layer, font_size, effect)
+
+    img.paste(text_layer, (0, 0), text_layer)
     img.save(output)
     output_path = Path(output)
     if output_path.is_file():
@@ -124,6 +130,8 @@ def list(element):
     """Lists the elements available to work with the command."""
     if element.lower() == "fonts":
         list_fonts()
+    elif element.lower() == "effects":
+        text_effects.list_effects()
 
 if __name__ == '__main__':
     cli()
