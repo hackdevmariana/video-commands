@@ -5,9 +5,10 @@ from pathlib import Path
 import click
 import colorama
 from PIL import Image, ImageFont, ImageDraw
+import textwrap
 import yaml
 
-from video_commands_lib import normalize_color, normalize_size, list_fonts, path_to_font
+from video_commands_lib import normalize_color, normalize_size, list_fonts, path_to_font, calculate_text_position
 
 default_width = 1920
 default_height = 1080
@@ -28,6 +29,7 @@ def cli():
 @click.option('--text', default='Lorem Ipsum', help='Text to write.')
 @click.option('--font', help='Typography with which to write the text.')
 @click.option('--font_size', type=int, default=20, help='Size of letters')
+@click.option('--max_chars_line', type=int, default=20, help='Maximum number of characters per line.')
 @click.option('--text_size', type=int, default=default_width * 80 // 100, help='size of the sign to write on the image, in case --font-size is not indicated')
 @click.option('--gravity', default='C', help='sign position: N, NE, E, SE, S, SW, W, NW or C (North, North-East, East, South, South-West, West, North-West o Center)')
 @click.option('--margin', type=int, default=0, help='margin with respect to the gravity point')
@@ -35,7 +37,7 @@ def cli():
 @click.option('--effect', help='Effect on letters')
 @click.option('--input', help='Path to input file')
 @click.option('--output', default='sign.png', help='Path to output file')
-def new(width, height, x, y, size, bgcolor, color, text, font, font_size, text_size, gravity, margin, config, effect, input, output):
+def new(width, height, x, y, size, bgcolor, color, text, font, font_size, max_chars_line, text_size, gravity, margin, config, effect, input, output):
     """ Create a new image file with the indicated text. """
 
     # TODO: Delete input option
@@ -66,7 +68,6 @@ def new(width, height, x, y, size, bgcolor, color, text, font, font_size, text_s
     width, height = normalize_size(width, height, size, default_width, default_height)
     print(width, height, x, y, size, bgcolor, color, text, font, font_size, text_size, gravity, margin, config, effect, input, output)
 
-    print(font)
     if font:
         font_path = path_to_font(font)
         if font_path:
@@ -79,38 +80,16 @@ def new(width, height, x, y, size, bgcolor, color, text, font, font_size, text_s
     img = Image.new('RGB', (width, height), color=bgcolor)
     draw = ImageDraw.Draw(img)
 
-    # Define the coordinates of the text based on the starting point and gravity
-    # N, NE, E, SE, S, SW, W, NW or C
-    text_width, text_height = draw.textsize(text, font=font_var)
-    if gravity.lower() in ['c', 'center']:
-        text_x = (width - text_width) // 2
-        text_y = (height - text_height) // 2
-    elif gravity.lower() in ['n', 'north']:
-        text_x = (width - text_width) // 2
-        text_y = margin
-    elif gravity.lower() in ['s', 'south']:
-        text_x = (width - text_width) // 2
-        text_y = height - text_height - margin
-    elif gravity.lower() in ['w', 'west']:
-        text_x = margin
-        text_y = (height - text_height) // 2
-    elif gravity.lower() in ['e', 'east']:
-        text_x = width - text_width - margin
-        text_y = (height - text_height) // 2
-    elif gravity.lower() in ['nw', 'northwest', 'north west']:
-        text_x = margin
-        text_y = margin
-    elif gravity.lower() in ['ne', 'northeast', 'north east']:
-        text_x = width - text_width - margin
-        text_y = margin
-    elif gravity.lower() in ['sw', 'southwest', 'south west']:
-        text_x = margin
-        text_y = height - text_height - margin
-    elif gravity.lower() in ['se', 'southeast', 'south east']:
-        text_x = width - text_width - margin
-        text_y = height - text_height - margin
+    text_x, text_y = calculate_text_position(width, height, margin, gravity, text, font_var, draw)
+    lines = textwrap.wrap(text, width=max_chars_line)
 
-    draw.text((text_x, text_y), text, fill=color, font=font_var)
+    line_height = font_var.getsize(' ')[1]
+
+    for count, line in enumerate(lines):
+        text_x, text_y = calculate_text_position(width, height, margin, gravity, line, font_var, draw)
+        text_y += line_height * count
+        line_width, line_height = draw.textsize(line, font=font_var)
+        draw.text((text_x, text_y), line, fill=color, font=font_var)
 
     img.save(output)
     output_path = Path(output)

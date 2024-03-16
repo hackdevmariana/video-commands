@@ -32,6 +32,39 @@ def list_fonts():
                 except:
                     pass
 
+def calculate_text_position(width, height, margin, gravity, text, font_var, draw):
+    """Calculates the position of the text based on gravity."""
+
+    text_width, text_height = draw.textsize(text, font=font_var)
+    if gravity.lower() in ['c', 'center']:
+        text_x = (width - text_width) // 2
+        text_y = (height - text_height) // 2
+    elif gravity.lower() in ['n', 'north']:
+        text_x = (width - text_width) // 2
+        text_y = margin
+    elif gravity.lower() in ['s', 'south']:
+        text_x = (width - text_width) // 2
+        text_y = height - text_height - margin
+    elif gravity.lower() in ['w', 'west']:
+        text_x = margin
+        text_y = (height - text_height) // 2
+    elif gravity.lower() in ['e', 'east']:
+        text_x = width - text_width - margin
+        text_y = (height - text_height) // 2
+    elif gravity.lower() in ['nw', 'northwest', 'north west']:
+        text_x = margin
+        text_y = margin
+    elif gravity.lower() in ['ne', 'northeast', 'north east']:
+        text_x = width - text_width - margin
+        text_y = margin
+    elif gravity.lower() in ['sw', 'southwest', 'south west']:
+        text_x = margin
+        text_y = height - text_height - margin
+    elif gravity.lower() in ['se', 'southeast', 'south east']:
+        text_x = width - text_width - margin
+        text_y = height - text_height - margin
+
+    return text_x, text_y
 
 def path_to_font(font_to_search):
     """ Return the path to font. """
