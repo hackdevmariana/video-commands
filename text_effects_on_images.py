@@ -29,10 +29,10 @@ def shadow(img, font_size):
             new_pixel = current_pixel if current_pixel[3] == 0 else color_shadow + (current_pixel[3],)
             shadow_layer.putpixel((x, y), new_pixel)
     shadow_layer = shadow_layer.filter(ImageFilter.GaussianBlur(radius=5))
-    if font_size // 30 > 4:
-        offset = (font_size // 30, font_size // 30)
+    if font_size // 20 > 4:
+        offset = (-1 * (font_size // 20), -1 * (font_size // 20))
     else:
-        offset = (4, 4)
+        offset = (-4, -4)
     print(font_size)
     print(offset)
     # img.paste(shadow_layer, offset, shadow_layer)
