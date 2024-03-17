@@ -4,6 +4,7 @@ effects_available = [
     'shadow',
     'emboss',
     'enhance',
+    'relief',
 ]
 
 def apply_effect(draw, font_size, effect):
@@ -17,9 +18,30 @@ def apply_effect(draw, font_size, effect):
         draw = emboss(draw, font_size)
     elif effect.lower() == 'enhance':
         draw = enhance(draw, font_size)
+    elif effect.lower() == 'relief':
+        draw = relief(draw, font_size)
 
     return draw
 
+
+def relief(img, font_size):
+    """Applies a relief effect to the received text."""
+    shadow_layer = Image.new("RGBA", img.size)
+    color_shadow = (0, 0, 0)
+
+    for x in range(img.width):
+        for y in range(img.height):
+            current_pixel = img.getpixel((x, y))
+            new_pixel = current_pixel if current_pixel[3] == 0 else color_shadow + (current_pixel[3],)
+            shadow_layer.putpixel((x, y), new_pixel)
+    if font_size // 20 > 4:
+        offset = (-1 * (font_size // 20), -1 * (font_size // 20))
+    else:
+        offset = (-4, -4)
+    print(font_size)
+    print(offset)
+    shadow_layer.paste(img, offset, img)
+    return shadow_layer
 
 def shadow(img, font_size):
     """Applies a shadow effect to the received text."""
@@ -38,9 +60,7 @@ def shadow(img, font_size):
         offset = (-4, -4)
     print(font_size)
     print(offset)
-    # img.paste(shadow_layer, offset, shadow_layer)
     shadow_layer.paste(img, offset, img)
-
     return shadow_layer
 
 def emboss(img, font_size):
