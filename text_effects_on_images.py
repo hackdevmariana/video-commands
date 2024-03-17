@@ -3,6 +3,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 effects_available = [
     'shadow',
     'emboss',
+    'enhance',
 ]
 
 def apply_effect(draw, font_size, effect):
@@ -14,6 +15,8 @@ def apply_effect(draw, font_size, effect):
         draw = shadow(draw, font_size)
     elif effect.lower() == 'emboss':
         draw = emboss(draw, font_size)
+    elif effect.lower() == 'enhance':
+        draw = enhance(draw, font_size)
 
     return draw
 
@@ -64,9 +67,26 @@ def make_mask(img):
             mask.putpixel((x, y), new_pixel)
     return mask
 
+def make_transparent_mask(img):
+    mask = Image.new("RGBA", img.size)
+    color_visible = (0, 0, 0)
+    bgcolor = (0, 0, 0, 0)
+
+    for x in range(img.width):
+        for y in range(img.height):
+            current_pixel = img.getpixel((x, y))
+            # Si el píxel es transparente, usa el color de fondo; de lo contrario, usa el color visible.
+            new_pixel = bgcolor if current_pixel[3] == 0 else color_visible + (current_pixel[3],)
+            mask.putpixel((x, y), new_pixel)
+    return mask
+
+
+
+
 def list_effects():
     """Shows the available effects."""
     print()
     print('emboss:\t\tApplies a emboss effect to the text.')
+    print('enhance:\t\tApplies a enhance effect to the text.')
     print('shadow:\t\tApplies a shadow to the text.')
     print()
