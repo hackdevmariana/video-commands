@@ -52,9 +52,21 @@ def emboss(img, font_size):
 
     return img
 
+def make_mask(img):
+    mask = Image.new("RGBA", img.size)
+    color_transparent = (255, 255, 255)
+    color_visible = (0, 0, 0)
+
+    for x in range(img.width):
+        for y in range(img.height):
+            current_pixel = img.getpixel((x, y))
+            new_pixel = color_visible if current_pixel[3] == 0 else color_transparent + (current_pixel[3],)
+            mask.putpixel((x, y), new_pixel)
+    return mask
 
 def list_effects():
     """Shows the available effects."""
     print()
+    print('emboss:\t\tApplies a emboss effect to the text.')
     print('shadow:\t\tApplies a shadow to the text.')
     print()
