@@ -80,6 +80,17 @@ def make_transparent_mask(img):
             mask.putpixel((x, y), new_pixel)
     return mask
 
+def enhance(img, font_size):
+    """Applies a enhance effect to the received text."""
+    img.save('original.png')
+    mask = make_transparent_mask(img)
+    mask.save('mascara.png')
+
+    enhance_layer = img.filter(ImageFilter.EMBOSS)
+
+    enhance_layer = Image.composite(enhance_layer, Image.new('RGBA', enhance_layer.size, (0,0,0,0)), mask)
+
+    return enhance_layer
 
 
 
