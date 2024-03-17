@@ -219,6 +219,29 @@ def tint_image(image_path, output_path, color, mode):
 
     return output_path
 
+def change_opacity(image, opacity):
+    """
+    Change the opacity of the image.
+
+    Args:
+        image (PIL.Image.Image): The image to change the opacity of.
+        opacity (int): Opacity value, an integer between 0 and 255.
+            0 means completely transparent, while 255 means completely opaque.
+
+    Returns:
+        PIL.Image.Image: The image with the opacity changed.
+    """
+    if opacity < 0:
+        opacity = 0
+    elif opacity > 255:
+        opacity = 255
+
+    if image.mode != 'RGBA':
+        image = image.convert('RGBA')
+
+    overlay = Image.new('RGBA', image.size, (255, 255, 255, opacity))
+    return Image.blend(image, overlay, alpha=1)
+
 
 
 def calculate_image_position(base_img, overlay_img, gravity):
