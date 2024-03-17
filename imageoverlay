@@ -5,6 +5,8 @@ import click
 import colorama
 from PIL import Image, ImageFont, ImageDraw
 
+from video_commands_lib import calculate_image_position
+
 @click.group()
 def cli():
     pass
@@ -14,11 +16,16 @@ def cli():
 @click.argument('overlay_image', type=click.Path(exists=True))
 @click.option('--x', type=int, default=0, help='Horizontal position for overlaying the image')
 @click.option('--y', type=int, default=0, help='Vertical position for overlaying the image')
+@click.option('--gravity', default='C', help='sign position: N, NE, E, SE, S, SW, W, NW or C (North, North-East, East, South, South-West, West, North-West o Center)')
 @click.option('--output', '-o', default='output.png', help='Output file path')
-def paste(base_image, overlay_image, x, y, output):
+def paste(base_image, overlay_image, x, y, gravity, output):
     """ Superimposes an image on top of another image. """
     base_img = Image.open(base_image)
     overlay_img = Image.open(overlay_image)
+
+
+    if not x and not y:
+        x, y = calculate_image_position(base_img, overlay_img, gravity)
 
     base_img.paste(overlay_img, (x, y), overlay_img)
     base_img.save(output)

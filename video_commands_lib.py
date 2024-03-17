@@ -218,3 +218,44 @@ def tint_image(image_path, output_path, color, mode):
     new_img.save(output_path)
 
     return output_path
+
+
+
+def calculate_image_position(base_img, overlay_img, gravity):
+    """Calculates the position of the image based on gravity."""
+
+    base_width, base_height = base_img.size
+    overlay_width, overlay_height = overlay_img.size
+    if gravity.lower() in ['c', 'center']:
+        pos_x = (base_width - overlay_width) // 2
+        pos_y = (base_height - overlay_height) // 2
+    elif gravity.lower() in ['n', 'north']:
+        pos_x = (base_width - overlay_width) // 2
+        pos_y = 0
+    elif gravity.lower() in ['s', 'south']:
+        pos_x = (base_width - overlay_width) // 2
+        pos_y = base_height - overlay_height
+    elif gravity.lower() in ['w', 'west']:
+        pos_x = 0
+        pos_y = (base_height - overlay_height) // 2
+    elif gravity.lower() in ['e', 'east']:
+        pos_x = base_width - overlay_width
+        pos_y = (base_height - overlay_height) // 2
+    elif gravity.lower() in ['nw', 'northwest', 'north west']:
+        pos_x = 0
+        pos_y = 0
+    elif gravity.lower() in ['ne', 'northeast', 'north east']:
+        pos_x = base_width - overlay_width
+        pos_y = 0
+    elif gravity.lower() in ['sw', 'southwest', 'south west']:
+        pos_x = 0
+        pos_y = base_height - overlay_height
+    elif gravity.lower() in ['se', 'southeast', 'south east']:
+        pos_x = base_width - overlay_width
+        pos_y = base_height - overlay_height
+
+    if pos_x < 0:
+        pos_x = 0
+    if pos_y < 0:
+        pos_y = 0
+    return pos_x, pos_y
