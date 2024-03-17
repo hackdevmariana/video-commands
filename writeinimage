@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 from pathlib import Path
 
 import click
@@ -67,8 +68,6 @@ def new(width, height, x, y, size, bgcolor, color, text, font, font_size, max_ch
     bgcolor = normalize_color(bgcolor)
     color = normalize_color(color)
     width, height = normalize_size(width, height, size, default_width, default_height)
-    print(width, height, x, y, size, bgcolor, color, text, font, font_size, text_size, gravity, margin, config, effect, input, output)
-
     if font:
         font_path = path_to_font(font)
         if font_path:
@@ -103,6 +102,48 @@ def new(width, height, x, y, size, bgcolor, color, text, font, font_size, max_ch
         click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+@cli.command()
+@click.option('--text', default='Lorem Ipsum', help='Text to write.')
+@click.option('--output', default='allfonts', help='Path to save output files')
+@click.option('--bgcolor', default='white', help='Color of the background (name or hexadecimal code)')
+@click.option('--color', default='black', help='Color of the text (name or hexadecimal code)')
+@click.option('--width', type=int, default=800, help='Canvas width')
+@click.option('--height', type=int, default=200, help='Canvas height')
+@click.option('--font_size', type=int, default=120, help='Size of letters')
+def allfonts(text, output, bgcolor, color, width, height, font_size):
+    """Generates images using all available fonts."""
+    bgcolor = normalize_color(bgcolor)
+    color = normalize_color(color)
+    if os.name == 'posix' and os.path.isdir('/usr/share/fonts'):
+        fonts_directory = '/usr/share/fonts'
+        os.makedirs(output, exist_ok=True)
+
+        for dirpath, _, filenames in os.walk(fonts_directory):
+            for filename in filenames:
+                font_path = os.path.join(dirpath, filename)
+                try:
+                    font = ImageFont.truetype(font_path, size=font_size)
+                    image = Image.new('RGB', (width, height), color=bgcolor)
+                    draw = ImageDraw.Draw(image)
+                    text_x, text_y = calculate_text_position(width, height, 0, "C", text, font, draw)
+                    draw.text((text_x, text_y), text, fill=color, font=font)
+                    image_name = os.path.splitext(filename)[0] + '.png'
+                    image_name = image_name.replace(' ', '_')
+                    image_path = os.path.join(output, image_name)
+                    image.save(image_path)
+                    # click.echo(f"Image '{image_name}' created with font '{filename}'")
+                except Exception as e:
+                    pass
+                    # click.echo(f"Error processing font '{filename}': {str(e)}")
+    else:
+        click.echo("Fonts directory not found.")
+
+
+
+
+
 
 @cli.command()
 def simple():

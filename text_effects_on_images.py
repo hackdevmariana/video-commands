@@ -119,5 +119,6 @@ def list_effects():
     print()
     print('emboss:\t\tApplies a emboss effect to the text.')
     print('enhance:\t\tApplies a enhance effect to the text.')
+    print('relief:\t\tApplies a relief to the text.')
     print('shadow:\t\tApplies a shadow to the text.')
     print()
