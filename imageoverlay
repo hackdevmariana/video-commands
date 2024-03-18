@@ -39,6 +39,36 @@ def paste(base_image, overlay_image, x, y, gravity, opacity, output):
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
 
+@cli.command()
+@click.argument('base_image', type=click.Path(exists=True))
+@click.argument('overlay_images', nargs=-1, type=click.Path(exists=True))
+@click.option('--x', type=int, default=0, help='Horizontal position for overlaying the images')
+@click.option('--y', type=int, default=0, help='Vertical position for overlaying the images')
+@click.option('--gravity', default='C', help='sign position: N, NE, E, SE, S, SW, W, NW or C (North, North-East, East, South, South-West, West, North-West o Center)')
+@click.option('--opacity', type=int, default=255, help='Opacity value, an integer between 0 and 255')
+@click.option('--output', '-o', default='output.png', help='Output file path')
+def pastemultipleimages(base_image, overlay_images, x, y, gravity, opacity, output):
+    """ Superimposes multiple images on top of a base image. """
+    base_img = Image.open(base_image)
+
+    for overlay_image_path in overlay_images:
+        overlay_img = Image.open(overlay_image_path)
+
+        if 0 < opacity < 255:
+            overlay_img = change_opacity(overlay_img, opacity)
+
+        if not x and not y:
+            x, y = calculate_image_position(base_img, overlay_img, gravity)
+
+        base_img.paste(overlay_img, (x, y), overlay_img)
+
+    base_img.save(output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
 
 
 
