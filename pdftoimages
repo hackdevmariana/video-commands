@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+
+import click
+import os
+from pdf2image import convert_from_path
+
+@click.group()
+def cli():
+    pass
+
+@cli.command()
+@click.argument('pdf_file', type=click.Path(exists=True))
+@click.option('--output-dir', '-o', default='output', help='Output directory for generated images')
+def pdf_to_images(pdf_file, output_dir):
+    """ Convert a PDF to one image per page."""
+
+    os.makedirs(output_dir, exist_ok=True)
+    images = convert_from_path(pdf_file)
+
+    for i, image in enumerate(images):
+        image_file = os.path.join(output_dir, f'page_{i + 1}.png')
+        image.save(image_file, 'PNG')
+        click.echo(f'Page {i + 1} converted: {image_file}')
+
+if __name__ == '__main__':
+    pdf_to_images()
