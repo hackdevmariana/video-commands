@@ -5,7 +5,7 @@ import click
 import colorama
 from PIL import Image, ImageFont, ImageDraw
 
-from video_commands_lib import calculate_image_position
+from video_commands_lib import calculate_image_position, change_opacity
 
 @click.group()
 def cli():
@@ -17,12 +17,15 @@ def cli():
 @click.option('--x', type=int, default=0, help='Horizontal position for overlaying the image')
 @click.option('--y', type=int, default=0, help='Vertical position for overlaying the image')
 @click.option('--gravity', default='C', help='sign position: N, NE, E, SE, S, SW, W, NW or C (North, North-East, East, South, South-West, West, North-West o Center)')
+@click.option('--opacity', type=int, default=255, help='Opacity value, an integer between 0 and 255')
 @click.option('--output', '-o', default='output.png', help='Output file path')
-def paste(base_image, overlay_image, x, y, gravity, output):
+def paste(base_image, overlay_image, x, y, gravity, opacity, output):
     """ Superimposes an image on top of another image. """
     base_img = Image.open(base_image)
     overlay_img = Image.open(overlay_image)
 
+    if 0 < opacity < 255:
+        overlay_img = change_opacity(overlay_img, opacity)
 
     if not x and not y:
         x, y = calculate_image_position(base_img, overlay_img, gravity)
@@ -34,6 +37,9 @@ def paste(base_image, overlay_image, x, y, gravity, output):
         click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+
 
 
 if __name__ == '__main__':

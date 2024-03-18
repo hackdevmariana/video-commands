@@ -237,10 +237,13 @@ def change_opacity(image, opacity):
         opacity = 255
 
     if image.mode != 'RGBA':
-        image = image.convert('RGBA')
+            image = image.convert('RGBA')
 
-    overlay = Image.new('RGBA', image.size, (255, 255, 255, opacity))
-    return Image.blend(image, overlay, alpha=1)
+    alpha = image.split()[3]
+    new_alpha = alpha.point(lambda p: round(p * opacity / 255))
+    image.putalpha(new_alpha)
+
+    return image
 
 
 
