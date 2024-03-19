@@ -1,15 +1,13 @@
 import os
 from os import path
+import random
 import re
+import string
 from pathlib import Path
-
 
 from fontTools.ttLib import TTFont
 from PIL import Image, ImageOps, ImageColor
 from rembg import remove
-# import autotrace
-
-
 
 if os.name == 'posix' and os.path.isdir('/usr/share/fonts'):
     fonts_directory = '/usr/share/fonts'
@@ -31,6 +29,39 @@ def list_fonts():
                         print(f"No name found for {filename}")
                 except:
                     pass
+
+def random_filename(length=20, suffix='.png'):
+    """
+    Generate a random filename with the specified length and suffix.
+
+    Args:
+        length (int, optional): The length of the random filename. Defaults to 20.
+        suffix (str, optional): The suffix of the filename, including the dot (e.g., '.png'). Defaults to '.png'.
+
+    Returns:
+        str: A randomly generated filename with the specified length and suffix.
+
+    Raises:
+        None
+
+    Example:
+        >>> random_filename()
+        'y57Ku3HV8Zck1EQr4pAb.png'
+    """
+    chars = string.ascii_letters + string.digits
+    random_string = ''.join(random.choice(chars) for _ in range(length))
+    suffix = suffix.strip()
+    if not suffix.startswith(os.extsep):
+        suffix = f'{os.extsep}{suffix}'
+    filename = f'{random_string}{suffix}'
+
+    while True:
+        random_string = ''.join(random.choice(chars) for _ in range(length))
+        filename = f'{random_string}{suffix}'
+        if not Path(filename).is_file():
+            return filename
+
+
 
 def calculate_text_position(width, height, margin, gravity, text, font_var, draw):
     """Calculates the position of the text based on gravity."""
