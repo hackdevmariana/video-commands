@@ -5,6 +5,7 @@ from pathlib import Path
 import click
 import colorama
 import gmic
+import os
 import PIL.Image
 
 from PIL import ImageChops, Image
@@ -62,7 +63,7 @@ def newspaperdotted(input, output):
         output = f"{Path(input).stem}_newspaper_dotted.png"
 
     temp_file = random_filename()
-    gmic.run(f'{input} fx_engrave 0.2,2,0,1.34,1.1,0,0,1,5,1,0,0,0,1,0 gui_merge_layers output {temp_file}')
+    gmic.run(f'{input} cartoon 1,50,30,0.75,5,26 output {temp_file}')
 
     img_1 = Image.open(input)
     img_2 = Image.open(temp_file)
