@@ -257,6 +257,23 @@ def weave(input, output):
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def cracks(input, output):
+    """Applies cracks effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_cracks.png"
+
+    gmic.run(f'{input} cracks 40,0,1,0 output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
 
 if __name__ == '__main__':
     cli()
