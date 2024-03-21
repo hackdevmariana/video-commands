@@ -39,6 +39,26 @@ def blur(input, output, intensity):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+@click.option('--intensity', type=int, default=20, help='Blur intensity')
+def blurx(input, output, intensity):
+    """Applies blur effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_blurred_x.png"
+
+    gmic.run(f'{input} blur_x {intensity} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def oldphoto(input, output):
     """Applies old photo effect to the received image."""
 
@@ -291,6 +311,56 @@ def scanlines(input, output):
         click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def badprinter(input, output):
+    """Applies bad printer effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_bad_printer.png"
+
+    temp_file = random_filename()
+    gmic.run(f'{input} cartoon 1,20,30,0.75,5,26 scanlines , scanlines , output {temp_file}')
+
+    img_1 = Image.open(input)
+    img_2 = Image.open(temp_file)
+
+    max_width = max(img_1.width, img_2.width)
+    max_height = max(img_1.height, img_2.height)
+    img_1 = img_1.resize((max_width, max_height))
+    img_2 = img_2.resize((max_width, max_height))
+    imagen1 = img_1.convert('1')
+    imagen2 = img_2.convert('1')
+    imagen_or = ImageChops.logical_or(imagen1, imagen2)
+    imagen_or.save(output)
+    os.remove(temp_file)
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def prueba(input, output):
+    """Applies scanlines effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_prueba.png"
+
+    gmic.run(f'{input} blur_x 30 {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
 
 
 if __name__ == '__main__':
