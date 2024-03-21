@@ -475,13 +475,33 @@ def gaussiandog(input, output):
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
 @click.option('--intensity', type=int, default=5, help='Blur intensity')
-def erode(input, output):
+def erode(input, output, intensity):
     """Applies erode effect to the received image."""
 
     if not output:
         output = f"{Path(input).stem}_erode.png"
 
     instruction = "erode 5"
+    gmic.run(f'{input} {instruction} {intensity} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+@click.option('--intensity', type=int, default=1, help='Blur intensity')
+def inpaint(input, output, intensity):
+    """Applies erode effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_inpaint.png"
+
+    instruction = "inpaint_holes 8,40,0"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
