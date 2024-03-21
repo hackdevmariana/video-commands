@@ -494,8 +494,7 @@ def erode(input, output, intensity):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-@click.option('--intensity', type=int, default=1, help='Blur intensity')
-def inpaint(input, output, intensity):
+def inpaint(input, output):
     """Applies erode effect to the received image."""
 
     if not output:
