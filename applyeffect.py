@@ -365,13 +365,14 @@ def badprinter(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-def prueba(input, output):
-    """Applies scanlines effect to the received image."""
+def telesketch(input, output):
+    """Applies telesketch effect to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_prueba.png"
+        output = f"{Path(input).stem}_telesketch.png"
 
-    gmic.run(f'{input} blur_x 30 {output}')
+    instruction = "(0,1,0;1,-4,1;0,1,0) convolve[-2] [-1] keep[-2]"
+    gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
     if output_path.is_file():
