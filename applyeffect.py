@@ -495,12 +495,49 @@ def erode(input, output, intensity):
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
 def inpaint(input, output):
-    """Applies erode effect to the received image."""
+    """Applies inpaint effect to the received image."""
 
     if not output:
         output = f"{Path(input).stem}_inpaint.png"
 
     instruction = "inpaint_holes 8,40,0"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+@click.option('--intensity', type=int, default=7, help='Blur intensity')
+def kuwahara(input, output, intensity):
+    """Applies Kuwahara filter effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_kuwahara.png"
+
+    instruction = "kuwahara"
+    gmic.run(f'{input} {instruction} {intensity} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def normalizelocal(input, output):
+    """Applies normalize local filter to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_normalize_local.png"
+
+    instruction = "normalize_local 8,10"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
