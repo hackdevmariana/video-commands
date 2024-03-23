@@ -924,6 +924,25 @@ def framepainting(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def prueba(input, output):
+    """Frame painting to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_prueba.png"
+
+    instruction = 'fx_color_abstraction 1,10,0.2,0'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 @click.option('--intensity', type=int, default=20, help='Blur intensity')
 def grid(input, output, intensity):
     """Convert the received image in grid."""
