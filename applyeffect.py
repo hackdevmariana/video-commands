@@ -996,6 +996,63 @@ def retrofade(input, output):
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def clarify(input, output):
+    """Applies clarify colors to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_vintage.png"
+
+    instruction = 'fx_retinex 75,16,1,1,1,5,15,80,250,0,50,50'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+@click.option('--intensity', type=int, default=20, help='Glass intensity')
+def glass(input, output, intensity):
+    """Applies glass texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_glass.png"
+
+    instruction = f'fx_textured_glass {intensity},{intensity},1,1,0,2,0,0'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def spherize(input, output, intensity):
+    """Applies glass texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_spherize.png"
+
+    instruction = f'fx_spherize 50,1,0,50,50,0,0,2,0'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
 
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
