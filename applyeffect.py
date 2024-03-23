@@ -1098,9 +1098,63 @@ def dirty(input, output, intensity):
     """Applies dirt to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_prueba.png"
+        output = f"{Path(input).stem}_dirty.png"
 
     instruction = f'fx_dirty {intensity},1,0,0,0'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def details(input, output):
+    """Applies color abstraction to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_details.png"
+
+    instruction = 'fx_freaky_details 2,10,1,11,0,32,0'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def mightydetails(input, output):
+    """Applies mighty details to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_mighty_details.png"
+
+    instruction = 'fx_mighty_details 25,1,25,1,11,0'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def fxglow(input, output):
+    """Applies fx glow to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_fx_glow.png"
+
+    instruction = 'fx_glow 6,7,0,0,50,50'
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
