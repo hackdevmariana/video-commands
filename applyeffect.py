@@ -5,6 +5,7 @@ from pathlib import Path
 import click
 import colorama
 import gmic
+import glob
 import os
 import PIL.Image
 
@@ -1235,6 +1236,35 @@ def shapeism(input, output):
         click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+import os
+import shutil
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def prueba(input, output):
+    """Applies starrynight texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_starrynight.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize starrynight +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    shutil.copyfile(generated_images[3], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
 
 
 @cli.command()
