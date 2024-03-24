@@ -1164,6 +1164,25 @@ def fxglow(input, output):
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def lomo(input, output):
+    """Applies fx glow to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_lomo.png"
+
+    instruction = 'fx_lomo 10,0,15,15'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
 
 
 @cli.command()
