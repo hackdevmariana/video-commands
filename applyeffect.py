@@ -15,7 +15,97 @@ from PIL import ImageChops, Image
 
 from video_commands_lib import random_filename
 
-effects = ['old_photo', 'stained_glass', 'poster_hope', 'polygon', 'sketch', 'lifiny', 'paloraid', 'cubism', 'vector_paint', 'cartoon', 'poster', 'pencil', 'paint', 'edge_fire', 'boxfitting', 'color_abstraction', 'freaky_details', 'gogh', 'polloc', 'klee', 'picasso', 'blur', 'bokeh', 'shine', 'diamond']
+effects = [
+            'blur',
+            'blurx',
+            'blury',
+            'oldphoto',
+            'newspaperdotted',
+            'judgment',
+            'polaroid',
+            'oilpainting',
+            'cartoon',
+            'posterize',
+            'doodlepen',
+            'smooth',
+            'stencil',
+            'tetris',
+            'weave',
+            'cracks',
+            'scanlines',
+            'badprinter',
+            'telesketch',
+            'badtonner',
+            'deriche',
+            'blackembossed',
+            'luminance',
+            'gaussiandog',
+            'erode',
+            'inpaint',
+            'kuwahara',
+            'normalizelocal',
+            'oldgame',
+            'removepixels',
+            'glitteronblack',
+            'emanation',
+            'sponged',
+            'markerpen',
+            'polygonize',
+            'pendrawing',
+            'boxfitting',
+            'drawwhirl',
+            'cubism',
+            'halftone',
+            'mosaic',
+            'thickstroke',
+            'frameblur',
+            'puzzle',
+            'arrayfade',
+            'tiles',
+            'tunnel',
+            'framepainting',
+            'colorabstraction',
+            'portraitbw',
+            'glow',
+            'retrofade',
+            'clarify',
+            'glass',
+            'spherize',
+            'water',
+            'wave',
+            'dirty',
+            'details',
+            'mightydetails',
+            'fxglow',
+            'lomo',
+            'noiseperlin',
+            'circles',
+            'shapeism',
+            'starrynight',
+            'yellowredblue',
+            'graytree',
+            'sharpen',
+            'reddens',
+            'grid',
+            'littlebayatlaciotat',
+            'leviaducalestaque',
+            'leviaducalestaque',
+            'summertime9a',
+            'convergence',
+            'irises',
+            'themandola',
+            'orientalgarden',
+            'squarescircles',
+            'kairouan',
+            'polyphony2',
+            'summer',
+            'portrait',
+            'redtree',
+            'redwaistcoat',
+            'ebro',
+            'blossom',
+            'landscape',
+            'wheatfield',]
 
 @click.group()
 def cli():
@@ -1894,6 +1984,12 @@ def wheatfield(input, output):
 
     for image in generated_images:
         os.remove(image)
+
+@cli.command()
+def list():
+    for effect in effects:
+        print(effect)
+
 
 if __name__ == '__main__':
     cli()
