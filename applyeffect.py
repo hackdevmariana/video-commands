@@ -1270,6 +1270,32 @@ def starrynight(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def yellowredblue(input, output):
+    """Applies yellowredblue texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_yellowredblue.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize yellowredblue +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def graytree(input, output):
     """Applies graytree texture to the received image."""
 
@@ -1354,6 +1380,520 @@ def grid(input, output, intensity):
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
 
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def littlebayatlaciotat(input, output):
+    """Applies littlebayatlaciotat texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_littlebayatlaciotat.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def leviaducalestaque(input, output):
+    """Applies leviaducalestaque texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_leviaducalestaque.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def leviaducalestaque(input, output):
+    """Applies leviaducalestaque texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_leviaducalestaque.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def summertime9a(input, output):
+    """Applies summertime9a texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_summertime9a.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def convergence(input, output):
+    """Applies convergence texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_convergence.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def irises(input, output):
+    """Applies irises texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_irises.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def themandola(input, output):
+    """Applies themandola texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_themandola.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def orientalgarden(input, output):
+    """Applies oriental pleasure garden anagoria texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_orientalpleasuregardenanagoria.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def squarescircles(input, output):
+    """Applies squares with concentric circles texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_squareswithconcentriccircles.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def kairouan(input, output):
+    """Applies in the style of kairouan texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_inthestyleofkairouan.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def polyphony2(input, output):
+    """Applies polyphony2 texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_polyphony2.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def summer(input, output):
+    """Applies wheat stacks end of summer texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_wheatstacksendofsummer.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def portrait(input, output):
+    """Applies portrait de metzinger texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_portraitdemetzinger.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def redtree(input, output):
+    """Applies red tree texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_redtree.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def redwaistcoat(input, output):
+    """Applies red waistcoat texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_redwaistcoat.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def ebro(input, output):
+    """Applies reservoir horta de ebro texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_reservoirhortadeebro.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def blossom(input, output):
+    """Applies almond blossom texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_almondblossom.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def landscape(input, output):
+    """Applies landscape near antwerp texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_landscapenearantwerp.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def wheatfield(input, output):
+    """Applies wheat field with crows texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_wheatfieldwithcrows.png"
+
+    temp_files = random_filename()
+
+    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    shutil.copyfile(image[0], output)
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
+
+    for image in generated_images:
+        os.remove(image)
 
 if __name__ == '__main__':
     cli()
