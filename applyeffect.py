@@ -9,6 +9,7 @@ import glob
 import os
 import PIL.Image
 import shutil
+import subprocess
 
 
 from PIL import ImageChops, Image
@@ -88,7 +89,6 @@ effects = [
             'reddens',
             'grid',
             'littlebayatlaciotat',
-            'leviaducalestaque',
             'leviaducalestaque',
             'summertime9a',
             'convergence',
@@ -241,7 +241,7 @@ def polaroid(input, output):
     """Applies polaroid effect to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_poster_hope.png"
+        output = f"{Path(input).stem}_polaroid.png"
 
     gmic.run(f'{input} to_rgba polaroid 5,30 output {output}')
 
@@ -646,7 +646,7 @@ def oldgame(input, output):
     """Applies 8 bits effect to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_normalize_local.png"
+        output = f"{Path(input).stem}_oldgame.png"
 
     instruction = "fx_8bits 25,800,16,0"
     gmic.run(f'{input} {instruction} output {output}')
@@ -1059,7 +1059,7 @@ def glow(input, output, intensity):
     """Applies pencil portrait effect to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_pencil_portraitbw.png"
+        output = f"{Path(input).stem}_glow.png"
 
     instruction = f'-glow {intensity}%'
     gmic.run(f'{input} {instruction} output {output}')
@@ -1458,7 +1458,7 @@ def grid(input, output, intensity):
     """Convert the received image in grid."""
 
     if not output:
-        output = f"{Path(input).stem}_grid_{intensity}.png"
+        output = f"{Path(input).stem}_grid.png"
 
     instruction = 'imagegrid'
     gmic.run(f'{input} {instruction} {intensity} output {output}')
@@ -1483,7 +1483,7 @@ def littlebayatlaciotat(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize littlebayatlaciotat +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1511,34 +1511,7 @@ def leviaducalestaque(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
-    gmic.run(f'{input} {instruction} output {temp_files}')
-
-    generated_images = glob.glob(f'{Path(temp_files).stem}*')
-    image = glob.glob(f'{Path(temp_files).stem}*2*')
-    shutil.copyfile(image[0], output)
-    output_path = Path(output)
-    if output_path.is_file():
-        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
-    else:
-        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred. Fewer than 3 images were generated.")
-
-    for image in generated_images:
-        os.remove(image)
-
-
-@cli.command()
-@click.argument('input', type=click.Path(exists=True))
-@click.option('--output', '-o', default='', help='Output file path')
-def leviaducalestaque(input, output):
-    """Applies leviaducalestaque texture to the received image."""
-
-    if not output:
-        output = f"{Path(input).stem}_leviaducalestaque.png"
-
-    temp_files = random_filename()
-
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize leviaducalestaque +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1565,7 +1538,7 @@ def summertime9a(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize summertime9a +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1592,7 +1565,7 @@ def convergence(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize convergence +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1619,7 +1592,7 @@ def irises(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize irises +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1646,7 +1619,7 @@ def themandola(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize themandola +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1673,7 +1646,7 @@ def orientalgarden(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize orientalpleasuregardenanagoria +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1700,7 +1673,7 @@ def squarescircles(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize squareswithconcentriccircles +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1727,7 +1700,7 @@ def kairouan(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize inthestyleofkairouan +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1754,7 +1727,7 @@ def polyphony2(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize polyphony2 +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1781,7 +1754,7 @@ def summer(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize wheatstacksendofsummer +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1808,7 +1781,7 @@ def portrait(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize portraitdemetzinger +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1835,7 +1808,7 @@ def redtree(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize redtree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1862,7 +1835,7 @@ def redwaistcoat(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize redwaistcoat +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1889,7 +1862,7 @@ def ebro(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize reservoirhortadeebro +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1916,7 +1889,7 @@ def blossom(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize almondblossom +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1943,7 +1916,7 @@ def landscape(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize landscapenearantwerp +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1970,7 +1943,7 @@ def wheatfield(input, output):
 
     temp_files = random_filename()
 
-    instruction = '_fx_stylize graytree +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
+    instruction = '_fx_stylize wheatfieldwithcrows +fx_stylize 1,6,0,0,0.5,2,3,0.5,0.1,3,3,0,0.7,1,0,1,0,5,5,7,1,30,5,2,1.85,0'
     gmic.run(f'{input} {instruction} output {temp_files}')
 
     generated_images = glob.glob(f'{Path(temp_files).stem}*')
@@ -1989,6 +1962,20 @@ def wheatfield(input, output):
 def list():
     for effect in effects:
         print(effect)
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+def alleffects(input):
+    import time
+    for effect in effects:
+        function_name = globals().get(effect)
+        if function_name and callable(function_name):
+            command = f'{os.path.basename(__file__)} {effect} {input}'
+            result = subprocess.run(command, shell=True, capture_output=True)
+            print(effect)
+            print(result.stdout.decode())
+            time.sleep(1)
 
 
 if __name__ == '__main__':
