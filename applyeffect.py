@@ -30,8 +30,10 @@ effects = [
             'doodlepen',
             'smooth',
             'stencil',
+            'posterhope',
             'tetris',
             'weave',
+            'gridhexagonal',
             'cracks',
             'scanlines',
             'badprinter',
@@ -1257,15 +1259,33 @@ def fxglow(input, output):
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def gridhexagonal(input, output):
+    """Applies grid hexagonal to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_poster_hope.png"
+
+    instruction = 'fx_imagegrid_hexagonal 32,0.1,1'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
 
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-def prueba(input, output):
-    """Applies lomo to the received image."""
+def posterhope(input, output):
+    """Applies poster hope to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_lomo.png"
+        output = f"{Path(input).stem}_poster_hope.png"
 
     instruction = 'fx_poster_hope 0,3,0'
     gmic.run(f'{input} {instruction} output {output}')
