@@ -537,11 +537,11 @@ def waxpaint(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-def prueba(input, output):
-    """Applies wax paint effect to the received image."""
+def feltpen(input, output):
+    """Applies feltpen effect to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_wax_paint.png"
+        output = f"{Path(input).stem}_feltpen.png"
 
     instruction = "fx_feltpen 300,50,1,0.1,20,5,0"
     gmic.run(f'{input} {instruction} output {output}')
