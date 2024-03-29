@@ -487,9 +487,29 @@ def dices(input, output):
     """Applies black and white dice texture to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_badtonner.png"
+        output = f"{Path(input).stem}_dices.png"
 
     instruction = "fx_dices 2,24,0"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+@click.option('-x', default=3, help='Tiles on the x axis')
+@click.option('-y', default=3, help='Tiles on the y axis')
+def tiles(input, output, x, y):
+    """Applies tiles to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_tiles.png"
+
+    instruction = f"fx_shift_tiles {x},{y},10,1"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
