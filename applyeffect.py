@@ -573,6 +573,26 @@ def fractalize(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+@click.option('-x', default=5, help='Tiles on the x axis')
+@click.option('-y', default=5, help='Tiles on the y axis')
+def rotatetiles(input, output, x, y):
+    """Applies rotate tiles texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_rotate_tiles.png"
+
+    instruction = f"fx_rotate_tiles {x},{y},15,3,3,1.8"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 @click.option('-x', default=3, help='Tiles on the x axis')
 @click.option('-y', default=3, help='Tiles on the y axis')
 def tiles(input, output, x, y):
