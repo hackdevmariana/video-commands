@@ -26,6 +26,13 @@ effects = [
             'gridtriangular',
             'warhol',
             'oilbw',
+            'tiles',
+            'rotatetiles',
+            'fractalize',
+            'waxpaint',
+            'feltpen',
+            'brokenglass',
+            'dices',
             'polaroid',
             'oilpainting',
             'cartoon',
@@ -90,6 +97,7 @@ effects = [
             'starrynight',
             'yellowredblue',
             'graytree',
+            'alien',
             'sharpen',
             'reddens',
             'grid',
@@ -221,6 +229,24 @@ def newspaperdotted(input, output):
         click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def alien(input, output):
+    """Applies alien effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_alien.png"
+
+    gmic.run(f'{input} repeat 3 smooth 40,0,1,1,2 done output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
 
 
 @cli.command()
@@ -455,6 +481,24 @@ def badprinter(input, output):
     imagen_or = ImageChops.logical_or(imagen1, imagen2)
     imagen_or.save(output)
     os.remove(temp_file)
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def alienvision(input, output):
+    """Applies alien vision effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_alien_vision.png"
+
+    instruction = "fx_marble .5,1,0,0,.4,.6,.6,1.1,0,100"
+    gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
     if output_path.is_file():
