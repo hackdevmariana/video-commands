@@ -584,7 +584,7 @@ def mirrory(input, output):
     """Applies mirror y effect to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_solarize.png"
+        output = f"{Path(input).stem}_mirror_y.png"
 
     instruction = "mirror y"
     gmic.run(f'{input} {instruction} output {output}')
