@@ -27,6 +27,7 @@ effects = [
             'warhol',
             'oilbw',
             'tiles',
+            'framefuzzy',
             'rotatetiles',
             'fractalize',
             'waxpaint',
@@ -629,6 +630,24 @@ def intensifies(input, output):
         output = f"{Path(input).stem}_intensifies.png"
 
     instruction = "apply_gamma 0.5"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def framefuzzy(input, output):
+    """Applies a frame fuzzy to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_frame_fuzzy.png"
+
+    instruction = "fx_frame_fuzzy 5,5,10,1,255,255,255,255"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
