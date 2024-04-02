@@ -32,10 +32,12 @@ effects = [
             'tiles',
             'clarifyshadow',
             'frameround',
+            'crystal',
             'sectionalboxfitting',
             'framefuzzy',
             'rotatetiles',
             'fractalize',
+            'sackcloth',
             'waxpaint',
             'feltpen',
             'burnoldphoto',
@@ -2134,6 +2136,46 @@ def hearts(input, output):
         click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def crystal(input, output):
+    """Applie broken crystal texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_lava.png"
+
+    instruction = 'fx_crystal 50,0.2,20,0'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def sackcloth(input, output):
+    """Applie sackcloth texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_sackcloth.png"
+
+    instruction = 'texturize_canvas 20,3,0.6'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
 
 
 
