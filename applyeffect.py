@@ -30,6 +30,8 @@ effects = [
             'vignette',
             'tiles',
             'clarifyshadow',
+            'frameround',
+            'sectionalboxfitting',
             'framefuzzy',
             'rotatetiles',
             'fractalize',
@@ -2110,6 +2112,27 @@ def sectionalboxfitting(input, output):
         click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def frameround(input, output):
+    """Applies frame round to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_frame_round.png"
+
+    instruction = 'fx_frame_round 6,20,0.1,0,255,255,255,255,0,0.1,3'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
 
 
 
