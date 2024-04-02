@@ -82,6 +82,7 @@ effects = [
             'glitteronblack',
             'emanation',
             'sponged',
+            'diagonalprojection',
             'markerpen',
             'polygonize',
             'pendrawing',
@@ -2146,9 +2147,29 @@ def crystal(input, output):
     """Applie broken crystal texture to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_lava.png"
+        output = f"{Path(input).stem}_crystal.png"
 
     instruction = 'fx_crystal 50,0.2,20,0'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def diagonalprojection(input, output):
+    """Applie diagonal projection effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_diagonal_projection.png"
+
+    instruction = 'fx_canvas 70,45,400,1,70,135,400,0'
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
