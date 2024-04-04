@@ -34,6 +34,7 @@ effects = [
             'frameround',
             'crystal',
             'charcoal',
+            'gradientnorm',
             'gradientrgb',
             'isophotes',
             'embossedmetal',
@@ -602,6 +603,26 @@ def isophotes(input, output):
         output = f"{Path(input).stem}_embossed_metal.png"
 
     instruction = "fx_isophotes 8,0,1,0"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def gradientnorm(input, output):
+    """Applies gradient norm effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_gradient_norm.png"
+
+    instruction = "fx_gradient_norm 0,0.5,0,100,0,0"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
