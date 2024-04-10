@@ -23,6 +23,7 @@ effects = [
             'blurradial',
             'gaussianblur',
             'blurdof',
+            'blurangular',
             'oldphoto',
             'newspaperdotted',
             'judgment',
@@ -647,6 +648,26 @@ def gaussianblur(input, output, intensity):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def blurangular(input, output):
+    """Applies blur angular effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_blurangular.png"
+
+    instruction = "fx_blur_angular 2,50,50,0,1,7,0"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def blurdof(input, output):
     """Applies blur dof effect to the received image."""
 
@@ -661,8 +682,6 @@ def blurdof(input, output):
         click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
-
-
 
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
