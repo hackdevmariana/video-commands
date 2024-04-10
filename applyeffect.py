@@ -28,6 +28,7 @@ effects = [
             'lightpatch',
             'twirl',
             'oilbw',
+            'reflect',
             'hearts',
             'vignette',
             'tiles',
@@ -617,16 +618,17 @@ def twirl(input, output):
 
 
 
+
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-def sphere(input, output):
-    """Applies sphere effect to the received image."""
+def reflect(input, output):
+    """Applies reflect effect to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_twirl.png"
+        output = f"{Path(input).stem}_reflect.png"
 
-    instruction = "fx_map_sphere 512,512,90,0.5,0,0,20,0,0,0,0.5"
+    instruction = "fx_reflect 50,1,110,160,190,64,0,1.5,0,-3.3,7,1.5"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
@@ -636,6 +638,25 @@ def sphere(input, output):
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
 
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def sphere(input, output):
+    """Applies sphere effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_sphere.png"
+
+    instruction = "fx_map_sphere 512,512,90,0.5,0,0,20,0,0,0,0.5"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
