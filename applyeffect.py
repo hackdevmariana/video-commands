@@ -668,11 +668,31 @@ def wind(input, output):
 
 
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+@click.option('--intensity', type=int, default=50, help='Waves intensity')
+def shadestripes(input, output, intensity):
+    """Applies shade stripes effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_shadestripes.png"
+
+    instruction = f"fx_shade_stripes {intensity},1,0.8,1.3,0,0,0"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
 
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-@click.option('--intensity', type=int, default=100, help='Waves intensity')
+@click.option('--intensity', type=int, default=50, help='Waves intensity')
 def fxscanlines(input, output, intensity):
     """Applies fx scanlines effect to the received image."""
 
