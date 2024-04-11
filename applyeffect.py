@@ -24,6 +24,7 @@ effects = [
             'gaussianblur',
             'blurdof',
             'blurangular',
+            'stripesy',
             'oldphoto',
             'newspaperdotted',
             'deblur',
@@ -658,6 +659,27 @@ def wind(input, output):
         output = f"{Path(input).stem}_wind.png"
 
     instruction = "fx_wind 20,0,0.7,20,1,0,0,0"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+@click.option('--intensity', type=int, default=50, help='Waves intensity')
+def stripesy(input, output, intensity):
+    """Applies stripes in y axis to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_stripesy.png"
+
+    instruction = f"fx_stripes_y {intensity},0,0,0"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
