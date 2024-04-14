@@ -27,7 +27,8 @@ effects = [
             'stripesy',
             'spread',
             'oldphoto',
-            'maptones',
+            'lightmaptones',
+            'darkmaptones',
             'newspaperdotted',
             'deblur',
             'judgment',
@@ -693,13 +694,33 @@ def spread(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-def maptones(input, output):
-    """Applies map tones effect to the received image."""
+def lightmaptones(input, output):
+    """Applies light map tones effect to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_maptones.png"
+        output = f"{Path(input).stem}_lightmaptones.png"
 
     instruction = "fx_map_tones_fast 3,0.5,11,0"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def darkmaptones(input, output):
+    """Applies dark map tones effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_darkmaptones.png"
+
+    instruction = "fx_map_tones 0.5,0.7,0.1,30,0,0"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
