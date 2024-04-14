@@ -27,6 +27,7 @@ effects = [
             'stripesy',
             'spread',
             'oldphoto',
+            'maptones',
             'newspaperdotted',
             'deblur',
             'judgment',
@@ -692,11 +693,32 @@ def spread(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-def prueba(input, output):
-    """Applies spread effect to the received image."""
+def maptones(input, output):
+    """Applies map tones effect to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_spread.png"
+        output = f"{Path(input).stem}_maptones.png"
+
+    instruction = "fx_map_tones_fast 3,0.5,11,0"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def droste(input, output):
+    """Applies droste effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_droste.png"
 
     instruction = "fx_droste 20,20,80,20,80,80,20,80,1,0,0,0,1,0,1,0,0"
     gmic.run(f'{input} {instruction} output {output}')
