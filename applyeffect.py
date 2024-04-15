@@ -780,7 +780,7 @@ def unsharp(input, output):
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
 @click.option('--percentage', '-p', default=200, help='Enlargement percentage')
-def upscale(input, output):
+def upscale(input, output, percentage):
     """Upscale to the received image."""
 
     if not output:
