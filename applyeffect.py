@@ -35,6 +35,7 @@ effects = [
             'newspaperdotted',
             'deblur',
             'pencilsketch',
+            'rainbow',
             'judgment',
             'normalizelocal',
             'gridtriangular',
@@ -815,6 +816,27 @@ def pencilsketch(input, output):
         click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def rainbow(input, output):
+    """Applies rainbow texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_rainbow.png"
+
+    instruction = f'fx_rainbow 80,80,175,175,3,8'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
 
 
 
