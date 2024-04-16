@@ -29,6 +29,7 @@ effects = [
             'oldphoto',
             'upscale',
             'unsharp',
+            'blocks3d',
             'lightmaptones',
             'darkmaptones',
             'newspaperdotted',
@@ -807,6 +808,27 @@ def pencilsketch(input, output):
         output = f"{Path(input).stem}_pencil_sketch.png"
 
     instruction = f'-sketchbw , -rv -blend overlay'
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def blocks3d(input, output):
+    """Applies blocks3d texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_blocks3d.png"
+
+    instruction = f'fx_blocks3d 32,0,4,1.5,30,60,45,50,50,0,-50,-100,0.5,0.7,1,1,0,0,0,128'
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
