@@ -121,6 +121,7 @@ effects = [
             'drawwhirl',
             'cubism',
             'halftone',
+            'shockwaves',
             'mosaic',
             'sphere',
             'thickstroke',
@@ -998,6 +999,46 @@ def colorellipses(input, output):
         output = f"{Path(input).stem}_color_ellipses.png"
 
     instruction = "fx_color_ellipses 400,8,0.1"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def shockwaves(input, output):
+    """Applies shockwaves texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_shockwaves.png"
+
+    instruction = "fx_shockwaves 10,10,20,0,0"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def prueba(input, output):
+    """Applies shockwaves texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_shockwaves.png"
+
+    instruction = "fx_sponge 13,0,0"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
