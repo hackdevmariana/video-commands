@@ -1027,18 +1027,17 @@ def shockwaves(input, output):
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
-
-
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-def prueba(input, output):
-    """Applies shockwaves texture to the received image."""
+@click.option('--intensity', type=int, default=10, help='Sponged intensity')
+def sponge(input, output, intensity):
+    """Applies sponged texture to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_shockwaves.png"
+        output = f"{Path(input).stem}_sponge.png"
 
-    instruction = "fx_sponge 13,0,0"
+    instruction = f"fx_sponge {intensity},0,0"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
