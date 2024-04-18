@@ -505,13 +505,14 @@ def edgeoffsets(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-def tetris(input, output):
+@click.option('--intensity', type=int, default=10, help='Blur intensity')
+def tetris(input, output, intensity):
     """Applies tetris effect to the received image."""
 
     if not output:
         output = f"{Path(input).stem}_tetris.png"
 
-    gmic.run(f'{input} tetris 10 output {output}')
+    gmic.run(f'{input} tetris {intensity} output {output}')
 
     output_path = Path(output)
     if output_path.is_file():
@@ -1087,6 +1088,7 @@ def thickmarker(input, output, intensity):
         click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
 
 
 
