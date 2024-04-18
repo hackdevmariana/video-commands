@@ -1090,6 +1090,25 @@ def thickmarker(input, output, intensity):
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def triangles(input, output):
+    """Applies triangles bw texture to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_triangles_bw.png"
+
+    instruction = f"fx_shapes 4,16,10,2,5,90,0,0,1,1,0"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
 
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
@@ -1098,7 +1117,7 @@ def kitt(input, output):
     """Applies Knight Rider texture to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_fxtetris.png"
+        output = f"{Path(input).stem}_knight_rider.png"
 
     instruction = f"fx_shapes 5,16,10,2,5,90,0,0,1,1,0"
     gmic.run(f'{input} {instruction} output {output}')
