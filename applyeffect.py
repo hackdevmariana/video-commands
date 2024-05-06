@@ -2360,6 +2360,24 @@ def luminousyellow (input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def ambertoasted (input, output):
+    """Applies amber toasted tones to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_amber_toasted.png"
+
+    instruction = "mul_channels 1,0.7,0.1"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def amber (input, output):
     """Applies amber tones to the received image."""
 
