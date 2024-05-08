@@ -1,0 +1,116 @@
+#!/usr/bin/env python3
+
+from pathlib import Path
+
+import click
+import colorama
+import imageio
+from rembg import remove
+from PIL import Image
+import numpy as np
+from moviepy.editor import *
+from video_commands_lib import random_filename
+from io import BytesIO
+
+
+def extract_audio(video_file, output_duration):
+    audio_file = random_filename(suffix='.mp3')
+    video_clip = VideoFileClip(video_file)
+    audio_clip = video_clip.audio
+
+    # Recortar el audio para que tenga la misma duración que el vídeo
+    audio_clip = audio_clip.subclip(0.01, output_duration)
+    audio_clip.write_audiofile(audio_file)
+
+    video_clip.close()
+    return audio_file
+
+
+def get_duration(video_path):
+    video_clip = VideoFileClip(video_path)
+    duration = video_clip.duration
+    video_clip.close()
+    return duration
+
+def combine_video_with_audio(video_file, audio_file, output_file):
+
+    videoclip = VideoFileClip(video_file)
+    audioclip = AudioFileClip(audio_file)
+
+    new_audioclip = CompositeAudioClip([audioclip])
+    videoclip.audio = new_audioclip
+    videoclip.write_videofile(output_file)
+
+
+def extract_frames(video_path):
+    frames = []
+    with imageio.get_reader(video_path) as reader:
+        for frame in reader:
+            frames.append(frame)
+    return frames
+
+def remove_background(frames):
+    bg_removed_frames = []
+    for frame in frames:
+        # Convertir el fotograma a formato de imagen PIL
+        pil_image = Image.fromarray(frame)
+
+        # Convertir la imagen PIL a formato de bytes
+        with BytesIO() as output:
+            pil_image.save(output, format='PNG')
+            img_bytes = output.getvalue()
+
+        # Eliminar el fondo de la imagen utilizando rembg
+        bg_removed_img = remove(img_bytes)
+
+        # Convertir la imagen de bytes a formato numpy
+        bg_removed_frame = np.array(Image.open(BytesIO(bg_removed_img)))
+
+        bg_removed_frames.append(bg_removed_frame)
+    return bg_removed_frames
+
+def frames_to_video(frames, output_path, fps=24):
+    clip = ImageSequenceClip(frames, fps=fps)
+    clip.write_videofile(output_path, codec='libx264')
+
+@click.group()
+def cli():
+    pass
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+@click.option('--color', default='black', help='Background color')
+def uniformbackground(input, output, color):
+    """Applies blur effect to the received video."""
+
+    if not output:
+        output = f"{Path(input).stem}_uniformbackground.mp4"
+
+    output_duration = get_duration(input)
+    audio = extract_audio(input, output_duration)
+    video = random_filename(suffix='.mp4')
+
+    # Extraer fotogramas del video
+    frames = extract_frames(input)
+
+    # Eliminar el fondo de los fotogramas
+    bg_removed_frames = remove_background(frames)
+    frames_to_video(bg_removed_frames, video)
+
+
+    # overlay_videos(input, output, output)
+    combine_video_with_audio(video_file=video, audio_file=audio, output_file=output)
+
+    os.remove(audio)
+    os.remove(video)
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The video has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+if __name__ == '__main__':
+    cli()
