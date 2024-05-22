@@ -3353,13 +3353,13 @@ def maritime(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-def yellowandnavy(input, output):
-    """Applies yellow and navy tones to the received image."""
+def purpleyellow(input, output):
+    """Applies purple and yellow tones to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_yellow_and_navy.png"
+        output = f"{Path(input).stem}_purple_and_yellow.png"
 
-    instruction = "mul_channels -0.8,-0.6,0.5"
+    instruction = "mul_channels -0.8,-0.9,0.8"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
