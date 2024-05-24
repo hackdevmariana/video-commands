@@ -4055,10 +4055,30 @@ def electricgreenblue(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+@click.option('--columns', '-c', default=3, help='Output file path')
+def clearscolumns(input, output, columns):
+    """Applies clears for columns to the received image."""
+
+    instruction = f"rol 'round({columns}*x/w,0)' cut 0,255"
+
+    if not output:
+        output = f"{Path(input).stem}_clearscolumns.png"
+
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies purple tones to the received image."""
 
-    instruction = "gradient pow 8 add pow 0.1"
+    instruction = f"rol 'round(6*x/w,0)' cut 0,255"
 
     if not output:
         output = f"{Path(input).stem}_neq.png"
