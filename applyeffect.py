@@ -4075,10 +4075,29 @@ def clearscolumns(input, output, columns):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def intensifiesdark(input, output):
+    """Applies intensifies dark tones to the received image."""
+
+    instruction = "sqr"
+
+    if not output:
+        output = f"{Path(input).stem}_intensifies_dark.png"
+
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies purple tones to the received image."""
 
-    instruction = f"rol 'round(6*x/w,0)' cut 0,255"
+    instruction = "sqr"
 
     if not output:
         output = f"{Path(input).stem}_neq.png"
