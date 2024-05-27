@@ -44,6 +44,10 @@ def luminousgreen():
 def pastelturquoise():
     """Changes the color of the received image to pastel turquoise."""
 
+@process_image('indigo', "balance_gamma -19,106,128")
+def indigo():
+    """Changes the color of the received image to indigo."""
+
 @click.group()
 def cli():
     pass
@@ -52,6 +56,7 @@ cli.add_command(orange)
 cli.add_command(pastelorange)
 cli.add_command(luminousgreen)
 cli.add_command(pastelturquoise)
+cli.add_command(indigo)
 
 if __name__ == "__main__":
     cli()
