@@ -64,6 +64,10 @@ def nightblue():
 def palealien():
     """Changes the color of the received image to pale alien."""
 
+@process_image('lime', "balance_gamma -60,205,-155")
+def lime():
+    """Changes the color of the received image to lime."""
+
 @click.group()
 def cli():
     pass
@@ -77,6 +81,7 @@ cli.add_command(blue)
 cli.add_command(nightblue)
 cli.add_command(indigo)
 cli.add_command(palealien)
+cli.add_command(lime)
 
 if __name__ == "__main__":
     cli()
