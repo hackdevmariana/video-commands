@@ -72,6 +72,10 @@ def lime():
 def luminousblue():
     """Changes the color of the received image to luminous blue."""
 
+@process_image('turquoise', "balance_gamma -93,124,94")
+def turquoise():
+    """Changes the color of the received image to turquoise."""
+
 @click.group()
 def cli():
     pass
@@ -80,6 +84,7 @@ cli.add_command(orange)
 cli.add_command(pastelorange)
 cli.add_command(luminousgreen)
 cli.add_command(pastelturquoise)
+cli.add_command(turquoise)
 cli.add_command(pastelblue)
 cli.add_command(blue)
 cli.add_command(nightblue)
