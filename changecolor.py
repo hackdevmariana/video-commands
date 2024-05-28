@@ -145,6 +145,10 @@ def luminousintenseblue():
 def greenishhue():
     """Changes the color of the received image to greenish hue."""
 
+@process_image('purplehue', "balance_gamma 64,36,91")
+def purplehue():
+    """Changes the color of the received image to purple hue."""
+
 @process_image('green', "balance_gamma 52,187,30")
 def green():
     """Changes the color of the received image to green."""
@@ -174,6 +178,7 @@ cli.add_command(burngreen)
 cli.add_command(pastelgreen)
 cli.add_command(luminousgreen)
 cli.add_command(greenishhue)
+cli.add_command(purplehue)
 cli.add_command(luminouslime)
 cli.add_command(pastelturquoise)
 cli.add_command(turquoise)
