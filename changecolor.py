@@ -153,6 +153,10 @@ def green():
 def burngreen():
     """Changes the color of the received image to burn green."""
 
+@process_image('blackyellow', "balance_gamma 62,18,-55")
+def blackyellow():
+    """Changes the color of the received image to black and yellow."""
+
 
 @click.group()
 def cli():
@@ -181,6 +185,7 @@ cli.add_command(lime)
 cli.add_command(bluelime)
 cli.add_command(blacklemon)
 cli.add_command(blacklime)
+cli.add_command(blackyellow)
 cli.add_command(spectralpurple)
 cli.add_command(pinkblue)
 cli.add_command(blackred)
