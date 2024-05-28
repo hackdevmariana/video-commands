@@ -141,6 +141,11 @@ def blacklime():
 def luminousintenseblue():
     """Changes the color of the received image to luminous intense blue."""
 
+@process_image('greenishhue', "balance_gamma 46,102,79")
+def greenishhue():
+    """Changes the color of the received image to greenish hue."""
+
+
 @click.group()
 def cli():
     pass
@@ -149,6 +154,7 @@ cli.add_command(orange)
 cli.add_command(pastelorange)
 cli.add_command(pastelgreen)
 cli.add_command(luminousgreen)
+cli.add_command(greenishhue)
 cli.add_command(luminouslime)
 cli.add_command(pastelturquoise)
 cli.add_command(turquoise)
