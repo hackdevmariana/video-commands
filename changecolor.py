@@ -88,6 +88,10 @@ def paleindigo():
 def spectralpurple():
     """Changes the color of the received image to spectral purple."""
 
+@process_image('luminousindigo', "balance_gamma 6,109,167")
+def luminousindigo():
+    """Changes the color of the received image to luminous indigo."""
+
 @click.group()
 def cli():
     pass
@@ -102,6 +106,7 @@ cli.add_command(pastelblue)
 cli.add_command(blue)
 cli.add_command(nightblue)
 cli.add_command(luminousblue)
+cli.add_command(luminousindigo)
 cli.add_command(indigo)
 cli.add_command(paleindigo)
 cli.add_command(palealien)
