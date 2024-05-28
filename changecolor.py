@@ -108,6 +108,10 @@ def blackred():
 def bluepurplesubtle():
     """Changes the color of the received image to blue and purple subtle."""
 
+@process_image('shininggreen', "balance_gamma 8,254,159")
+def shininggreen():
+    """Changes the color of the received image to shining green."""
+
 
 @click.group()
 def cli():
@@ -133,6 +137,7 @@ cli.add_command(spectralpurple)
 cli.add_command(pinkblue)
 cli.add_command(blackred)
 cli.add_command(bluepurplesubtle)
+cli.add_command(shininggreen)
 
 
 if __name__ == "__main__":
