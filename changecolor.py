@@ -133,6 +133,10 @@ def darklemonlime():
 def blacklemon():
     """Changes the color of the received image to black and lemon."""
 
+@process_image('blacklime', "balance_gamma 40,90,-204")
+def blacklime():
+    """Changes the color of the received image to black and lime."""
+
 @process_image('luminousintenseblue', "balance_gamma 40,47,224")
 def luminousintenseblue():
     """Changes the color of the received image to luminous intense blue."""
@@ -160,6 +164,7 @@ cli.add_command(palealien)
 cli.add_command(lime)
 cli.add_command(bluelime)
 cli.add_command(blacklemon)
+cli.add_command(blacklime)
 cli.add_command(spectralpurple)
 cli.add_command(pinkblue)
 cli.add_command(blackred)
