@@ -106,6 +106,30 @@ def totext(input, output):
     output_path = Path(output)
     handle_output(output, output_path)
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def uppercase(input, output):
+    """Convert text to uppercase."""
+
+    if not output:
+        output = f"{Path(input).stem}_uppercase.txt"
+
+    try:
+        with open(input, 'r') as f:
+            text = f.read()
+        text_upper = text.upper()
+        with open(output, 'w') as f:
+            f.write(text_upper)
+        click.echo(text_upper)
+    except Exception as e:
+        print(f"Error processing text: {e}")
+        print_error(output)
+        return
+
+    output_path = Path(output)
+    handle_output(output, output_path)
+
 
 if __name__ == "__main__":
     cli()
