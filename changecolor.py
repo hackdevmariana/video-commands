@@ -217,6 +217,10 @@ def blackyellow():
 def blackyellow():
     """Changes the colors of the received image to yellow and brown."""
 
+@process_image('purplesubtle', "balance_gamma 176,76,251")
+def blackyellow():
+    """Changes the colors of the received image to purple subtle."""
+
 
 
 
@@ -256,6 +260,7 @@ cli.add_command(spectralpurple)
 cli.add_command(pinkblue)
 cli.add_command(blackred)
 cli.add_command(bluepurplesubtle)
+cli.add_command(purplesubtle)
 cli.add_command(redsubtle)
 cli.add_command(shininggreen)
 cli.add_command(bluepurple)
