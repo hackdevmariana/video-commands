@@ -185,6 +185,10 @@ def blackyellow():
 def blackyellow():
     """Changes the color of the received image to blue and pink."""
 
+@process_image('luminouspurple', "balance_gamma 92,-190,127")
+def blackyellow():
+    """Changes the luminous colors of the received image to purple."""
+
 @click.group()
 def cli():
     pass
@@ -228,6 +232,7 @@ cli.add_command(luminouslemonlime)
 cli.add_command(darklemonlime)
 cli.add_command(limelemon)
 cli.add_command(bluepink)
+cli.add_command(luminouspurple)
 
 
 if __name__ == "__main__":
