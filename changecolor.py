@@ -205,6 +205,10 @@ def blackyellow():
 def blackyellow():
     """Changes the colors of the received image to dull brown."""
 
+@process_image('dullgreen', "balance_gamma 123,181,70")
+def blackyellow():
+    """Changes the colors of the received image to dull green."""
+
 
 
 @click.group()
@@ -255,6 +259,7 @@ cli.add_command(yellowgreen)
 cli.add_command(amber)
 cli.add_command(subtleyellowandgreen)
 cli.add_command(dullbrown)
+cli.add_command(dullgreen)
 
 
 if __name__ == "__main__":
