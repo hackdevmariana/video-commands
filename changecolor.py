@@ -225,6 +225,10 @@ def purplesubtle():
 def whitish():
     """Changes the colors of the received image to whitish."""
 
+@process_image('warm', "balance_gamma 190,75,-69")
+def warm():
+    """Changes the colors of the received image to warm tones."""
+
 @click.group()
 def cli():
     pass
@@ -278,6 +282,9 @@ cli.add_command(dullgreen)
 cli.add_command(amberbrown)
 cli.add_command(yellowbrown)
 cli.add_command(whitish)
+cli.add_command(warm)
+
+
 
 if __name__ == "__main__":
     cli()
