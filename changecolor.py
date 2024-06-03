@@ -233,6 +233,10 @@ def warm():
 def palegrass():
     """Changes the colors of the received image to pale grass tones."""
 
+@process_image('fire', "balance_gamma 230,80,-76")
+def fire():
+    """Changes the colors of the received image to fire tones."""
+
 @click.group()
 def cli():
     pass
@@ -288,6 +292,7 @@ cli.add_command(yellowbrown)
 cli.add_command(whitish)
 cli.add_command(warm)
 cli.add_command(palegrass)
+cli.add_command(fire)
 
 if __name__ == "__main__":
     cli()
