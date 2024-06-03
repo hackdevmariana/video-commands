@@ -174,55 +174,56 @@ def blackyellow():
     """Changes the color of the received image to black and yellow."""
 
 @process_image('limelemon', "balance_gamma 67,118,-131")
-def blackyellow():
+def limelemon():
     """Changes the color of the received image to lime and lemon."""
 
 @process_image('redsubtle', "balance_gamma 78,7,47")
-def blackyellow():
+def redsubtle():
     """Changes the color of the received image to subtle red."""
 
 @process_image('bluepink', "balance_gamma 91,-107,190")
-def blackyellow():
+def bluepink():
     """Changes the color of the received image to blue and pink."""
 
 @process_image('luminouspurple', "balance_gamma 92,-190,127")
-def blackyellow():
+def luminouspurple():
     """Changes the luminous colors of the received image to purple."""
 
 @process_image('yellowgreen', "balance_gamma 95,237,-38")
-def blackyellow():
+def yellowgreen():
     """Changes the colors of the received image to yellow and green."""
 
 @process_image('amber', "balance_gamma 96,41,-233")
-def blackyellow():
+def amber():
     """Changes the colors of the received image to amber."""
 
 @process_image('subtleyellowandgreen', "balance_gamma 108,188,-195")
-def blackyellow():
+def subtleyellowandgreen():
     """Changes the colors of the received image to subtle yellow and green."""
 
 @process_image('dullbrown', "balance_gamma 121,50,23")
-def blackyellow():
+def dullbrown():
     """Changes the colors of the received image to dull brown."""
 
 @process_image('dullgreen', "balance_gamma 123,181,70")
-def blackyellow():
+def dullgreen():
     """Changes the colors of the received image to dull green."""
 
 @process_image('amberbrown', "balance_gamma 127,20,-69")
-def blackyellow():
+def amberbrown():
     """Changes the colors of the received image to amber and brown."""
 
 @process_image('yellowbrown', "balance_gamma 151,70,-89")
-def blackyellow():
+def yellowbrown():
     """Changes the colors of the received image to yellow and brown."""
 
 @process_image('purplesubtle', "balance_gamma 176,76,251")
-def blackyellow():
+def purplesubtle():
     """Changes the colors of the received image to purple subtle."""
 
-
-
+@process_image('whitish', "balance_gamma 189,205,177")
+def whitish():
+    """Changes the colors of the received image to whitish."""
 
 @click.group()
 def cli():
@@ -276,7 +277,7 @@ cli.add_command(dullbrown)
 cli.add_command(dullgreen)
 cli.add_command(amberbrown)
 cli.add_command(yellowbrown)
-
+cli.add_command(whitish)
 
 if __name__ == "__main__":
     cli()
