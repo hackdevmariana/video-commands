@@ -56,6 +56,11 @@ def luminousgreen():
 def greenteal():
     """Mixes the channels giving a green and teal tone to the image."""
 
+@process_image('darkred', "0,0,1;0,0,0;0,0,0")
+def darkred():
+    """Mixes the channels giving a dark red tone to the image."""
+
+
 @click.group()
 def cli():
     pass
@@ -68,6 +73,7 @@ cli.add_command(sea)
 cli.add_command(greenishandblue)
 cli.add_command(luminousgreen)
 cli.add_command(greenteal)
+cli.add_command(darkred)
 
 
 
