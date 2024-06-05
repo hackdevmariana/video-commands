@@ -40,6 +40,10 @@ def green():
 def turquoise():
     """Mixes the channels giving a turquoise tone to the image."""
 
+@process_image('sea', "0,0,0;0,0,1;0,1,0")
+def sea():
+    """Mixes the channels giving a sea tone to the image."""
+
 @click.group()
 def cli():
     pass
@@ -48,6 +52,7 @@ def cli():
 cli.add_command(darkblue)
 cli.add_command(green)
 cli.add_command(turquoise)
+cli.add_command(sea)
 
 if __name__ == "__main__":
     cli()
