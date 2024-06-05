@@ -64,9 +64,13 @@ def darkred():
 def purple():
     """Mixes the channels giving a purple tone to the image."""
 
-@process_image('lilacblue', "0,0,1;0,0,0;0,0,1")
+@process_image('lilacblue', "0,0,1;0,0,0;1,0,0")
 def lilacblue():
     """Mixes the channels giving a lilac and blue tone to the image."""
+
+@process_image('paleyellow', "0,0,1;0,0,1;0,0,0")
+def paleyellow():
+    """Mixes the channels giving a pale yellow tone to the image."""
 
 
 @click.group()
@@ -84,6 +88,7 @@ cli.add_command(greenteal)
 cli.add_command(darkred)
 cli.add_command(purple)
 cli.add_command(lilacblue)
+cli.add_command(paleyellow)
 
 
 
