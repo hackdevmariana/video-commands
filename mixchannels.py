@@ -112,6 +112,9 @@ def lilacpurple():
 def tanning ():
     """Mixes the channels giving a tanning tone to the image."""
 
+@process_image('palepurplegreen', "0,1,0;0,0,1;0,1,0")
+def palepurplegreen():
+    """Mixes the channels giving a pale purple and green tone to the image."""
 
 @click.group()
 def cli():
@@ -138,9 +141,7 @@ cli.add_command(purplegreen)
 cli.add_command(blackpurple)
 cli.add_command(lilacpurple)
 cli.add_command(dullgarnetturquoise)
-
-
-
+cli.add_command(palepurplegreen)
 
 if __name__ == "__main__":
     cli()
