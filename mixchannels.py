@@ -124,6 +124,10 @@ def paleolive():
 def whiteyellow():
     """Mixes the channels giving a white and yellow tone to the image."""
 
+@process_image('whitepink', "0,0,0;0,0,1;0,0,0 negate")
+def whitepink():
+    """Mixes the channels giving a white and pink tone to the image."""
+
 
 
 @click.group()
@@ -154,6 +158,7 @@ cli.add_command(dullgarnetturquoise)
 cli.add_command(palepurplegreen)
 cli.add_command(paleolive)
 cli.add_command(whiteyellow)
+cli.add_command(whitepink)
 
 if __name__ == "__main__":
     cli()
