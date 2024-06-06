@@ -104,6 +104,10 @@ def blackred():
 def blackpurple():
     """Mixes the channels giving a black and purple tone to the image."""
 
+@process_image('lilacpurple', "0,1,0;0,0,0;1,0,0")
+def lilacpurple():
+    """Mixes the channels giving a lilac and purple tone to the image."""
+
 
 
 @click.group()
@@ -129,6 +133,7 @@ cli.add_command(lemonlime)
 cli.add_command(yellowgreen)
 cli.add_command(purplegreen)
 cli.add_command(blackpurple)
+cli.add_command(lilacpurple)
 cli.add_command(dullgarnetturquoise)
 
 
