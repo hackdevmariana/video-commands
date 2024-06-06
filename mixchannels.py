@@ -136,6 +136,10 @@ def whitered():
 def redamber():
     """Mixes the channels giving a amber and red tone to the image."""
 
+@process_image('whitelilac', "0,0,0;0,1,0;0,0,0 negate")
+def whitelilac():
+    """Mixes the channels giving a white and lilac tone to the image."""
+
 
 
 @click.group()
@@ -169,6 +173,9 @@ cli.add_command(whiteyellow)
 cli.add_command(whitepink)
 cli.add_command(whitered)
 cli.add_command(redamber)
+cli.add_command(whitelilac)
+
+
 
 if __name__ == "__main__":
     cli()
