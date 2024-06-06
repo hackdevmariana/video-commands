@@ -96,6 +96,11 @@ def purplegreen():
 def dullgarnetturquoise():
     """Mixes the channels giving a dull garnet and turquoise tone to the image."""
 
+@process_image('blackred', "0,1,0;0,0,0;0,0,0")
+def blackred():
+    """Mixes the channels giving a black and red tone to the image."""
+
+
 
 @click.group()
 def cli():
@@ -110,6 +115,7 @@ cli.add_command(greenishandblue)
 cli.add_command(luminousgreen)
 cli.add_command(greenteal)
 cli.add_command(darkred)
+cli.add_command(blackred)
 cli.add_command(purple)
 cli.add_command(lilacblue)
 cli.add_command(paleyellow)
@@ -119,6 +125,7 @@ cli.add_command(lemonlime)
 cli.add_command(yellowgreen)
 cli.add_command(purplegreen)
 cli.add_command(dullgarnetturquoise)
+
 
 
 
