@@ -108,6 +108,9 @@ def blackpurple():
 def lilacpurple():
     """Mixes the channels giving a lilac and purple tone to the image."""
 
+@process_image('tanning', "0,1,0;0,0,1;0,0,1")
+def tanning ():
+    """Mixes the channels giving a tanning tone to the image."""
 
 
 @click.group()
