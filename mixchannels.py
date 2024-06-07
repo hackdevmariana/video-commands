@@ -156,6 +156,10 @@ def whiteblue():
 def whiteblacknegate():
     """Mixes the channels giving a white and black negate tone to the image."""
 
+@process_image('blackberrypistachio', "0,0,1;0,0,1;1,0,0 negate")
+def blackberrypistachio():
+    """Mixes the channels giving a blackberry and pistachio tone to the image."""
+
 
 @click.group()
 def cli():
@@ -193,6 +197,7 @@ cli.add_command(whitecyan)
 cli.add_command(whitegreen)
 cli.add_command(whiteblue)
 cli.add_command(whiteblacknegate)
+cli.add_command(blackberrypistachio)
 
 
 
