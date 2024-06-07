@@ -11,6 +11,8 @@ import PIL.Image
 import shutil
 import subprocess
 
+from itertools import product
+
 from random import uniform, randint
 
 from PIL import ImageChops, Image
@@ -4110,24 +4112,27 @@ def spectral(input, output):
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
+#        palettes = ["default", "hsv", "lines", "hot", "cool", "jet", "flag", "cube", "rainbow", "algae", "amp", "balance", "curl", "deep", "delta", "dense", "diff", "haline", "ice", "matter", "oxy", "phase", "rain", "solar", "speed", "tarn", "tempo", "thermal", "topo", "turbid", "aurora", "hocuspocus", "srb2", "uzebox"]
+#        print(product([0, 1], repeat=3))
+
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies purple tones to the received image."""
+    for block in range(100):
+        print(block)
 
-    instruction = "balance_gamma 128,64,64"
+        instruction = f"noise {block},2"
 
-    if not output:
-        output = f"{Path(input).stem}_neq.png"
+        output = f"{Path(input).stem}_noise_{block}.png"
+        gmic.run(f'{input} {instruction} output {output}')
 
-    gmic.run(f'{input} {instruction} output {output}')
-
-    output_path = Path(output)
-    if output_path.is_file():
-        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
-    else:
-        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+        output_path = Path(output)
+        if output_path.is_file():
+            click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+        else:
+            click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
@@ -4292,6 +4297,25 @@ def erode(input, output, intensity):
         output = f"{Path(input).stem}_erode.png"
 
     instruction = "erode 5"
+    gmic.run(f'{input} {instruction} {intensity} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+@click.option('--intensity', type=int, default=10, help='Blur intensity')
+def saltnoise(input, output, intensity):
+    """Applies erode effect to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_saltnoise.png"
+
+    instruction = f"noise {intensity},2"
     gmic.run(f'{input} {instruction} {intensity} output {output}')
 
     output_path = Path(output)
