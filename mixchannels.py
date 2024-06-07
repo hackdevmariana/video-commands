@@ -174,7 +174,11 @@ def whitebluepurple():
 
 @process_image('whitedarkgreenpurple', "0,0,1;1,0,0;0,0,1 negate")
 def whitedarkgreenpurple():
-    """Mixes the channels giving a white, dark and purple tone to the image."""
+    """Mixes the channels giving a white, dark green and purple tone to the image."""
+
+@process_image('whitedarkindigored', "0,0,1;1,0,0;1,0,0 negate")
+def whitedarkindigored():
+    """Mixes the channels giving a white, dark indigo and dark red tone to the image."""
 
 
 @click.group()
@@ -218,6 +222,7 @@ cli.add_command(whiteblackpurple)
 cli.add_command(whitedarkblueamber)
 cli.add_command(whitebluepurple)
 cli.add_command(whitedarkgreenpurple)
+cli.add_command(whitedarkindigored)
 
 
 if __name__ == "__main__":
