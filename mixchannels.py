@@ -152,6 +152,9 @@ def whitegreen():
 def whiteblue():
     """Mixes the channels giving a white and blue tone to the image."""
 
+@process_image('whiteblacknegate', "0,0,1;0,0,1;0,0,1 negate")
+def whiteblacknegate():
+    """Mixes the channels giving a white and black negate tone to the image."""
 
 
 @click.group()
@@ -189,6 +192,9 @@ cli.add_command(whitelilac)
 cli.add_command(whitecyan)
 cli.add_command(whitegreen)
 cli.add_command(whiteblue)
+cli.add_command(whiteblacknegate)
+
+
 
 if __name__ == "__main__":
     cli()
