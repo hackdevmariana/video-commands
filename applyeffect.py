@@ -4152,12 +4152,29 @@ def pastelchalk(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def colorfulborders(input, output):
+    """Applies colorful borders to the received image."""
+
+    instruction = f"gradient2rgb 0"
+
+    output = f"{Path(input).stem}_colorful_borders.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies purple tones to the received image."""
 
-    instruction = f"gradient2rgb 0 equalize"
+    instruction = f"gradient2rgb 0"
 
-    output = f"{Path(input).stem}_deltaE.png"
+    output = f"{Path(input).stem}_deltaf.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
