@@ -4118,21 +4118,36 @@ def spectral(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def dottedbw(input, output):
+    """Applies dotted black and white to the received image."""
+
+    instruction = f"rgb2bayer 1"
+
+    output = f"{Path(input).stem}_dottedbw.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies purple tones to the received image."""
-    for block in range(100):
-        print(block)
 
-        instruction = f"noise {block},2"
+    instruction = f"rgb2bayer 1"
 
-        output = f"{Path(input).stem}_noise_{block}.png"
-        gmic.run(f'{input} {instruction} output {output}')
+    output = f"{Path(input).stem}_applychannels.png"
+    gmic.run(f'{input} {instruction} output {output}')
 
-        output_path = Path(output)
-        if output_path.is_file():
-            click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
-        else:
-            click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
@@ -4310,7 +4325,7 @@ def erode(input, output, intensity):
 @click.option('--output', '-o', default='', help='Output file path')
 @click.option('--intensity', type=int, default=10, help='Blur intensity')
 def saltnoise(input, output, intensity):
-    """Applies erode effect to the received image."""
+    """Applies salt noise effect to the received image."""
 
     if not output:
         output = f"{Path(input).stem}_saltnoise.png"
