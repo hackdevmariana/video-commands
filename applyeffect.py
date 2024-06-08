@@ -4205,10 +4205,29 @@ def quantize(input, output, intensity):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+@click.option('--cuts', type=int, default=10, help='Number of cuts.')
+def reversehorizontal(input, output):
+    """Cuts the image and recomposes it in reverse order."""
+
+    instruction = f"split y,{cuts} reverse append y"
+    if not output:
+        output = f"{Path(input).stem}_reversehorizontal.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies purple tones to the received image."""
 
-    instruction = 'quantize 5'
+    instruction = 'split y,10 reverse append y'
     if not output:
         output = f"{Path(input).stem}_solarize.png"
     gmic.run(f'{input} {instruction} output {output}')
