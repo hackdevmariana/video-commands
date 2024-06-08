@@ -4122,8 +4122,8 @@ def lucy(input, output):
     """Applies lysergic tones to the received image."""
 
     instruction = f"luminance gradient append c blur 2 orientation direction2rgb"
-
-    output = f"{Path(input).stem}_deltaE.png"
+    if not output:
+        output = f"{Path(input).stem}_deltaE.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
@@ -4139,8 +4139,8 @@ def pastelchalk(input, output):
     """Applies pastel chalk tones to the received image."""
 
     instruction = f"gradient2rgb 0 equalize"
-
-    output = f"{Path(input).stem}_pastel_chalk.png"
+    if not output:
+        output = f"{Path(input).stem}_pastel_chalk.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
@@ -4156,8 +4156,8 @@ def colorfulborders(input, output):
     """Applies colorful borders to the received image."""
 
     instruction = f"gradient2rgb 0"
-
-    output = f"{Path(input).stem}_colorful_borders.png"
+    if not output:
+        output = f"{Path(input).stem}_colorful_borders.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
@@ -4173,8 +4173,8 @@ def sepia(input, output):
     """Applies sepia tone to the received image."""
 
     instruction = 'sepia'
-
-    output = f"{Path(input).stem}_sepia.png"
+    if not output:
+        output = f"{Path(input).stem}_sepia.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
@@ -4186,12 +4186,31 @@ def sepia(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+@click.option('--intensity', type=int, default=5, help='Quantize intensity')
+def quantize(input, output, intensity):
+    """Applies quantize effect to the received image."""
+
+    instruction = f'quantize {intensity}'
+    if not output:
+        output = f"{Path(input).stem}_quantize.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies purple tones to the received image."""
 
-    instruction = 'sepia'
-
-    output = f"{Path(input).stem}_deltaf.png"
+    instruction = 'quantize 5'
+    if not output:
+        output = f"{Path(input).stem}_solarize.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
@@ -4207,8 +4226,8 @@ def dottedbw(input, output):
     """Applies dotted black and white to the received image."""
 
     instruction = f"rgb2bayer 1"
-
-    output = f"{Path(input).stem}_applychannels.png"
+    if not output:
+        output = f"{Path(input).stem}_dottedbw.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
