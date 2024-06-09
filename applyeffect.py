@@ -4291,6 +4291,23 @@ def dotstorm(input, output):
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def dotmarkerpen(input, output):
+    """Applies dotted marker pen effect to the received image."""
+
+    instruction = 'bandpass 1%,3%'
+    if not output:
+        output = f"{Path(input).stem}_solarize.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
 
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
@@ -4298,7 +4315,7 @@ def dotstorm(input, output):
 def prueba(input, output):
     """Applies purple tones to the received image."""
 
-    instruction = 'bandpass 10%,50%'
+    instruction = 'bandpass 1%,3%'
     if not output:
         output = f"{Path(input).stem}_solarize.png"
     gmic.run(f'{input} {instruction} output {output}')
