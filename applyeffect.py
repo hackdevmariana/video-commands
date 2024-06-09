@@ -4342,6 +4342,23 @@ def gaussiandifferences(input, output):
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def erodecirc(input, output):
+    """Applies erode circ effect to the received image."""
+
+    instruction = 'erode_circ 7'
+    if not output:
+        output = f"{Path(input).stem}_solarize.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
 
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
@@ -4349,7 +4366,7 @@ def gaussiandifferences(input, output):
 def prueba(input, output):
     """Applies purple tones to the received image."""
 
-    instruction = 'dog 1,8'
+    instruction = 'erode_circ 7'
     if not output:
         output = f"{Path(input).stem}_solarize.png"
     gmic.run(f'{input} {instruction} output {output}')
