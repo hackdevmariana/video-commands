@@ -4274,6 +4274,23 @@ def hydraulictiles(input, output, cuts):
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def dotstorm(input, output):
+    """Applies a dispersion effect to the image points."""
+
+    instruction = 'bandpass 10%,50%'
+    if not output:
+        output = f"{Path(input).stem}_dotstorm.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
 
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
@@ -4281,7 +4298,7 @@ def hydraulictiles(input, output, cuts):
 def prueba(input, output):
     """Applies purple tones to the received image."""
 
-    instruction = 'split_tiles 5,5 blur 3,0 sharpen 700 append_tiles 5,5'
+    instruction = 'bandpass 10%,50%'
     if not output:
         output = f"{Path(input).stem}_solarize.png"
     gmic.run(f'{input} {instruction} output {output}')
