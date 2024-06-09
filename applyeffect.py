@@ -4256,6 +4256,24 @@ def appendtiles(input, output, cuts):
     else:
         click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+@click.option('--cuts', type=int, default=10, help='Number of cuts.')
+def hydraulictiles(input, output, cuts):
+    """Creates a hydraulic tile effect over the image."""
+
+    instruction = f"split_tiles {cuts},{cuts} blur 3,0 sharpen 700 append_tiles {cuts},{cuts}"
+    if not output:
+        output = f"{Path(input).stem}_appendtiles.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
 
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
@@ -4263,7 +4281,7 @@ def appendtiles(input, output, cuts):
 def prueba(input, output):
     """Applies purple tones to the received image."""
 
-    instruction = 'split xy,4 append_tiles ,'
+    instruction = 'split_tiles 5,5 blur 3,0 sharpen 700 append_tiles 5,5'
     if not output:
         output = f"{Path(input).stem}_solarize.png"
     gmic.run(f'{input} {instruction} output {output}')
