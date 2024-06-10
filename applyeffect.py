@@ -4366,7 +4366,7 @@ def erodecirc(input, output):
 def prueba(input, output):
     """Applies purple tones to the received image."""
 
-    instruction = 'erode_circ 7'
+    instruction = 'iee'
     if not output:
         output = f"{Path(input).stem}_solarize.png"
     gmic.run(f'{input} {instruction} output {output}')
