@@ -4401,12 +4401,14 @@ def prueba(input, output):
     """Applies purple tones to the received image."""
 
 
-    value_1 = randint(0, 100)
-    value_2 = randint(0, 100)
+    # value_1 = randint(0, 100)
+    # value_2 = randint(0, 100)
+    # value_3 = randint(0, 100)
 
-    instruction = f'normalize_local {value_1},{value_2}'
+    # instruction = f'periodize_poisson array {value_1},{value_2},{value_3}'
+    instruction = f'periodize_poisson array 2,2,2 resize 50%,50%'
     if not output:
-        output = f"{Path(input).stem}_normalize_local_{value_1}_{value_2}.png"
+        output = f"{Path(input).stem}_periodize_poisson.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
