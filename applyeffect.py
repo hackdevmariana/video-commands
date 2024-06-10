@@ -4448,6 +4448,23 @@ def contourdetails(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def enhancesblurring(input, output):
+    """Blurs and enhances the shapes of the image."""
+
+    instruction = 'blur 7 unsharp 3.5,35 cut 0,255'
+    if not output:
+        output = f"{Path(input).stem}_details_contour.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies purple tones to the received image."""
 
@@ -4457,7 +4474,7 @@ def prueba(input, output):
     # value_3 = randint(0, 100)
 
     # instruction = f'periodize_poisson array {value_1},{value_2},{value_3}'
-    instruction = f'structuretensors abs pow 1.2'
+    instruction = f'blur 7 unsharp 3.5,35 cut 0,255'
     if not output:
         output = f"{Path(input).stem}_freq.png"
     gmic.run(f'{input} {instruction} output {output}')
