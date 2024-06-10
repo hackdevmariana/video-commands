@@ -4380,12 +4380,33 @@ def multipoint(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-def prueba(input, output):
-    """Applies purple tones to the received image."""
+def coloredtelesketch(input, output):
+    """Applies colored telesketch effect to the received image."""
 
     instruction = 'inn'
     if not output:
         output = f"{Path(input).stem}_solarize.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def prueba(input, output):
+    """Applies purple tones to the received image."""
+
+
+    value_1 = randint(0, 100)
+    value_2 = randint(0, 100)
+
+    instruction = f'normalize_local {value_1},{value_2}'
+    if not output:
+        output = f"{Path(input).stem}_normalize_local_{value_1}_{value_2}.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
@@ -4649,6 +4670,24 @@ def normalizelocal(input, output):
         output = f"{Path(input).stem}_normalize_local.png"
 
     instruction = "normalize_local 8,10"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def luster(input, output):
+    """Applies luster filter to the received image."""
+
+    if not output:
+        output = f"{Path(input).stem}_normalize_local.png"
+
+    instruction = "normalize_local 45,20"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
