@@ -4550,6 +4550,34 @@ def fineoutline(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def cracked(input, output):
+    """Draw only the fine outline of the image."""
+
+    instruction = f'+srgb2lab slic[-1] 16 +blend shapeaverage f[-2] "j(1,0)==i && j(0,1)==i" *[-1] [-2]'
+
+    temp_files = random_filename()
+
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    if not output:
+        output = f"{Path(input).stem}_cracked.png"
+
+    shutil.copyfile(image[0], output)
+
+    for del_image in generated_images:
+        os.remove(del_image)
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies purple tones to the received image."""
 
@@ -4561,10 +4589,21 @@ def prueba(input, output):
     # instruction = f'periodize_poisson array {value_1},{value_2},{value_3}'
 
     # for i in range(100):
-    instruction = f'blur 2 isophotes 6'
+    instruction = f'+srgb2lab slic[-1] 16 +blend shapeaverage f[-2] "j(1,0)==i && j(0,1)==i" *[-1] [-2]'
+
+    temp_files = random_filename()
+
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    print(generated_images)
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    print(image)
     if not output:
         output = f"{Path(input).stem}_canny_1.png"
-    gmic.run(f'{input} {instruction} output {output}')
+
+    shutil.copyfile(image[0], output)
+    # gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
     if output_path.is_file():
