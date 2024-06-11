@@ -4516,6 +4516,23 @@ def bwdots(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def outline(input, output):
+    """Draw only the outline of the image."""
+
+    instruction = 'blur 2 isophotes 6 dilate_circ 5'
+    if not output:
+        output = f"{Path(input).stem}_colordots.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies purple tones to the received image."""
 
@@ -4525,9 +4542,11 @@ def prueba(input, output):
     # value_3 = randint(0, 100)
 
     # instruction = f'periodize_poisson array {value_1},{value_2},{value_3}'
-    instruction = f'luminance stencil 1'
+
+    # for i in range(100):
+    instruction = f'blur 2 isophotes 6 dilate_circ 5'
     if not output:
-        output = f"{Path(input).stem}_freq.png"
+        output = f"{Path(input).stem}_canny_1.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
