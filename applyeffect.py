@@ -4595,10 +4595,27 @@ def outlineonblack(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def thirdpartyguides(input, output):
+    """Draw third party guides to the received image."""
+
+    instruction = f"grid 33.33%,33.33%,-1,-1,1,255"
+    if not output:
+        output = f"{Path(input).stem}_thirdpartyguides.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies dotted black and white to the received image."""
 
-    instruction = f"variance_patch 12"
+    instruction = f"grid 33.33%,33.33%,-1,-1,1,255"
     if not output:
         output = f"{Path(input).stem}_tones.png"
     gmic.run(f'{input} {instruction} output {output}')
