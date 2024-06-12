@@ -4606,6 +4606,34 @@ def lowlevel(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def projectcontours(input, output):
+    """Project the contours of the image."""
+
+    instruction = f'+equalize[0] 256 +apply_tiles[0] "equalize 256",16,16,1,50%,50%'
+
+    temp_files = random_filename()
+
+    gmic.run(f'{input} {instruction} output {temp_files}')
+
+    generated_images = glob.glob(f'{Path(temp_files).stem}*')
+    image = glob.glob(f'{Path(temp_files).stem}*2*')
+    if not output:
+        output = f"{Path(input).stem}_projectcontours.png"
+
+    shutil.copyfile(image[0], output)
+
+    for del_image in generated_images:
+        os.remove(del_image)
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def outlineonblack(input, output):
     """Draw outline on black to the received image."""
 
