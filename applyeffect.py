@@ -4685,10 +4685,27 @@ def greyish(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def fourfour(input, output):
+    """Applies a four-by-four blurred array effect."""
+
+    instruction = 'array_fade 4,4'
+    if not output:
+        output = f"{Path(input).stem}_tones.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies dotted black and white to the received image."""
 
-    instruction = '+blur 5 sub normalize 0,255'
+    instruction = 'array_fade 4,4'
     if not output:
         output = f"{Path(input).stem}_tones.png"
     gmic.run(f'{input} {instruction} output {output}')
