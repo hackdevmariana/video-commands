@@ -4719,12 +4719,12 @@ def arraymirror(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-def prueba(input, output):
-    """Applies dotted black and white to the received image."""
+def vignetteblur(input, output):
+    """Applies vignette blur to the received image."""
 
-    instruction = 'array_mirror 1'
+    instruction = 'frame_blur 3,30,8,10%'
     if not output:
-        output = f"{Path(input).stem}_tones.png"
+        output = f"{Path(input).stem}_vignetteblur.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
