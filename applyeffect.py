@@ -4737,11 +4737,28 @@ def vignetteblur(input, output):
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
-    """Applies vignette blur to the received image."""
+    """Applies frame fuzzy to the received image."""
 
-    instruction = 'frame_cube ,'
+    instruction = 'frame_fuzzy 20'
     if not output:
-        output = f"{Path(input).stem}_vignetteblur.png"
+        output = f"{Path(input).stem}_frame_fuzzy.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def framefuzzy(input, output):
+    """Applies frame fuzzy to the received image."""
+
+    instruction = 'frame_fuzzy 20'
+    if not output:
+        output = f"{Path(input).stem}_frame_fuzzy.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
