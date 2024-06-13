@@ -4858,9 +4858,26 @@ def woodpaint(input, output):
 def mural(input, output):
     """Applies mural texture to the received image."""
 
-    instruction = 'cartoon 0,64,88,140.22,6.39,149'
+    instruction = 'cartoon 0,51,69,57.5,3.72,146'
     if not output:
         output = f"{Path(input).stem}_mural.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def colorfulmural(input, output):
+    """Applies colorful mural texture to the received image."""
+
+    instruction = 'cartoon 0,107,75,161.55,4.4,93'
+    if not output:
+        output = f"{Path(input).stem}_colorfulmural.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
