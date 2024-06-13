@@ -4910,7 +4910,7 @@ def greatpointillism(input, output):
 def colorareas(input, output):
     """Applies color areas texture to the received image."""
 
-    instruction = 'cartoon 5,56,79,126.82,8.58,163'
+    instruction = 'cartoon 5,87,125,70.78,2.05,164'
     if not output:
         output = f"{Path(input).stem}_colorareas.png"
     gmic.run(f'{input} {instruction} output {output}')
