@@ -4841,9 +4841,26 @@ def fingerpaint(input, output):
 def woodpaint(input, output):
     """Applies wood paint texture to the received image."""
 
-    instruction = 'cartoon 0,107,171,171.78,6.12,162 blur 5'
+    instruction = 'cartoon 0,107,171,171.78,6.12,162 blur 1'
     if not output:
         output = f"{Path(input).stem}_woodpaint.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def airbrushing(input, output):
+    """Applies airbrushing texture to the received image."""
+
+    instruction = 'cartoon 0,51,69,57.5,3.72,146'
+    if not output:
+        output = f"{Path(input).stem}_airbrushing.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
@@ -4858,12 +4875,12 @@ def woodpaint(input, output):
 def prueba(input, output):
     """Applies frame fuzzy to the received image."""
 
-    value_1 = randint(0,100)
-    value_2 = randint(0,200)
+    value_1 = randint(0,50)
+    value_2 = randint(50,150)
     value_3 = randint(0,200)
-    value_4 = round(uniform(0,200), 2)
-    value_5 = round(uniform(0,200), 2)
-    value_6 = randint(0,200)
+    value_4 = round(uniform(30,180), 2)
+    value_5 = round(uniform(0,25), 2)
+    value_6 = randint(30,200)
 
 
     instruction = f'cartoon {value_1},{value_2},{value_3},{value_4},{value_5},{value_6}'
