@@ -4838,6 +4838,23 @@ def fingerpaint(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def woodpaint(input, output):
+    """Applies wood paint texture to the received image."""
+
+    instruction = 'cartoon 0,107,171,171.78,6.12,162 blur 5'
+    if not output:
+        output = f"{Path(input).stem}_woodpaint.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies frame fuzzy to the received image."""
 
