@@ -4889,6 +4889,23 @@ def colorfulmural(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def colourstains(input, output):
+    """Applies colorful mural texture to the received image."""
+
+    instruction = 'cartoon 3,102,71,173.45,4.27,35'
+    if not output:
+        output = f"{Path(input).stem}_colourstains.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def airbrushing(input, output):
     """Applies airbrushing texture to the received image."""
 
