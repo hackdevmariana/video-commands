@@ -5419,22 +5419,39 @@ def multicross(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def stainsbw(input, output):
+    """Applies stains black and white to the received image."""
+
+    instruction = 'stencilbw 7,0'
+    if not output:
+        output = f"{Path(input).stem}_subtle_drawing.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies frame fuzzy to the received image."""
 
-    # value_1 = randint(0,50)
-    # value_2 = randint(50,150)
-    # value_3 = randint(0,200)
+    value_1 = randint(0,100)
+    value_2 = randint(0,100)
+    # value_3 = randint(0,100)
+    # value_4 = randint(0,100)
     # value_4 = round(uniform(30,180), 2)
     # value_5 = round(uniform(0,25), 2)
-    # value_6 = randint(30,200)
     # instruction = f'cartoon {value_1},{value_2},{value_3},{value_4},{value_5},{value_6}'
 
 
-    instruction = f'sponge 3'
-    if not output:
-        # output = f"{Path(input).stem}_{instruction.replace(' ', '_').replace(',', '_')}.png"
-        output = f"{Path(input).stem}_rodilius.png"
+    instruction = f'stencilbw {value_1},{value_2}'
+    # if not output:
+    output = f"{Path(input).stem}_{instruction.replace(' ', '_').replace(',', '_')}.png"
+        # output = f"{Path(input).stem}_rodilius.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
