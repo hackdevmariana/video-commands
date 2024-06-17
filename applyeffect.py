@@ -5397,10 +5397,10 @@ def prueba(input, output):
     # instruction = f'cartoon {value_1},{value_2},{value_3},{value_4},{value_5},{value_6}'
 
 
-    instruction = f'poster_edges ,'
+    instruction = f'normalize_local 10,16 smooth 60,0,1,1,4 normalize_local 10,16'
     if not output:
         # output = f"{Path(input).stem}_{instruction.replace(' ', '_').replace(',', '_')}.png"
-        output = f"{Path(input).stem}_pencilbw.png"
+        output = f"{Path(input).stem}_rodilius.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
@@ -6670,7 +6670,7 @@ def gridhexagonal(input, output):
     """Applies grid hexagonal to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_poster_hope.png"
+        output = f"{Path(input).stem}_gridhexagonal.png"
 
     instruction = 'fx_imagegrid_hexagonal 32,0.1,1'
     gmic.run(f'{input} {instruction} output {output}')
@@ -6688,7 +6688,7 @@ def bokeh(input, output):
     """Applies bokeh effect to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_poster_hope.png"
+        output = f"{Path(input).stem}_fx_bokeh.png"
 
     instruction = 'fx_bokeh 3,8,0,30,8,4,0.3,0.2,210,210,80,160,0.7,30,20,20,1,2,170,130,20,110,0.15,0'
     gmic.run(f'{input} {instruction} output {output}')
