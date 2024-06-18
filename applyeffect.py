@@ -5606,6 +5606,23 @@ def rotoidoscope(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
+def rotatedcross(input, output):
+    """Applies rotated cross effect to the received image."""
+
+    instruction = 'transform_polar r,2*a'
+    if not output:
+        output = f"{Path(input).stem}_rotatedcross.png"
+    gmic.run(f'{input} {instruction} output {output}')
+
+    output_path = Path(output)
+    if output_path.is_file():
+        click.echo(f"The image has been created{ colorama.Fore.GREEN } successfully{ colorama.Style.RESET_ALL }: {output}")
+    else:
+        click.echo(f"An{ colorama.Fore.RED } error{ colorama.Style.RESET_ALL } occurred creating the file {output}.")
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def prueba(input, output):
     """Applies frame fuzzy to the received image."""
 
@@ -5618,7 +5635,7 @@ def prueba(input, output):
     # instruction = f'cartoon {value_1},{value_2},{value_3},{value_4},{value_5},{value_6}'
 
 
-    instruction = f'spherize ,'
+    instruction = f'transform_polar r,2*a'
     if not output:
         # output = f"{Path(input).stem}_{instruction.replace(' ', '_').replace(',', '_')}.png"
         output = f"{Path(input).stem}_rodilius.png"
