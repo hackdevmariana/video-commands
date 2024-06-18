@@ -5618,7 +5618,7 @@ def prueba(input, output):
     # instruction = f'cartoon {value_1},{value_2},{value_3},{value_4},{value_5},{value_6}'
 
 
-    instruction = f'rotoidoscope ,'
+    instruction = f'spherize ,'
     if not output:
         # output = f"{Path(input).stem}_{instruction.replace(' ', '_').replace(',', '_')}.png"
         output = f"{Path(input).stem}_rodilius.png"
