@@ -12,5 +12,5 @@ Si no se indica un nombre para el fichero destino, aplicará el sufijo `_.png`
 
 Resultado:
 
-![imagen original](../images/image.jpg)
-![acid](../images/image_acid.png)
+![imagen original](../../images/image.jpg)
+![acid](../../images/image_acid.png)
