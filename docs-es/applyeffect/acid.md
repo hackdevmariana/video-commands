@@ -8,7 +8,7 @@ Uso:
 applyeffect acid imagen_original [imagen_destino]
 ```
 
-Si no se indica un nombre para el fichero destino, aplicará el sufijo `_.png`
+Si no se indica un nombre para el fichero destino, aplicará el sufijo `_acid.png`
 
 Resultado:
 
