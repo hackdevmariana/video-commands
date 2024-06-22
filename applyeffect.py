@@ -565,11 +565,11 @@ def newspaperdotted(input, output):
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-def alien(input, output):
-    """Applies alien effect to the received image."""
+def smoothed(input, output):
+    """Applies smoothed effect to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_alien.png"
+        output = f"{Path(input).stem}_smoothed.png"
 
     gmic.run(f'{input} repeat 3 smooth 40,0,1,1,2 done output {output}')
 
