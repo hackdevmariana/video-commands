@@ -34,4 +34,8 @@ applyeffect alleffects imagen_original
 ### [amberoff](./applyeffect/amberoff.md)
 ### [ambertoasted](./applyeffect/ambertoasted.md)
 ### [americannight](./applyeffect/americannight.md)
+### [appendtiles](./applyeffect/appendtiles.md)
+### [areasbw](./applyeffect/areasbw.md)
+### [arrayfade](./applyeffect/arrayfade.md)
+### [arraymirror](./applyeffect/arraymirror.md)
 ### [blossom](./applyeffect/blossom.md)
