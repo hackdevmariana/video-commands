@@ -38,4 +38,6 @@ applyeffect alleffects imagen_original
 ### [areasbw](./applyeffect/areasbw.md)
 ### [arrayfade](./applyeffect/arrayfade.md)
 ### [arraymirror](./applyeffect/arraymirror.md)
+### [badprinter](./applyeffect/badprinter.md)
+### [badtonner](./applyeffect/badtonner.md)
 ### [blossom](./applyeffect/blossom.md)
