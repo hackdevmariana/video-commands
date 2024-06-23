@@ -31,4 +31,5 @@ applyeffect alleffects imagen_original
 ### [acid](./applyeffect/acid.md)
 ### [airbrushing](./applyeffect/airbrushing.md)
 ### [amberoff](./applyeffect/amberoff.md)
+### [ambertoasted](./applyeffect/ambertoasted.md)
 ### [blossom](./applyeffect/blossom.md)

@@ -13,4 +13,4 @@ Si no se indica un nombre para el fichero destino, aplicará el sufijo `_amber_o
 Resultado:
 
 ![imagen original](../../images/image.jpg)
-![amberoff](../../images/image_amber_off.png)
+![amberoff](../../images/image_amber_toasted.png)
