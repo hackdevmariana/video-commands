@@ -28,16 +28,28 @@ applyeffect alleffects imagen_original
 
 ## Efectos
 
-### [acid](./applyeffect/acid.md)
-### [airbrushing](./applyeffect/airbrushing.md)
-### [amber](./applyeffect/amber.md)
-### [amberoff](./applyeffect/amberoff.md)
-### [ambertoasted](./applyeffect/ambertoasted.md)
-### [americannight](./applyeffect/americannight.md)
-### [appendtiles](./applyeffect/appendtiles.md)
-### [areasbw](./applyeffect/areasbw.md)
-### [arrayfade](./applyeffect/arrayfade.md)
-### [arraymirror](./applyeffect/arraymirror.md)
-### [badprinter](./applyeffect/badprinter.md)
-### [badtonner](./applyeffect/badtonner.md)
-### [blossom](./applyeffect/blossom.md)
+#### [acid](./applyeffect/acid.md)
+#### [airbrushing](./applyeffect/airbrushing.md)
+#### [appendtiles](./applyeffect/appendtiles.md)
+#### [areasbw](./applyeffect/areasbw.md)
+#### [arrayfade](./applyeffect/arrayfade.md)
+#### [arraymirror](./applyeffect/arraymirror.md)
+#### [badprinter](./applyeffect/badprinter.md)
+#### [badtonner](./applyeffect/badtonner.md)
+#### [blackembossed](./applyeffect/blackembossed.md)
+#### [blackhole](./applyeffect/blackhole.md)
+#### [blocks3d](./applyeffect/blocks3d.md)
+#### [blossom](./applyeffect/blossom.md)
+
+## Cambios de color
+
+#### [amber](./applyeffect/amber.md)
+#### [amberoff](./applyeffect/amberoff.md)
+#### [ambertoasted](./applyeffect/ambertoasted.md)
+#### [americannight](./applyeffect/americannight.md)
+#### [blueplum](./applyeffect/blueplum.md)
+#### [bluesubtleyellow](./applyeffect/bluesubtleyellow.md)
+
+## Desenfoques
+
+#### [blur](./applyeffect/blur.md)
