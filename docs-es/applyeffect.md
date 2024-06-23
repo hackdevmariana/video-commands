@@ -30,3 +30,4 @@ applyeffect alleffects imagen_original
 
 ### [acid](./applyeffect/acid.md)
 ### [airbrushing](./applyeffect/airbrushing.md)
+### [blossom](./applyeffect/blossom.md)
