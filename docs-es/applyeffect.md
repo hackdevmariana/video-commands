@@ -38,6 +38,7 @@ applyeffect alleffects imagen_original
 #### [blackhole](./applyeffect/blackhole.md)
 #### [blocks3d](./applyeffect/blocks3d.md)
 #### [blossom](./applyeffect/blossom.md)
+#### [boxfitting](./applyeffect/boxfitting.md)
 
 ## Conversiones a blanco y negro
 
