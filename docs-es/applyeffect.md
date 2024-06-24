@@ -31,15 +31,19 @@ applyeffect alleffects imagen_original
 #### [acid](./applyeffect/acid.md)
 #### [airbrushing](./applyeffect/airbrushing.md)
 #### [appendtiles](./applyeffect/appendtiles.md)
-#### [areasbw](./applyeffect/areasbw.md)
 #### [arrayfade](./applyeffect/arrayfade.md)
 #### [arraymirror](./applyeffect/arraymirror.md)
-#### [badprinter](./applyeffect/badprinter.md)
 #### [badtonner](./applyeffect/badtonner.md)
 #### [blackembossed](./applyeffect/blackembossed.md)
 #### [blackhole](./applyeffect/blackhole.md)
 #### [blocks3d](./applyeffect/blocks3d.md)
 #### [blossom](./applyeffect/blossom.md)
+
+## Conversiones a blanco y negro
+
+#### [areasbw](./applyeffect/areasbw.md)
+#### [badprinter](./applyeffect/badprinter.md)
+#### [blurrysketch](./applyeffect/blurrysketch.md)
 
 ## Cambios de color
 
@@ -53,3 +57,8 @@ applyeffect alleffects imagen_original
 ## Desenfoques
 
 #### [blur](./applyeffect/blur.md)
+#### [blurangular](./applyeffect/blurangular.md)
+#### [blurdof](./applyeffect/blurdof.md)
+#### [blurradial](./applyeffect/blurradial.md)
+#### [blurx](./applyeffect/blurx.md)
+#### [blury](./applyeffect/blury.md)
