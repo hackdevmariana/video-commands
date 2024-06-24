@@ -63,3 +63,4 @@ applyeffect alleffects imagen_original
 #### [blurradial](./applyeffect/blurradial.md)
 #### [blurx](./applyeffect/blurx.md)
 #### [blury](./applyeffect/blury.md)
+#### [breeze](./applyeffect/breeze.md)
