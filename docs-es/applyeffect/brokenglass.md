@@ -13,4 +13,4 @@ Si no se indica un nombre para el fichero destino, aplicará el sufijo `_brokeng
 Resultado:
 
 ![imagen original](../../images/image.jpg)
-![breeze](../../images/image_brokenglass.png)
+![brokenglass](../../images/image_brokenglass.png)

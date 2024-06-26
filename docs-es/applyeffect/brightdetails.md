@@ -13,4 +13,4 @@ Si no se indica un nombre para el fichero destino, aplicará el sufijo `_brightd
 Resultado:
 
 ![imagen original](../../images/image.jpg)
-![breeze](../../images/image_brightdetails.png)
+![brightdetails](../../images/image_brightdetails.png)

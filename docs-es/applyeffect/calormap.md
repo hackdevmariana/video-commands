@@ -13,4 +13,4 @@ Si no se indica un nombre para el fichero destino, aplicará el sufijo `_calorma
 Resultado:
 
 ![imagen original](../../images/image.jpg)
-![boxfitting](../../images/image_calormap.png)
+![calormap](../../images/image_calormap.png)
