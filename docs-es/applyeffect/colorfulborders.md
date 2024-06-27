@@ -13,4 +13,4 @@ Si no se indica un nombre para el fichero destino, aplicará el sufijo `_colorfu
 Resultado:
 
 ![imagen original](../../images/image.jpg)
-![coloredmarker](../../images/image_colorful_borders.png)
+![colorfulborders](../../images/image_colorful_borders.png)
