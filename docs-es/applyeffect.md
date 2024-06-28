@@ -59,6 +59,11 @@ applyeffect alleffects imagen_original
 #### [darkmaptones](./applyeffect/darkmaptones.md)
 #### [deblur](./applyeffect/deblur.md)
 #### [deform](./applyeffect/deform.md)
+#### [deriche](./applyeffect/deriche.md)
+#### [details](./applyeffect/details.md)
+#### [diagonalprojection](./applyeffect/diagonalprojection.md)
+#### [dirty](./applyeffect/dirty.md)
+
 #### [lucy](./applyeffect/lucy.md)
 
 ## Conversiones a blanco y negro
@@ -68,6 +73,8 @@ applyeffect alleffects imagen_original
 #### [blurrysketch](./applyeffect/blurrysketch.md)
 #### [charcoal](./applyeffect/charcoal.md)
 #### [darkenbw](./applyeffect/darkenbw.md)
+#### [dices](./applyeffect/dices.md)
+#### [dottedbw](./applyeffect/dottedbw.md)
 
 ## Cambios de color
 
@@ -93,6 +100,7 @@ applyeffect alleffects imagen_original
 #### [darkwine](./applyeffect/darkwine.md)
 #### [darkyellow](./applyeffect/darkyellow.md)
 #### [darkgreenandblack](./applyeffect/darkgreenandblack.md)
+#### [dimred](./applyeffect/dimred.md)
 
 ## Desenfoques
 
@@ -109,3 +117,4 @@ applyeffect alleffects imagen_original
 #### [colorfulborders](./applyeffect/colorfulborders.md)
 #### [darkandoutline](./applyeffect/darkandoutline.md)
 #### [delimitedcontour](./applyeffect/delimitedcontour.md)
+#### [doodlepen](./applyeffect/doodlepen.md)
