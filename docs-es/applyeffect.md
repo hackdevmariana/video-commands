@@ -39,12 +39,35 @@ applyeffect alleffects imagen_original
 #### [blocks3d](./applyeffect/blocks3d.md)
 #### [blossom](./applyeffect/blossom.md)
 #### [boxfitting](./applyeffect/boxfitting.md)
+#### [brightdetails](./applyeffect/brightdetails.md)
+#### [brokenglass](./applyeffect/brokenglass.md)
+#### [burnoldphoto](./applyeffect/burnoldphoto.md)
+#### [calormap](./applyeffect/calormap.md)
+#### [cartoon](./applyeffect/cartoon.md)
+#### [circles](./applyeffect/circles.md)
+#### [clarified](./applyeffect/clarified.md)
+#### [clearscolumns](./applyeffect/clearscolumns.md)
+#### [colorellipses](./applyeffect/colorellipses.md)
+#### [colorareas](./applyeffect/colorareas.md)
+#### [colorfulmural](./applyeffect/colorfulmural.md)
+#### [colorsketch](./applyeffect/colorsketch.md)
+#### [convergence](./applyeffect/convergence.md)
+#### [cracked](./applyeffect/cracked.md)
+#### [cracks](./applyeffect/cracks.md)
+#### [crystal](./applyeffect/crystal.md)
+#### [darkensteps](./applyeffect/darkensteps.md)
+#### [darkmaptones](./applyeffect/darkmaptones.md)
+#### [deblur](./applyeffect/deblur.md)
+#### [deform](./applyeffect/deform.md)
+#### [lucy](./applyeffect/lucy.md)
 
 ## Conversiones a blanco y negro
 
 #### [areasbw](./applyeffect/areasbw.md)
 #### [badprinter](./applyeffect/badprinter.md)
 #### [blurrysketch](./applyeffect/blurrysketch.md)
+#### [charcoal](./applyeffect/charcoal.md)
+#### [darkenbw](./applyeffect/darkenbw.md)
 
 ## Cambios de color
 
@@ -54,6 +77,22 @@ applyeffect alleffects imagen_original
 #### [americannight](./applyeffect/americannight.md)
 #### [blueplum](./applyeffect/blueplum.md)
 #### [bluesubtleyellow](./applyeffect/bluesubtleyellow.md)
+#### [colorabstraction](./applyeffect/colorabstraction.md)
+#### [contrastedalien](./applyeffect/contrastedalien.md)
+#### [contrastedamber](./applyeffect/contrastedamber.md)
+#### [contrastedblue](./applyeffect/contrastedblue.md)
+#### [contrastedturquoise](./applyeffect/contrastedturquoise.md)
+#### [darkblueblack](./applyeffect/darkblueblack.md)
+#### [darkintensepurple](./applyeffect/darkintensepurple.md)
+#### [darkintensered](./applyeffect/darkintensered.md)
+#### [darknight](./applyeffect/darknight.md)
+#### [darkorange](./applyeffect/darkorange.md)
+#### [darkpalegreenblack](./applyeffect/darkpalegreenblack.md)
+#### [darkpurple](./applyeffect/darkpurple.md)
+#### [darktogarnet](./applyeffect/darktogarnet.md)
+#### [darkwine](./applyeffect/darkwine.md)
+#### [darkyellow](./applyeffect/darkyellow.md)
+#### [darkgreenandblack](./applyeffect/darkgreenandblack.md)
 
 ## Desenfoques
 
@@ -64,3 +103,9 @@ applyeffect alleffects imagen_original
 #### [blurx](./applyeffect/blurx.md)
 #### [blury](./applyeffect/blury.md)
 #### [breeze](./applyeffect/breeze.md)
+
+## Contornos
+
+#### [colorfulborders](./applyeffect/colorfulborders.md)
+#### [darkandoutline](./applyeffect/darkandoutline.md)
+#### [delimitedcontour](./applyeffect/delimitedcontour.md)

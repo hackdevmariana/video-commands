@@ -2341,7 +2341,7 @@ def blueandblack(input, output):
     """Applies blue and black tones to the received image."""
 
     if not output:
-        output = f"{Path(input).stem}_purple.png"
+        output = f"{Path(input).stem}_blue_and_black.png"
 
     instruction = "mul_channels 0,0.1,0.4"
     gmic.run(f'{input} {instruction} output {output}')
@@ -2617,7 +2617,7 @@ def ambertoasted (input, output):
     if not output:
         output = f"{Path(input).stem}_amber_toasted.png"
 
-    instruction = "mul_channels 1,0.7,0.1"
+    instruction = "mul_channels 1,0.5,0.2"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
@@ -2671,7 +2671,7 @@ def amberoff (input, output):
     if not output:
         output = f"{Path(input).stem}_amber_off.png"
 
-    instruction = "mul_channels 1,0.5,0.2"
+    instruction = "mul_channels 1,0.7,0.1"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
@@ -4373,7 +4373,7 @@ def lucy(input, output):
 
     instruction = f"luminance gradient append c blur 2 orientation direction2rgb"
     if not output:
-        output = f"{Path(input).stem}_deltaE.png"
+        output = f"{Path(input).stem}_lucy.png"
     gmic.run(f'{input} {instruction} output {output}')
 
     output_path = Path(output)
