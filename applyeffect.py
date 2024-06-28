@@ -7192,7 +7192,7 @@ def dirty(input, output, intensity):
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
 def details(input, output):
-    """Applies color abstraction to the received image."""
+    """Delimits the details of the received image."""
 
     if not output:
         output = f"{Path(input).stem}_details.png"
