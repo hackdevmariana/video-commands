@@ -83,6 +83,8 @@ applyeffect alleffects imagen_original
 #### [fxscanlines](./applyeffect/fxscanlines.md)
 #### [glass](./applyeffect/glass.md)
 #### [glow](./applyeffect/glow.md)
+#### [graytree](./applyeffect/graytree.md)
+#### [greatpointillism](./applyeffect/greatpointillism.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -133,6 +135,7 @@ applyeffect alleffects imagen_original
 #### [electricgreenblue](./applyeffect/electricgreenblue.md)
 #### [garnetlime](./applyeffect/garnetlime.md)
 #### [glaze](./applyeffect/glaze.md)
+#### [grapeandwhite](./applyeffect/grapeandwhite.md)
 
 
 ## Desenfoques
