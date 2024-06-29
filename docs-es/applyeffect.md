@@ -127,6 +127,7 @@ applyeffect alleffects imagen_original
 #### [electricalienandwhite](./applyeffect/electricalienandwhite.md)
 #### [electricgreen](./applyeffect/electricgreen.md)
 #### [electricgreenblue](./applyeffect/electricgreenblue.md)
+#### [garnetlime](./applyeffect/garnetlime.md)
 
 
 ## Desenfoques
@@ -138,6 +139,7 @@ applyeffect alleffects imagen_original
 #### [blurx](./applyeffect/blurx.md)
 #### [blury](./applyeffect/blury.md)
 #### [breeze](./applyeffect/breeze.md)
+#### [gaussianblur](./applyeffect/gaussianblur.md)
 
 ## Contornos
 
@@ -147,3 +149,4 @@ applyeffect alleffects imagen_original
 #### [doodlepen](./applyeffect/doodlepen.md)
 #### [feltpen](./applyeffect/feltpen.md)
 #### [fireedges](./applyeffect/fireedges.md)
+#### [gaussiandog](./applyeffect/gaussiandog.md)
