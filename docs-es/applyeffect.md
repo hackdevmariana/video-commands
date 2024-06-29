@@ -82,6 +82,7 @@ applyeffect alleffects imagen_original
 #### [fxhalftone](./applyeffect/fxhalftone.md)
 #### [fxscanlines](./applyeffect/fxscanlines.md)
 #### [glass](./applyeffect/glass.md)
+#### [glow](./applyeffect/glow.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -97,6 +98,8 @@ applyeffect alleffects imagen_original
 #### [dottedbw](./applyeffect/dottedbw.md)
 #### [edgeoffsets](./applyeffect/edgeoffsets.md)
 #### [flattenscolorsbw](./applyeffect/flattenscolorsbw.md)
+#### [gradientnorm](./applyeffect/gradientnorm.md)
+#### [gradientrgb](./applyeffect/gradientrgb.md)
 
 
 ## Cambios de color
@@ -152,3 +155,4 @@ applyeffect alleffects imagen_original
 #### [feltpen](./applyeffect/feltpen.md)
 #### [fireedges](./applyeffect/fireedges.md)
 #### [gaussiandog](./applyeffect/gaussiandog.md)
+#### [glitteronblack](./applyeffect/glitteronblack.md)

@@ -7042,7 +7042,7 @@ def portraitbw(input, output):
 @click.option('--output', '-o', default='', help='Output file path')
 @click.option('--intensity', type=int, default=20, help='Blur intensity')
 def glow(input, output, intensity):
-    """Applies pencil portrait effect to the received image."""
+    """Applies glow effect to the received image."""
 
     if not output:
         output = f"{Path(input).stem}_glow.png"
