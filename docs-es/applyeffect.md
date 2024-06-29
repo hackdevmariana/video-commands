@@ -70,6 +70,17 @@ applyeffect alleffects imagen_original
 #### [emanation](./applyeffect/emanation.md)
 #### [expandingblackhole](./applyeffect/expandingblackhole.md)
 #### [fingerpaint](./applyeffect/fingerpaint.md)
+#### [flash](./applyeffect/flash.md)
+#### [flatcomic](./applyeffect/flatcomic.md)
+#### [flattenscolors](./applyeffect/flattenscolors.md)
+#### [flattenscolors](./applyeffect/flattenscolors.md)
+#### [fractalize](./applyeffect/fractalize.md)
+#### [framecube](./applyeffect/framecube.md)
+#### [framefuzzy](./applyeffect/framefuzzy.md)
+#### [bokeh](./applyeffect/bokeh.md)
+#### [fxglow](./applyeffect/fxglow.md)
+#### [fxhalftone](./applyeffect/fxhalftone.md)
+#### [fxscanlines](./applyeffect/fxscanlines.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -84,6 +95,8 @@ applyeffect alleffects imagen_original
 #### [dices](./applyeffect/dices.md)
 #### [dottedbw](./applyeffect/dottedbw.md)
 #### [edgeoffsets](./applyeffect/edgeoffsets.md)
+#### [flattenscolorsbw](./applyeffect/flattenscolorsbw.md)
+
 
 ## Cambios de color
 
