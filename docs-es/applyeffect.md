@@ -81,6 +81,7 @@ applyeffect alleffects imagen_original
 #### [fxglow](./applyeffect/fxglow.md)
 #### [fxhalftone](./applyeffect/fxhalftone.md)
 #### [fxscanlines](./applyeffect/fxscanlines.md)
+#### [glass](./applyeffect/glass.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -128,6 +129,7 @@ applyeffect alleffects imagen_original
 #### [electricgreen](./applyeffect/electricgreen.md)
 #### [electricgreenblue](./applyeffect/electricgreenblue.md)
 #### [garnetlime](./applyeffect/garnetlime.md)
+#### [glaze](./applyeffect/glaze.md)
 
 
 ## Desenfoques
