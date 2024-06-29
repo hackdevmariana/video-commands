@@ -66,6 +66,10 @@ applyeffect alleffects imagen_original
 #### [double](./applyeffect/double.md)
 #### [drawing](./applyeffect/drawing.md)
 #### [droste](./applyeffect/droste.md)
+#### [ellipsionism](./applyeffect/ellipsionism.md)
+#### [emanation](./applyeffect/emanation.md)
+#### [expandingblackhole](./applyeffect/expandingblackhole.md)
+#### [fingerpaint](./applyeffect/fingerpaint.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -128,3 +132,5 @@ applyeffect alleffects imagen_original
 #### [darkandoutline](./applyeffect/darkandoutline.md)
 #### [delimitedcontour](./applyeffect/delimitedcontour.md)
 #### [doodlepen](./applyeffect/doodlepen.md)
+#### [feltpen](./applyeffect/feltpen.md)
+#### [fireedges](./applyeffect/fireedges.md)
