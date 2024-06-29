@@ -63,6 +63,10 @@ applyeffect alleffects imagen_original
 #### [details](./applyeffect/details.md)
 #### [diagonalprojection](./applyeffect/diagonalprojection.md)
 #### [dirty](./applyeffect/dirty.md)
+#### [double](./applyeffect/double.md)
+#### [drawing](./applyeffect/drawing.md)
+#### [droste](./applyeffect/droste.md)
+
 
 #### [lucy](./applyeffect/lucy.md)
 
@@ -75,6 +79,7 @@ applyeffect alleffects imagen_original
 #### [darkenbw](./applyeffect/darkenbw.md)
 #### [dices](./applyeffect/dices.md)
 #### [dottedbw](./applyeffect/dottedbw.md)
+#### [edgeoffsets](./applyeffect/edgeoffsets.md)
 
 ## Cambios de color
 
@@ -101,6 +106,11 @@ applyeffect alleffects imagen_original
 #### [darkyellow](./applyeffect/darkyellow.md)
 #### [darkgreenandblack](./applyeffect/darkgreenandblack.md)
 #### [dimred](./applyeffect/dimred.md)
+#### [dullyellow](./applyeffect/dullyellow.md)
+#### [electricalienandwhite](./applyeffect/electricalienandwhite.md)
+#### [electricgreen](./applyeffect/electricgreen.md)
+#### [electricgreenblue](./applyeffect/electricgreenblue.md)
+
 
 ## Desenfoques
 
