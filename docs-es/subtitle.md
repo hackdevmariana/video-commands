@@ -65,3 +65,17 @@ subtitle sentences FICHERO_DE_TEXTO [-m MÁXIMO_NÚMERO_DE_CARACTERES_POR_LÍNEA
 El número máximo de caracteres por línea por defecto es 40.
 
 Si no se le indica un nombre de fichero de salida, genera un fichero con el mismo nombre y el sufijo `_lines.txt`.
+
+## Unificar procesos
+
+Para convertir el vídeo en audio, el audio en texto y transformar el texto para que tenga formato listo para generar los subtítulos, podemos hacerlo con `preparetext`.
+
+Uso:
+
+``` sh
+subtitle preparetext FICHERO_DE_TEXTO [-m MÁXIMO_NÚMERO_DE_CARACTERES_POR_LÍNEA] [-o FICHERO_DE_TEXTO]
+```
+
+El número máximo de caracteres por línea por defecto es 40.
+
+Si no se le indica un nombre de fichero de salida, genera un fichero con el mismo nombre y el sufijo `_prepared.txt`.
