@@ -93,6 +93,7 @@ applyeffect alleffects imagen_original
 #### [hero](./applyeffect/hero.md)
 #### [imagetunnel](./applyeffect/imagetunnel.md)
 #### [implosion](./applyeffect/implosion.md)
+#### [inflates](./applyeffect/inflates.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -110,6 +111,8 @@ applyeffect alleffects imagen_original
 #### [flattenscolorsbw](./applyeffect/flattenscolorsbw.md)
 #### [gradientnorm](./applyeffect/gradientnorm.md)
 #### [gradientrgb](./applyeffect/gradientrgb.md)
+#### [inked](./applyeffect/inked.md)
+#### [inkedhardstroke](./applyeffect/inkedhardstroke.md)
 
 
 ## Cambios de color
@@ -150,6 +153,8 @@ applyeffect alleffects imagen_original
 #### [inblue](./applyeffect/inblue.md)
 #### [indigoandwhite](./applyeffect/indigoandwhite.md)
 #### [indigo](./applyeffect/indigo.md)
+#### [intenseamber](./applyeffect/intenseamber.md)
+#### [intensedarklime](./applyeffect/intensedarklime.md)
 
 
 ## Desenfoques
