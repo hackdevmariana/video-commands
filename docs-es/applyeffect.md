@@ -85,6 +85,10 @@ applyeffect alleffects imagen_original
 #### [glow](./applyeffect/glow.md)
 #### [graytree](./applyeffect/graytree.md)
 #### [greatpointillism](./applyeffect/greatpointillism.md)
+#### [greyish](./applyeffect/greyish.md)
+#### [grid](./applyeffect/grid.md)
+#### [gridhexagonal](./applyeffect/gridhexagonal.md)
+#### [halftone](./applyeffect/halftone.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -137,6 +141,8 @@ applyeffect alleffects imagen_original
 #### [glaze](./applyeffect/glaze.md)
 #### [grapeandwhite](./applyeffect/grapeandwhite.md)
 #### [greenandblackcontrasted](./applyeffect/greenandblackcontrasted.md)
+#### [greenlime](./applyeffect/greenlime.md)
+#### [greenpurple](./applyeffect/greenpurple.md)
 
 
 ## Desenfoques
