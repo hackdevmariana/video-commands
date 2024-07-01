@@ -155,6 +155,10 @@ applyeffect alleffects imagen_original
 #### [indigo](./applyeffect/indigo.md)
 #### [intenseamber](./applyeffect/intenseamber.md)
 #### [intensedarklime](./applyeffect/intensedarklime.md)
+#### [intenselime](./applyeffect/intenselime.md)
+#### [intensepinkandblack](./applyeffect/intensepinkandblack.md)
+#### [intensered](./applyeffect/intensered.md)
+#### [intenseyellowandblack](./applyeffect/intenseyellowandblack.md)
 
 
 ## Desenfoques
