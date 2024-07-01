@@ -136,6 +136,7 @@ applyeffect alleffects imagen_original
 #### [garnetlime](./applyeffect/garnetlime.md)
 #### [glaze](./applyeffect/glaze.md)
 #### [grapeandwhite](./applyeffect/grapeandwhite.md)
+#### [greenandblackcontrasted](./applyeffect/greenandblackcontrasted.md)
 
 
 ## Desenfoques
