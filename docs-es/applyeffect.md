@@ -89,6 +89,7 @@ applyeffect alleffects imagen_original
 #### [grid](./applyeffect/grid.md)
 #### [gridhexagonal](./applyeffect/gridhexagonal.md)
 #### [halftone](./applyeffect/halftone.md)
+#### [handstrokes](./applyeffect/handstrokes.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -166,3 +167,5 @@ applyeffect alleffects imagen_original
 #### [fireedges](./applyeffect/fireedges.md)
 #### [gaussiandog](./applyeffect/gaussiandog.md)
 #### [glitteronblack](./applyeffect/glitteronblack.md)
+#### [handsketch](./applyeffect/handsketch.md)
+#### [hardsketchbw](./applyeffect/hardsketchbw.md)
