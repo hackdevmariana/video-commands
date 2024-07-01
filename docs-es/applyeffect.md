@@ -90,6 +90,9 @@ applyeffect alleffects imagen_original
 #### [gridhexagonal](./applyeffect/gridhexagonal.md)
 #### [halftone](./applyeffect/halftone.md)
 #### [handstrokes](./applyeffect/handstrokes.md)
+#### [hero](./applyeffect/hero.md)
+#### [imagetunnel](./applyeffect/imagetunnel.md)
+#### [implosion](./applyeffect/implosion.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -144,6 +147,9 @@ applyeffect alleffects imagen_original
 #### [greenandblackcontrasted](./applyeffect/greenandblackcontrasted.md)
 #### [greenlime](./applyeffect/greenlime.md)
 #### [greenpurple](./applyeffect/greenpurple.md)
+#### [inblue](./applyeffect/inblue.md)
+#### [indigoandwhite](./applyeffect/indigoandwhite.md)
+#### [indigo](./applyeffect/indigo.md)
 
 
 ## Desenfoques
