@@ -105,6 +105,8 @@ applyeffect alleffects imagen_original
 #### [leviaducalestaque](./applyeffect/leviaducalestaque.md)
 #### [lightoff](./applyeffect/lightoff.md)
 #### [lightrelief](./applyeffect/lightrelief.md)
+#### [lightglow](./applyeffect/lightglow.md)
+#### [lightmaptones](./applyeffect/lightmaptones.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -125,6 +127,7 @@ applyeffect alleffects imagen_original
 #### [inked](./applyeffect/inked.md)
 #### [inkedhardstroke](./applyeffect/inkedhardstroke.md)
 #### [kitt](./applyeffect/kitt.md)
+#### [lightrays](./applyeffect/lightrays.md)
 
 
 ## Cambios de color
@@ -173,6 +176,7 @@ applyeffect alleffects imagen_original
 #### [intenseyellowandblack](./applyeffect/intenseyellowandblack.md)
 #### [lemonlime](./applyeffect/lemonlime.md)
 #### [lightoff](./applyeffect/lightoff.md)
+#### [lightamericannight](./applyeffect/lightamericannight.md)
 
 ## Desenfoques
 
