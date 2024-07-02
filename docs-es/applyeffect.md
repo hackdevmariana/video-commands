@@ -99,6 +99,9 @@ applyeffect alleffects imagen_original
 #### [intensifies](./applyeffect/intensifies.md)
 #### [intensifiesdark](./applyeffect/intensifiesdark.md)
 #### [irises](./applyeffect/irises.md)
+#### [kuwahara](./applyeffect/kuwahara.md)
+#### [kairouan](./applyeffect/kairouan.md)
+#### [landscape](./applyeffect/landscape.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
