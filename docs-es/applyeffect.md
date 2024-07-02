@@ -103,6 +103,8 @@ applyeffect alleffects imagen_original
 #### [kairouan](./applyeffect/kairouan.md)
 #### [landscape](./applyeffect/landscape.md)
 #### [leviaducalestaque](./applyeffect/leviaducalestaque.md)
+#### [lightoff](./applyeffect/lightoff.md)
+#### [lightrelief](./applyeffect/lightrelief.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
