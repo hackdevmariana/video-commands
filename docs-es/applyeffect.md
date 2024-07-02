@@ -107,6 +107,7 @@ applyeffect alleffects imagen_original
 #### [lightrelief](./applyeffect/lightrelief.md)
 #### [lightglow](./applyeffect/lightglow.md)
 #### [lightmaptones](./applyeffect/lightmaptones.md)
+#### [lightsteps](./applyeffect/lightsteps.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -177,6 +178,11 @@ applyeffect alleffects imagen_original
 #### [lemonlime](./applyeffect/lemonlime.md)
 #### [lightoff](./applyeffect/lightoff.md)
 #### [lightamericannight](./applyeffect/lightamericannight.md)
+#### [lilac](./applyeffect/lilac.md)
+#### [lilacblue](./applyeffect/lilacblue.md)
+#### [lilacblueluminous](./applyeffect/lilacblueluminous.md)
+
+
 
 ## Desenfoques
 
