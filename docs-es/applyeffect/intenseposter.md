@@ -1,6 +1,6 @@
 # intenseposter
 
-Unifica las zonas de color de la imagen manchas de color intensificado.
+Unifica las zonas de color de la imagen en manchas de color intensificado.
 
 Uso:
 
