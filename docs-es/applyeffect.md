@@ -94,6 +94,10 @@ applyeffect alleffects imagen_original
 #### [imagetunnel](./applyeffect/imagetunnel.md)
 #### [implosion](./applyeffect/implosion.md)
 #### [inflates](./applyeffect/inflates.md)
+#### [intenseposter](./applyeffect/intenseposter.md)
+#### [intensestains](./applyeffect/intensestains.md)
+#### [intensifies](./applyeffect/intensifies.md)
+#### [intensifiesdark](./applyeffect/intensifiesdark.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
