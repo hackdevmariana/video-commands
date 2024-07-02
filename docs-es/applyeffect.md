@@ -98,6 +98,7 @@ applyeffect alleffects imagen_original
 #### [intensestains](./applyeffect/intensestains.md)
 #### [intensifies](./applyeffect/intensifies.md)
 #### [intensifiesdark](./applyeffect/intensifiesdark.md)
+#### [irises](./applyeffect/irises.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -117,6 +118,7 @@ applyeffect alleffects imagen_original
 #### [gradientrgb](./applyeffect/gradientrgb.md)
 #### [inked](./applyeffect/inked.md)
 #### [inkedhardstroke](./applyeffect/inkedhardstroke.md)
+#### [kitt](./applyeffect/kitt.md)
 
 
 ## Cambios de color
@@ -188,3 +190,4 @@ applyeffect alleffects imagen_original
 #### [glitteronblack](./applyeffect/glitteronblack.md)
 #### [handsketch](./applyeffect/handsketch.md)
 #### [hardsketchbw](./applyeffect/hardsketchbw.md)
+#### [judgment](./applyeffect/judgment.md)
