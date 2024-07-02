@@ -102,6 +102,7 @@ applyeffect alleffects imagen_original
 #### [kuwahara](./applyeffect/kuwahara.md)
 #### [kairouan](./applyeffect/kairouan.md)
 #### [landscape](./applyeffect/landscape.md)
+#### [leviaducalestaque](./applyeffect/leviaducalestaque.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -168,7 +169,8 @@ applyeffect alleffects imagen_original
 #### [intensepinkandblack](./applyeffect/intensepinkandblack.md)
 #### [intensered](./applyeffect/intensered.md)
 #### [intenseyellowandblack](./applyeffect/intenseyellowandblack.md)
-
+#### [lemonlime](./applyeffect/lemonlime.md)
+#### [lightoff](./applyeffect/lightoff.md)
 
 ## Desenfoques
 
