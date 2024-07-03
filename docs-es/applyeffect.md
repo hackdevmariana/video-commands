@@ -112,9 +112,11 @@ applyeffect alleffects imagen_original
 #### [littlebayatlaciotat](./applyeffect/littlebayatlaciotat.md)
 #### [lomo](./applyeffect/lomo.md)
 #### [lowlevel](./applyeffect/lowlevel.md)
-
-
 #### [lucy](./applyeffect/lucy.md)
+#### [markerpen](./applyeffect/markerpen.md)
+#### [mightydetails](./applyeffect/mightydetails.md)
+#### [mineralmosaic](./applyeffect/mineralmosaic.md)
+
 
 ## Conversiones a blanco y negro
 
