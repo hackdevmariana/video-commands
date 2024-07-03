@@ -190,6 +190,9 @@ applyeffect alleffects imagen_original
 #### [luminousgreen](./applyeffect/luminousgreen.md)
 #### [luminousindigo](./applyeffect/luminousindigo.md)
 #### [luminousintensegreen](./applyeffect/luminousintensegreen.md)
+#### [luminouslilac](./applyeffect/luminouslilac.md)
+#### [luminouspurple](./applyeffect/luminouspurple.md)
+#### [luminousred](./applyeffect/luminousred.md)
 
 
 ## Desenfoques
