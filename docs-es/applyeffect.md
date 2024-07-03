@@ -193,6 +193,9 @@ applyeffect alleffects imagen_original
 #### [luminouslilac](./applyeffect/luminouslilac.md)
 #### [luminouspurple](./applyeffect/luminouspurple.md)
 #### [luminousred](./applyeffect/luminousred.md)
+#### [luminousredblack](./applyeffect/luminousredblack.md)
+#### [luminousyellow](./applyeffect/luminousyellow.md)
+#### [maritime](./applyeffect/maritime.md)
 
 
 ## Desenfoques
