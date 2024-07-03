@@ -108,6 +108,8 @@ applyeffect alleffects imagen_original
 #### [lightglow](./applyeffect/lightglow.md)
 #### [lightmaptones](./applyeffect/lightmaptones.md)
 #### [lightsteps](./applyeffect/lightsteps.md)
+#### [linify](./applyeffect/linify.md)
+#### [littlebayatlaciotat](./applyeffect/littlebayatlaciotat.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -181,6 +183,7 @@ applyeffect alleffects imagen_original
 #### [lilac](./applyeffect/lilac.md)
 #### [lilacblue](./applyeffect/lilacblue.md)
 #### [lilacblueluminous](./applyeffect/lilacblueluminous.md)
+#### [lime](./applyeffect/lime.md)
 
 
 
