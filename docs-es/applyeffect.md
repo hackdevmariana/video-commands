@@ -110,6 +110,8 @@ applyeffect alleffects imagen_original
 #### [lightsteps](./applyeffect/lightsteps.md)
 #### [linify](./applyeffect/linify.md)
 #### [littlebayatlaciotat](./applyeffect/littlebayatlaciotat.md)
+#### [lomo](./applyeffect/lomo.md)
+#### [lowlevel](./applyeffect/lowlevel.md)
 
 
 #### [lucy](./applyeffect/lucy.md)
@@ -131,6 +133,7 @@ applyeffect alleffects imagen_original
 #### [inkedhardstroke](./applyeffect/inkedhardstroke.md)
 #### [kitt](./applyeffect/kitt.md)
 #### [lightrays](./applyeffect/lightrays.md)
+#### [luminance](./applyeffect/luminance.md)
 
 
 ## Cambios de color
