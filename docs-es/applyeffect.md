@@ -124,6 +124,8 @@ applyeffect alleffects imagen_original
 #### [noise](./applyeffect/noise.md)
 #### [noiseperlin](./applyeffect/noiseperlin.md)
 #### [offwhites](./applyeffect/offwhites.md)
+#### [oilpainting](./applyeffect/oilpainting.md)
+#### [oilstains](./applyeffect/oilstains.md)
 
 
 ## Conversiones a blanco y negro
