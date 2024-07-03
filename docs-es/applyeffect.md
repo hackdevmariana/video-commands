@@ -121,6 +121,9 @@ applyeffect alleffects imagen_original
 #### [mosaic](./applyeffect/mosaic.md)
 #### [mural](./applyeffect/mural.md)
 #### [nebula](./applyeffect/nebula.md)
+#### [noise](./applyeffect/noise.md)
+#### [noiseperlin](./applyeffect/noiseperlin.md)
+#### [offwhites](./applyeffect/offwhites.md)
 
 
 ## Conversiones a blanco y negro
@@ -142,6 +145,7 @@ applyeffect alleffects imagen_original
 #### [lightrays](./applyeffect/lightrays.md)
 #### [luminance](./applyeffect/luminance.md)
 #### [multilinebw](./applyeffect/multilinebw.md)
+#### [newspaperdotted](./applyeffect/newspaperdotted.md)
 
 
 ## Cambios de color
