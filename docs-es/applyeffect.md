@@ -187,7 +187,9 @@ applyeffect alleffects imagen_original
 #### [lilacblue](./applyeffect/lilacblue.md)
 #### [lilacblueluminous](./applyeffect/lilacblueluminous.md)
 #### [lime](./applyeffect/lime.md)
-
+#### [luminousgreen](./applyeffect/luminousgreen.md)
+#### [luminousindigo](./applyeffect/luminousindigo.md)
+#### [luminousintensegreen](./applyeffect/luminousintensegreen.md)
 
 
 ## Desenfoques
