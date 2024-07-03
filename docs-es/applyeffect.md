@@ -129,6 +129,7 @@ applyeffect alleffects imagen_original
 #### [oldphoto](./applyeffect/oldphoto.md)
 #### [oldphotowithframe](./applyeffect/oldphotowithframe.md)
 #### [oldtiles](./applyeffect/oldtiles.md)
+#### [orientalgarden](./applyeffect/orientalgarden.md)
 
 
 ## Conversiones a blanco y negro
@@ -217,6 +218,10 @@ applyeffect alleffects imagen_original
 #### [orange](./applyeffect/orange.md)
 #### [orangeblack](./applyeffect/orangeblack.md)
 #### [orangeoff](./applyeffect/orangeoff.md)
+#### [paleamber](./applyeffect/paleamber.md)
+#### [paleblue](./applyeffect/paleblue.md)
+#### [palebluepurple](./applyeffect/palebluepurple.md)
+#### [palecobalt](./applyeffect/palecobalt.md)
 
 
 ## Desenfoques
