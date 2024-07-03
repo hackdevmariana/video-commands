@@ -126,6 +126,9 @@ applyeffect alleffects imagen_original
 #### [offwhites](./applyeffect/offwhites.md)
 #### [oilpainting](./applyeffect/oilpainting.md)
 #### [oilstains](./applyeffect/oilstains.md)
+#### [oldphoto](./applyeffect/oldphoto.md)
+#### [oldphotowithframe](./applyeffect/oldphotowithframe.md)
+#### [oldtiles](./applyeffect/oldtiles.md)
 
 
 ## Conversiones a blanco y negro
@@ -211,6 +214,9 @@ applyeffect alleffects imagen_original
 #### [luminousyellow](./applyeffect/luminousyellow.md)
 #### [maritime](./applyeffect/maritime.md)
 #### [naturaldarkyellow](./applyeffect/naturaldarkyellow.md)
+#### [orange](./applyeffect/orange.md)
+#### [orangeblack](./applyeffect/orangeblack.md)
+#### [orangeoff](./applyeffect/orangeoff.md)
 
 
 ## Desenfoques
