@@ -119,6 +119,8 @@ applyeffect alleffects imagen_original
 #### [mirrorx](./applyeffect/mirrorx.md)
 #### [mirrory](./applyeffect/mirrory.md)
 #### [mosaic](./applyeffect/mosaic.md)
+#### [mural](./applyeffect/mural.md)
+#### [nebula](./applyeffect/nebula.md)
 
 
 ## Conversiones a blanco y negro
@@ -139,6 +141,7 @@ applyeffect alleffects imagen_original
 #### [kitt](./applyeffect/kitt.md)
 #### [lightrays](./applyeffect/lightrays.md)
 #### [luminance](./applyeffect/luminance.md)
+#### [multilinebw](./applyeffect/multilinebw.md)
 
 
 ## Cambios de color
@@ -201,6 +204,7 @@ applyeffect alleffects imagen_original
 #### [luminousredblack](./applyeffect/luminousredblack.md)
 #### [luminousyellow](./applyeffect/luminousyellow.md)
 #### [maritime](./applyeffect/maritime.md)
+#### [naturaldarkyellow](./applyeffect/naturaldarkyellow.md)
 
 
 ## Desenfoques
