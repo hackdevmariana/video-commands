@@ -116,6 +116,9 @@ applyeffect alleffects imagen_original
 #### [markerpen](./applyeffect/markerpen.md)
 #### [mightydetails](./applyeffect/mightydetails.md)
 #### [mineralmosaic](./applyeffect/mineralmosaic.md)
+#### [mirrorx](./applyeffect/mirrorx.md)
+#### [mirrory](./applyeffect/mirrory.md)
+#### [mosaic](./applyeffect/mosaic.md)
 
 
 ## Conversiones a blanco y negro
