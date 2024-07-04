@@ -145,6 +145,9 @@ applyeffect alleffects imagen_original
 #### [posterize](./applyeffect/posterize.md)
 #### [pressing](./applyeffect/pressing.md)
 #### [projectcontours](./applyeffect/projectcontours.md)
+#### [puzzle](./applyeffect/puzzle.md)
+#### [quantize](./applyeffect/quantize.md)
+#### [rainbow](./applyeffect/rainbow.md)
 
 
 ## Conversiones a blanco y negro
@@ -247,6 +250,8 @@ applyeffect alleffects imagen_original
 #### [pearwhite](./applyeffect/pearwhite.md)
 #### [pinetree](./applyeffect/pinetree.md)
 #### [pink](./applyeffect/pink.md)
+#### [purplewhite](./applyeffect/purplewhite.md)
+#### [purpleyellow](./applyeffect/purpleyellow.md)
 
 
 ## Desenfoques
