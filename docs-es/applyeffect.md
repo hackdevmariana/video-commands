@@ -222,6 +222,10 @@ applyeffect alleffects imagen_original
 #### [paleblue](./applyeffect/paleblue.md)
 #### [palebluepurple](./applyeffect/palebluepurple.md)
 #### [palecobalt](./applyeffect/palecobalt.md)
+#### [paleindigo](./applyeffect/paleindigo.md)
+#### [paleindigoblack](./applyeffect/paleindigoblack.md)
+#### [palepink](./applyeffect/palepink.md)
+#### [palesky](./applyeffect/palesky.md)
 
 
 ## Desenfoques

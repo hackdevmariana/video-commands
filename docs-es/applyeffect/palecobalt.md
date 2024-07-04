@@ -1,6 +1,6 @@
 # palecobalt
 
-Cambia el tono de las zonas claras de la imagen a azul pálido.
+Cambia el tono de las zonas oscuras de la imagen a azul pálido y las claras, a azul claro.
 
 Uso:
 
