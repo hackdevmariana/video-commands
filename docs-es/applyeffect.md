@@ -134,6 +134,12 @@ applyeffect alleffects imagen_original
 #### [paper](./applyeffect/paper.md)
 #### [pastelchalk](./applyeffect/pastelchalk.md)
 #### [portraitbw](./applyeffect/portraitbw.md)
+#### [pixelize](./applyeffect/pixelize.md)
+#### [pointwise](./applyeffect/pointwise.md)
+#### [polkadots](./applyeffect/polkadots.md)
+#### [polygonize](./applyeffect/polygonize.md)
+#### [polyphony2](./applyeffect/polyphony2.md)
+#### [portrait](./applyeffect/portrait.md)
 
 
 ## Conversiones a blanco y negro
