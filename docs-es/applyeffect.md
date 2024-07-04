@@ -66,6 +66,7 @@ applyeffect alleffects imagen_original
 #### [double](./applyeffect/double.md)
 #### [drawing](./applyeffect/drawing.md)
 #### [droste](./applyeffect/droste.md)
+#### [ebro](./applyeffect/ebro.md)
 #### [ellipsionism](./applyeffect/ellipsionism.md)
 #### [emanation](./applyeffect/emanation.md)
 #### [expandingblackhole](./applyeffect/expandingblackhole.md)
@@ -150,6 +151,9 @@ applyeffect alleffects imagen_original
 #### [rainbow](./applyeffect/rainbow.md)
 #### [raindrops](./applyeffect/raindrops.md)
 #### [recreation](./applyeffect/recreation.md)
+#### [reddens](./applyeffect/reddens.md)
+#### [redtree](./applyeffect/redtree.md)
+#### [redwaistcoat](./applyeffect/redwaistcoat.md)
 
 
 ## Conversiones a blanco y negro
@@ -263,6 +267,7 @@ applyeffect alleffects imagen_original
 #### [redlightgreenspectral](./applyeffect/redlightgreenspectral.md)
 #### [redoff](./applyeffect/redoff.md)
 #### [redturquoisespectral](./applyeffect/redturquoisespectral.md)
+#### [reddishorange](./applyeffect/reddishorange.md)
 
 
 ## Desenfoques
