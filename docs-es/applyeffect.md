@@ -148,6 +148,8 @@ applyeffect alleffects imagen_original
 #### [puzzle](./applyeffect/puzzle.md)
 #### [quantize](./applyeffect/quantize.md)
 #### [rainbow](./applyeffect/rainbow.md)
+#### [raindrops](./applyeffect/raindrops.md)
+#### [recreation](./applyeffect/recreation.md)
 
 
 ## Conversiones a blanco y negro
@@ -172,6 +174,7 @@ applyeffect alleffects imagen_original
 #### [newspaperdotted](./applyeffect/newspaperdotted.md)
 #### [pencilsketch](./applyeffect/pencilsketch.md)
 #### [pencilbw](./applyeffect/pencilbw.md)
+#### [rainbw](./applyeffect/rainbw.md)
 
 
 ## Cambios de color
@@ -252,6 +255,9 @@ applyeffect alleffects imagen_original
 #### [pink](./applyeffect/pink.md)
 #### [purplewhite](./applyeffect/purplewhite.md)
 #### [purpleyellow](./applyeffect/purpleyellow.md)
+#### [redbluespectral](./applyeffect/redbluespectral.md)
+#### [redgreenspectral](./applyeffect/redgreenspectral.md)
+#### [redindigospectral](./applyeffect/redindigospectral.md)
 
 
 ## Desenfoques
