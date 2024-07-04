@@ -258,6 +258,11 @@ applyeffect alleffects imagen_original
 #### [redbluespectral](./applyeffect/redbluespectral.md)
 #### [redgreenspectral](./applyeffect/redgreenspectral.md)
 #### [redindigospectral](./applyeffect/redindigospectral.md)
+#### [redbluespectral](./applyeffect/redbluespectral.md)
+#### [redgreenspectral](./applyeffect/redgreenspectral.md)
+#### [redlightgreenspectral](./applyeffect/redlightgreenspectral.md)
+#### [redoff](./applyeffect/redoff.md)
+#### [redturquoisespectral](./applyeffect/redturquoisespectral.md)
 
 
 ## Desenfoques
