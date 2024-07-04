@@ -130,6 +130,10 @@ applyeffect alleffects imagen_original
 #### [oldphotowithframe](./applyeffect/oldphotowithframe.md)
 #### [oldtiles](./applyeffect/oldtiles.md)
 #### [orientalgarden](./applyeffect/orientalgarden.md)
+#### [pales](./applyeffect/pales.md)
+#### [paper](./applyeffect/paper.md)
+#### [pastelchalk](./applyeffect/pastelchalk.md)
+#### [portraitbw](./applyeffect/portraitbw.md)
 
 
 ## Conversiones a blanco y negro
@@ -152,6 +156,8 @@ applyeffect alleffects imagen_original
 #### [luminance](./applyeffect/luminance.md)
 #### [multilinebw](./applyeffect/multilinebw.md)
 #### [newspaperdotted](./applyeffect/newspaperdotted.md)
+#### [pencilsketch](./applyeffect/pencilsketch.md)
+#### [pencilbw](./applyeffect/pencilbw.md)
 
 
 ## Cambios de color
@@ -226,6 +232,10 @@ applyeffect alleffects imagen_original
 #### [paleindigoblack](./applyeffect/paleindigoblack.md)
 #### [palepink](./applyeffect/palepink.md)
 #### [palesky](./applyeffect/palesky.md)
+#### [pasteltealandwhite](./applyeffect/pasteltealandwhite.md)
+#### [pearwhite](./applyeffect/pearwhite.md)
+#### [pinetree](./applyeffect/pinetree.md)
+#### [pink](./applyeffect/pink.md)
 
 
 ## Desenfoques
