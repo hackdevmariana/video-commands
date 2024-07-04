@@ -140,6 +140,11 @@ applyeffect alleffects imagen_original
 #### [polygonize](./applyeffect/polygonize.md)
 #### [polyphony2](./applyeffect/polyphony2.md)
 #### [portrait](./applyeffect/portrait.md)
+#### [posteredges](./applyeffect/posteredges.md)
+#### [posterhope](./applyeffect/posterhope.md)
+#### [posterize](./applyeffect/posterize.md)
+#### [pressing](./applyeffect/pressing.md)
+#### [projectcontours](./applyeffect/projectcontours.md)
 
 
 ## Conversiones a blanco y negro
