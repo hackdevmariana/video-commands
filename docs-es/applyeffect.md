@@ -159,6 +159,16 @@ applyeffect alleffects imagen_original
 #### [ripple](./applyeffect/ripple.md)
 #### [rotatedcross](./applyeffect/rotatedcross.md)
 #### [rotoidoscope](./applyeffect/rotoidoscope.md)
+#### [sackcloth](./applyeffect/sackcloth.md)
+#### [scanlines](./applyeffect/scanlines.md)
+#### [sectionalboxfitting](./applyeffect/sectionalboxfitting.md)
+#### [shadestripes](./applyeffect/shadestripes.md)
+#### [shadowpatch](./applyeffect/shadowpatch.md)
+#### [shapeism](./applyeffect/shapeism.md)
+#### [sharpen](./applyeffect/sharpen.md)
+#### [sharpeninversediff](./applyeffect/sharpeninversediff.md)
+
+
 
 ## Conversiones a blanco y negro
 
@@ -276,6 +286,9 @@ applyeffect alleffects imagen_original
 #### [redoff](./applyeffect/redoff.md)
 #### [redturquoisespectral](./applyeffect/redturquoisespectral.md)
 #### [reddishorange](./applyeffect/reddishorange.md)
+#### [seaandblack](./applyeffect/seaandblack.md)
+#### [seaweed](./applyeffect/seaweed.md)
+#### [sepia](./applyeffect/sepia.md)
 
 
 ## Desenfoques
