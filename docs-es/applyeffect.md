@@ -171,6 +171,11 @@ applyeffect alleffects imagen_original
 #### [shockwaves](./applyeffect/shockwaves.md)
 #### [smooth](./applyeffect/smooth.md)
 #### [softpixelate](./applyeffect/softpixelate.md)
+#### [sparkles](./applyeffect/sparkles.md)
+#### [spectral](./applyeffect/spectral.md)
+#### [sponge](./applyeffect/sponge.md)
+#### [sponged](./applyeffect/sponged.md)
+#### [spread](./applyeffect/spread.md)
 
 
 
@@ -294,6 +299,8 @@ applyeffect alleffects imagen_original
 #### [seaweed](./applyeffect/seaweed.md)
 #### [sepia](./applyeffect/sepia.md)
 #### [skyandwhite](./applyeffect/skyandwhite.md)
+#### [spectralblue](./applyeffect/spectralblue.md)
+#### [spectralsky](./applyeffect/spectralsky.md)
 
 
 ## Desenfoques
