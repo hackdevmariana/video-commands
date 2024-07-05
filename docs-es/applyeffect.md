@@ -176,6 +176,9 @@ applyeffect alleffects imagen_original
 #### [sponge](./applyeffect/sponge.md)
 #### [sponged](./applyeffect/sponged.md)
 #### [spread](./applyeffect/spread.md)
+#### [squaresoflight](./applyeffect/squaresoflight.md)
+#### [squarescircles](./applyeffect/squarescircles.md)
+#### [stainedglass](./applyeffect/stainedglass.md)
 
 
 
@@ -205,6 +208,7 @@ applyeffect alleffects imagen_original
 #### [rhombuses](./applyeffect/rhombuses.md)
 #### [rorschach](./applyeffect/rorschach.md)
 #### [roundedstains](./applyeffect/roundedstains.md)
+#### [squares](./applyeffect/squares.md)
 
 
 
