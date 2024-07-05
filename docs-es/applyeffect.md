@@ -167,6 +167,10 @@ applyeffect alleffects imagen_original
 #### [shapeism](./applyeffect/shapeism.md)
 #### [sharpen](./applyeffect/sharpen.md)
 #### [sharpeninversediff](./applyeffect/sharpeninversediff.md)
+#### [shifttiles](./applyeffect/shifttiles.md)
+#### [shockwaves](./applyeffect/shockwaves.md)
+#### [smooth](./applyeffect/smooth.md)
+#### [softpixelate](./applyeffect/softpixelate.md)
 
 
 
@@ -289,6 +293,7 @@ applyeffect alleffects imagen_original
 #### [seaandblack](./applyeffect/seaandblack.md)
 #### [seaweed](./applyeffect/seaweed.md)
 #### [sepia](./applyeffect/sepia.md)
+#### [skyandwhite](./applyeffect/skyandwhite.md)
 
 
 ## Desenfoques
