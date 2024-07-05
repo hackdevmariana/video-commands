@@ -154,6 +154,8 @@ applyeffect alleffects imagen_original
 #### [reddens](./applyeffect/reddens.md)
 #### [redtree](./applyeffect/redtree.md)
 #### [redwaistcoat](./applyeffect/redwaistcoat.md)
+#### [removepixels](./applyeffect/removepixels.md)
+#### [retrofade](./applyeffect/retrofade.md)
 
 
 ## Conversiones a blanco y negro
@@ -179,6 +181,7 @@ applyeffect alleffects imagen_original
 #### [pencilsketch](./applyeffect/pencilsketch.md)
 #### [pencilbw](./applyeffect/pencilbw.md)
 #### [rainbw](./applyeffect/rainbw.md)
+#### [rhombuses](./applyeffect/rhombuses.md)
 
 
 ## Cambios de color
