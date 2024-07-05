@@ -156,7 +156,9 @@ applyeffect alleffects imagen_original
 #### [redwaistcoat](./applyeffect/redwaistcoat.md)
 #### [removepixels](./applyeffect/removepixels.md)
 #### [retrofade](./applyeffect/retrofade.md)
-
+#### [ripple](./applyeffect/ripple.md)
+#### [rotatedcross](./applyeffect/rotatedcross.md)
+#### [rotoidoscope](./applyeffect/rotoidoscope.md)
 
 ## Conversiones a blanco y negro
 
@@ -182,6 +184,9 @@ applyeffect alleffects imagen_original
 #### [pencilbw](./applyeffect/pencilbw.md)
 #### [rainbw](./applyeffect/rainbw.md)
 #### [rhombuses](./applyeffect/rhombuses.md)
+#### [rorschach](./applyeffect/rorschach.md)
+#### [roundedstains](./applyeffect/roundedstains.md)
+
 
 
 ## Cambios de color
