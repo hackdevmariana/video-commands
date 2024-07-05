@@ -179,6 +179,10 @@ applyeffect alleffects imagen_original
 #### [squaresoflight](./applyeffect/squaresoflight.md)
 #### [squarescircles](./applyeffect/squarescircles.md)
 #### [stainedglass](./applyeffect/stainedglass.md)
+#### [starrynight](./applyeffect/starrynight.md)
+#### [stencil](./applyeffect/stencil.md)
+#### [stripesy](./applyeffect/stripesy.md)
+#### [subtlewhirls](./applyeffect/subtlewhirls.md)
 
 
 
@@ -209,6 +213,7 @@ applyeffect alleffects imagen_original
 #### [rorschach](./applyeffect/rorschach.md)
 #### [roundedstains](./applyeffect/roundedstains.md)
 #### [squares](./applyeffect/squares.md)
+#### [stainsbw](./applyeffect/stainsbw.md)
 
 
 
@@ -305,6 +310,7 @@ applyeffect alleffects imagen_original
 #### [skyandwhite](./applyeffect/skyandwhite.md)
 #### [spectralblue](./applyeffect/spectralblue.md)
 #### [spectralsky](./applyeffect/spectralsky.md)
+#### [subtleblue](./applyeffect/subtleblue.md)
 
 
 ## Desenfoques
