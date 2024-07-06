@@ -183,6 +183,14 @@ applyeffect alleffects imagen_original
 #### [stencil](./applyeffect/stencil.md)
 #### [stripesy](./applyeffect/stripesy.md)
 #### [subtlewhirls](./applyeffect/subtlewhirls.md)
+#### [summertime9a](./applyeffect/summertime9a.md)
+#### [taquin](./applyeffect/taquin.md)
+#### [telesketch](./applyeffect/telesketch.md)
+#### [tetris](./applyeffect/tetris.md)
+#### [texturizepaper](./applyeffect/texturizepaper.md)
+#### [themandola](./applyeffect/themandola.md)
+#### [thickmarker](./applyeffect/thickmarker.md)
+#### [thirdpartyguides](./applyeffect/thirdpartyguides.md)
 
 
 
@@ -214,6 +222,7 @@ applyeffect alleffects imagen_original
 #### [roundedstains](./applyeffect/roundedstains.md)
 #### [squares](./applyeffect/squares.md)
 #### [stainsbw](./applyeffect/stainsbw.md)
+#### [thickstroke](./applyeffect/thickstroke.md)
 
 
 
@@ -311,6 +320,7 @@ applyeffect alleffects imagen_original
 #### [spectralblue](./applyeffect/spectralblue.md)
 #### [spectralsky](./applyeffect/spectralsky.md)
 #### [subtleblue](./applyeffect/subtleblue.md)
+#### [tealandwhite](./applyeffect/tealandwhite.md)
 
 
 ## Desenfoques
