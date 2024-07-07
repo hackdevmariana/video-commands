@@ -209,6 +209,9 @@ applyeffect alleffects imagen_original
 #### [water](./applyeffect/water.md)
 #### [wave](./applyeffect/wave.md)
 #### [waxpaint](./applyeffect/waxpaint.md)
+#### [waxstains](./applyeffect/waxstains.md)
+#### [weave](./applyeffect/weave.md)
+#### [wheatfield](./applyeffect/wheatfield.md)
 
 
 
