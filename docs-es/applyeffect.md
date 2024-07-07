@@ -191,6 +191,10 @@ applyeffect alleffects imagen_original
 #### [themandola](./applyeffect/themandola.md)
 #### [thickmarker](./applyeffect/thickmarker.md)
 #### [thirdpartyguides](./applyeffect/thirdpartyguides.md)
+#### [tunnel](./applyeffect/tunnel.md)
+#### [twirl](./applyeffect/twirl.md)
+#### [uniformink](./applyeffect/uniformink.md)
+#### [uniformstains](./applyeffect/uniformstains.md)
 
 
 
@@ -321,6 +325,7 @@ applyeffect alleffects imagen_original
 #### [spectralsky](./applyeffect/spectralsky.md)
 #### [subtleblue](./applyeffect/subtleblue.md)
 #### [tealandwhite](./applyeffect/tealandwhite.md)
+#### [turquoiseandblack](./applyeffect/turquoiseandblack.md)
 
 
 ## Desenfoques
