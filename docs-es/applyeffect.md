@@ -206,6 +206,9 @@ applyeffect alleffects imagen_original
 #### [vignetteblur](./applyeffect/vignetteblur.md)
 #### [vinylstains](./applyeffect/vinylstains.md)
 #### [warpperspective](./applyeffect/warpperspective.md)
+#### [water](./applyeffect/water.md)
+#### [wave](./applyeffect/wave.md)
+#### [waxpaint](./applyeffect/waxpaint.md)
 
 
 
