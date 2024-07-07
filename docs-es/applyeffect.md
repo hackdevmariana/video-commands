@@ -46,6 +46,7 @@ applyeffect alleffects imagen_original
 #### [cartoon](./applyeffect/cartoon.md)
 #### [circles](./applyeffect/circles.md)
 #### [clarified](./applyeffect/clarified.md)
+#### [clarify](./applyeffect/clarify.md)
 #### [clearscolumns](./applyeffect/clearscolumns.md)
 #### [colorellipses](./applyeffect/colorellipses.md)
 #### [colorareas](./applyeffect/colorareas.md)
@@ -203,6 +204,8 @@ applyeffect alleffects imagen_original
 #### [veiled](./applyeffect/veiled.md)
 #### [vignette](./applyeffect/vignette.md)
 #### [vignetteblur](./applyeffect/vignetteblur.md)
+#### [vinylstains](./applyeffect/vinylstains.md)
+#### [warpperspective](./applyeffect/warpperspective.md)
 
 
 
