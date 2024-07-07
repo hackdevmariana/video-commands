@@ -195,6 +195,11 @@ applyeffect alleffects imagen_original
 #### [twirl](./applyeffect/twirl.md)
 #### [uniformink](./applyeffect/uniformink.md)
 #### [uniformstains](./applyeffect/uniformstains.md)
+#### [unsharp](./applyeffect/unsharp.md)
+#### [unsharpgoldmeinel](./applyeffect/unsharpgoldmeinel.md)
+#### [unsharpoctave](./applyeffect/unsharpoctave.md)
+#### [upscale](./applyeffect/upscale.md)
+#### [vanvliet](./applyeffect/vanvliet.md)
 
 
 
