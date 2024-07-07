@@ -346,6 +346,9 @@ applyeffect alleffects imagen_original
 #### [tealandwhite](./applyeffect/tealandwhite.md)
 #### [turquoiseandblack](./applyeffect/turquoiseandblack.md)
 #### [whiteandgarnet](./applyeffect/whiteandgarnet.md)
+#### [whiteandgreen](./applyeffect/whiteandgreen.md)
+#### [whiteandpurple](./applyeffect/whiteandpurple.md)
+#### [whiteandsapphire](./applyeffect/whiteandsapphire.md)
 
 
 ## Desenfoques
