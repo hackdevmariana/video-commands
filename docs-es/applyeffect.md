@@ -200,6 +200,9 @@ applyeffect alleffects imagen_original
 #### [unsharpoctave](./applyeffect/unsharpoctave.md)
 #### [upscale](./applyeffect/upscale.md)
 #### [vanvliet](./applyeffect/vanvliet.md)
+#### [veiled](./applyeffect/veiled.md)
+#### [vignette](./applyeffect/vignette.md)
+#### [vignetteblur](./applyeffect/vignetteblur.md)
 
 
 
