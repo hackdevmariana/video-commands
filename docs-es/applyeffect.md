@@ -214,6 +214,7 @@ applyeffect alleffects imagen_original
 #### [weave](./applyeffect/weave.md)
 #### [wheatfield](./applyeffect/wheatfield.md)
 #### [whirls](./applyeffect/whirls.md)
+#### [wind](./applyeffect/wind.md)
 
 
 
@@ -350,6 +351,7 @@ applyeffect alleffects imagen_original
 #### [whiteandpurple](./applyeffect/whiteandpurple.md)
 #### [whiteandsapphire](./applyeffect/whiteandsapphire.md)
 #### [whiteandsky](./applyeffect/whiteandsky.md)
+#### [wineandwhite](./applyeffect/wineandwhite.md)
 
 
 ## Desenfoques
