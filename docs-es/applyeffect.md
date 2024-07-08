@@ -215,6 +215,7 @@ applyeffect alleffects imagen_original
 #### [wheatfield](./applyeffect/wheatfield.md)
 #### [whirls](./applyeffect/whirls.md)
 #### [wind](./applyeffect/wind.md)
+#### [woodpaint](./applyeffect/woodpaint.md)
 
 
 
