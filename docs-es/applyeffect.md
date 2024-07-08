@@ -349,6 +349,7 @@ applyeffect alleffects imagen_original
 #### [whiteandgreen](./applyeffect/whiteandgreen.md)
 #### [whiteandpurple](./applyeffect/whiteandpurple.md)
 #### [whiteandsapphire](./applyeffect/whiteandsapphire.md)
+#### [whiteandsky](./applyeffect/whiteandsky.md)
 
 
 ## Desenfoques
