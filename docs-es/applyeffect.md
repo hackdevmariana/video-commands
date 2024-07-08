@@ -216,6 +216,7 @@ applyeffect alleffects imagen_original
 #### [whirls](./applyeffect/whirls.md)
 #### [wind](./applyeffect/wind.md)
 #### [woodpaint](./applyeffect/woodpaint.md)
+#### [yellowredblue](./applyeffect/yellowredblue.md)
 
 
 
@@ -353,6 +354,7 @@ applyeffect alleffects imagen_original
 #### [whiteandsapphire](./applyeffect/whiteandsapphire.md)
 #### [whiteandsky](./applyeffect/whiteandsky.md)
 #### [wineandwhite](./applyeffect/wineandwhite.md)
+#### [yellow](./applyeffect/yellow.md)
 #### [yellowandbrown](./applyeffect/yellowandbrown.md)
 #### [yellowandpurple](./applyeffect/yellowandpurple.md)
 
