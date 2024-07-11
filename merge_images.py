@@ -153,6 +153,12 @@ def combine_images(image_1, image_2, image_mask):
         output = f"{Path(image_1).stem}_{Path(image_2).stem}_screen.png"
         add_image.save(output)
 
+        # ImageChops.subtract
+        add_image = ImageChops.subtract(img_1, img_2)
+        output = f"{Path(image_1).stem}_{Path(image_2).stem}_subtract.png"
+        add_image.save(output)
+
+
 
 
 if __name__ == '__main__':
