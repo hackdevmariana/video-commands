@@ -97,6 +97,11 @@ def combine_images(image_1, image_2):
         output = f"{Path(image_1).stem}_{Path(image_2).stem}_add.png"
         add_image.save(output)
 
+        # ImageChops.add_modulo
+        add_image = ImageChops.add_modulo(img_1, img_2)
+        output = f"{Path(image_1).stem}_{Path(image_2).stem}_add_modulo.png"
+        add_image.save(output)
+
 if __name__ == '__main__':
     image_1 = 'image.jpeg'
     image_2 = 'image.png'
