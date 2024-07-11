@@ -56,17 +56,13 @@ def with_mask(image_1, image_2, image_mask):
         img_2 = Image.open(image_2)
         mask = Image.open(image_mask)
 
-        # Convertir imágenes a RGB si no lo son
         if img_1.mode != 'RGB':
             img_1 = img_1.convert('RGB')
         if img_2.mode != 'RGB':
             img_2 = img_2.convert('RGB')
-
-        # Convertir la máscara a modo L (escala de grises) si no lo es
         if mask.mode != 'L':
             mask = mask.convert('L')
 
-        # Asegurarse de que todas las imágenes tienen el mismo tamaño
         if img_1.size != img_2.size:
             img_2 = img_2.resize(img_1.size)
         if img_1.size != mask.size:
@@ -79,18 +75,23 @@ def with_mask(image_1, image_2, image_mask):
         output = f"{Path(image_1).stem}_{Path(image_2).stem}__mask_{Path(image_mask).stem}.png"
         composite_image.save(output)
 
-def combine_images(image_1, image_2):
+def combine_images(image_1, image_2, image_mask):
     if os.path.isfile(image_1) and os.path.isfile(image_2):
         img_1 = Image.open(image_1)
         img_2 = Image.open(image_2)
+        mask = Image.open(image_mask)
 
         if img_1.mode != 'RGB':
             img_1 = img_1.convert('RGB')
         if img_2.mode != 'RGB':
             img_2 = img_2.convert('RGB')
+        if mask.mode != 'L':
+            mask = mask.convert('L')
 
         if img_1.size != img_2.size:
             img_2 = img_2.resize(img_1.size)
+        if img_1.size != mask.size:
+            mask = mask.resize(img_1.size)
 
         # ImageChops.add
         add_image = ImageChops.add(img_1, img_2)
@@ -103,17 +104,22 @@ def combine_images(image_1, image_2):
         add_image.save(output)
 
         # ImageChops.blend
-        add_image = ImageChops.blend(img_1, img_2)
+        add_image = ImageChops.blend(img_1, img_2, 0.5)
         output = f"{Path(image_1).stem}_{Path(image_2).stem}_blend.png"
         add_image.save(output)
 
         # ImageChops.composite
-        add_image = ImageChops.composite(img_1, img_2)
+        add_image = ImageChops.composite(img_1, img_2, mask)
         output = f"{Path(image_1).stem}_{Path(image_2).stem}_composite.png"
+        add_image.save(output)
+
+        # ImageChops.darker
+        add_image = ImageChops.darker(img_1, img_2)
+        output = f"{Path(image_1).stem}_{Path(image_2).stem}_darker.png"
         add_image.save(output)
 
 if __name__ == '__main__':
     image_1 = 'image.jpeg'
     image_2 = 'image.png'
     image_mask = 'mask.png'
-    combine_images(image_1, image_2)
+    combine_images(image_1, image_2, image_mask)
