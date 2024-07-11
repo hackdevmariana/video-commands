@@ -32,6 +32,20 @@ def shuffle_channels(image_1, image_2):
             output = f"{Path(image_1).stem}_{Path(image_2).stem}_comb_{combination_string}.png"
             image.save(output)
 
+def blend_images(image_1, image_2):
+    if os.path.isfile(image_1) and os.path.isfile(image_2):
+        img_1 = Image.open(image_1)
+        img_2 = Image.open(image_2)
+
+        if img_1.mode != 'RGB':
+            img_1 = img_1.convert('RGB')
+        if img_2.mode != 'RGB':
+            img_2 = img_2.convert('RGB')
+
+        if img_1.size != img_2.size:
+            img_2 = img_2.resize(img_1.size)
+
+        blended_image = Image.blend(img_1, img_2, alpha=0.5)
 
 if __name__ == '__main__':
     image_1 = 'image.jpeg'
