@@ -148,6 +148,11 @@ def combine_images(image_1, image_2, image_mask):
         output = f"{Path(image_1).stem}_{Path(image_2).stem}_overlay.png"
         add_image.save(output)
 
+        # ImageChops.screen
+        add_image = ImageChops.screen(img_1, img_2)
+        output = f"{Path(image_1).stem}_{Path(image_2).stem}_screen.png"
+        add_image.save(output)
+
 
 
 if __name__ == '__main__':
