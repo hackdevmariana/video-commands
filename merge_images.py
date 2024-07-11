@@ -138,6 +138,10 @@ def combine_images(image_1, image_2, image_mask):
         output = f"{Path(image_1).stem}_{Path(image_2).stem}_soft_light.png"
         add_image.save(output)
 
+        # ImageChops.hard_light
+        add_image = ImageChops.hard_light(img_1, img_2)
+        output = f"{Path(image_1).stem}_{Path(image_2).stem}_hard_light.png"
+        add_image.save(output)
 
 
 if __name__ == '__main__':
