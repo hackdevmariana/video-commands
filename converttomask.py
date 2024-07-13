@@ -31,6 +31,13 @@ def sponged(input, output):
     """Transforms the received image into a mask with a fluffy texture."""
     apply_filter(input, output, 'sponge 11 luminance', 'mask_sponged')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def whirl(input, output):
+    """Transforms the received image into a mask with a whirl texture."""
+    apply_filter(input, output, 'draw_whirl 18 luminance', 'mask_whirl')
+    
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
