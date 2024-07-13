@@ -94,6 +94,16 @@ def chineseink(input, output):
     """Transforms the received image into a mask with a Chinese ink texture."""
     apply_filter(input, output, 'stencilbw 20,4', 'mask_chineseink')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def markerpen(input, output):
+    """Transforms the received image into a mask with a marker pen texture."""
+    apply_filter(input, output, 'stencilbw 32,4', 'mask_markerpen')
+
+
+
+
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
