@@ -52,7 +52,13 @@ def inked(input, output):
     """Transforms the received image into a mask with an inked texture."""
     apply_filter(input, output, 'stencilbw 70', 'mask_inked')
 
-    
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def hardrain(input, output):
+    """Transforms the received image into a mask with a hard rain texture."""
+    apply_filter(input, output, 'stencilbw 2,122 blur_y 10', 'mask_hardrain')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
