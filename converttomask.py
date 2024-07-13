@@ -66,6 +66,15 @@ def torrential(input, output):
     """Transforms the received image into a mask with a torrential rain texture."""
     apply_filter(input, output, 'stencilbw 5,111 blur_y 5', 'mask_torrential')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def rainyday(input, output):
+    """Transforms the received image into a mask with a rainy day texture."""
+    apply_filter(input, output, 'stencilbw 6,111 blur_y 3', 'mask_rainyday')
+
+
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
