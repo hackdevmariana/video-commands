@@ -80,7 +80,12 @@ def multistroke(input, output):
     """Transforms the received image into a mask with a multi stroke texture."""
     apply_filter(input, output, 'stencilbw 7,23', 'mask_multistroke')
 
-
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def horizontalmultiline(input, output):
+    """Transforms the received image into a mask with a horizontal multi line texture."""
+    apply_filter(input, output, 'stencilbw 13,144', 'mask_horizontalmultiline')
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
