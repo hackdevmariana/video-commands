@@ -101,7 +101,12 @@ def markerpen(input, output):
     """Transforms the received image into a mask with a marker pen texture."""
     apply_filter(input, output, 'stencilbw 32,4', 'mask_markerpen')
 
-
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def diffusespots(input, output):
+    """Transforms the received image into a mask with a marker pen texture."""
+    apply_filter(input, output, 'stencilbw 36,37 blur 10', 'mask_diffusespots')
 
 
 
