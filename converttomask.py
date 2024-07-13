@@ -59,6 +59,13 @@ def hardrain(input, output):
     """Transforms the received image into a mask with a hard rain texture."""
     apply_filter(input, output, 'stencilbw 2,122 blur_y 10', 'mask_hardrain')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def torrential(input, output):
+    """Transforms the received image into a mask with a torrential rain texture."""
+    apply_filter(input, output, 'stencilbw 5,111 blur_y 5', 'mask_torrential')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
