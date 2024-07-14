@@ -164,8 +164,14 @@ def pulp(input, output):
     """Transforms the received image into a mask with a pulp comic texture."""
     apply_filter(input, output, 'stencilbw 92,4', 'mask_pulp')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def machete(input, output):
+    """Transforms the received image into a mask with a series b comic texture."""
+    apply_filter(input, output, 'stencilbw 95,1', 'mask_machete')
 
-    
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
