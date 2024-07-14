@@ -115,6 +115,12 @@ def harddarkening(input, output):
     """Transforms the received image into a mask with a hard darkening texture."""
     apply_filter(input, output, 'stencilbw 41,17', 'mask_harddarkening')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def diffusedarkening(input, output):
+    """Transforms the received image into a mask with a diffuse darkening texture."""
+    apply_filter(input, output, 'stencilbw 41,17 blur 5', 'mask_diffusedarkening')
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
