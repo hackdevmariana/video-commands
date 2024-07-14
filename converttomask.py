@@ -171,6 +171,12 @@ def machete(input, output):
     """Transforms the received image into a mask with a series b comic texture."""
     apply_filter(input, output, 'stencilbw 95,1', 'mask_machete')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def grindhouse(input, output):
+    """Transforms the received image into a mask with a series b comic texture."""
+    apply_filter(input, output, 'stencilbw 106,3', 'mask_grindhouse')
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
