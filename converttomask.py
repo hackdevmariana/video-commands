@@ -178,6 +178,14 @@ def grindhouse(input, output):
     """Transforms the received image into a mask with a series b comic texture."""
     apply_filter(input, output, 'stencilbw 106,3', 'mask_grindhouse')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def imprecise(input, output):
+    """Transforms the received image into a mask with an imprecise spots texture."""
+    apply_filter(input, output, 'stencilbw 114,16', 'mask_imprecise')
+
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
