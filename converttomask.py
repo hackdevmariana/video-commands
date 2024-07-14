@@ -157,6 +157,15 @@ def doctordoom(input, output):
     """Transforms the received image into a mask with a Doctor Doom comic texture."""
     apply_filter(input, output, 'stencilbw 77,1', 'mask_doctordoom')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def pulp(input, output):
+    """Transforms the received image into a mask with a pulp comic texture."""
+    apply_filter(input, output, 'stencilbw 92,4', 'mask_pulp')
+
+
+    
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
