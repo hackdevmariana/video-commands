@@ -129,7 +129,13 @@ def oldcomic(input, output):
     """Transforms the received image into a mask with an old comic texture."""
     apply_filter(input, output, 'stencilbw 48,9', 'mask_oldcomic')
 
-    
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def portrait(input, output):
+    """Transforms the received image into a mask with a portrait texture."""
+    apply_filter(input, output, 'stencilbw 55,2', 'mask_portrait')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
