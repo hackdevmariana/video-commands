@@ -185,6 +185,12 @@ def imprecise(input, output):
     """Transforms the received image into a mask with an imprecise spots texture."""
     apply_filter(input, output, 'stencilbw 114,16', 'mask_imprecise')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def poster(input, output):
+    """Transforms the received image into a mask with an BW poster texture."""
+    apply_filter(input, output, 'tetris 94,95 luminance', 'mask_poster')
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
