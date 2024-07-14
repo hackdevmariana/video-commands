@@ -122,6 +122,14 @@ def diffusedarkening(input, output):
     """Transforms the received image into a mask with a diffuse darkening texture."""
     apply_filter(input, output, 'stencilbw 41,17 blur 5', 'mask_diffusedarkening')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def oldcomic(input, output):
+    """Transforms the received image into a mask with an old comic texture."""
+    apply_filter(input, output, 'stencilbw 48,9', 'mask_oldcomic')
+
+    
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
