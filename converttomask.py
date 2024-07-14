@@ -143,8 +143,14 @@ def punk(input, output):
     """Transforms the received image into a mask with a punk fanzine texture."""
     apply_filter(input, output, 'stencilbw 66,10', 'mask_punk')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def fanzine(input, output):
+    """Transforms the received image into a mask with a fanzine texture."""
+    apply_filter(input, output, 'stencilbw 74,0', 'mask_fanzine')
 
-    
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
