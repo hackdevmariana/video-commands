@@ -108,6 +108,12 @@ def diffusespots(input, output):
     """Transforms the received image into a mask with a marker pen texture."""
     apply_filter(input, output, 'stencilbw 36,37 blur 10', 'mask_diffusespots')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def harddarkening(input, output):
+    """Transforms the received image into a mask with a hard darkening texture."""
+    apply_filter(input, output, 'stencilbw 41,17', 'mask_harddarkening')
 
 
 if __name__ == '__main__':
