@@ -241,6 +241,13 @@ def charcoal(input, output):
     """Transforms the received image into a mask with a charcoal texture."""
     apply_filter(input, output, 'unsharp 49,104 luminance', 'mask_charcoal')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def sincitybw(input, output):
+    """Transforms the received image into a mask with a Sin City texture."""
+    apply_filter(input, output, 'unsharp 149,70 luminance', 'mask_sincitybw')
+
 
 
 if __name__ == '__main__':
