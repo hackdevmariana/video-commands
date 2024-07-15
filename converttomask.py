@@ -192,6 +192,15 @@ def poster(input, output):
     """Transforms the received image into a mask with an BW poster texture."""
     apply_filter(input, output, 'tetris 94,95 luminance', 'mask_poster')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def pixelate(input, output):
+    """Transforms the received image into a mask with an pixelate texture."""
+    apply_filter(input, output, 'tetris 18,132 luminance', 'mask_pixelate')
+
+
+    
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
