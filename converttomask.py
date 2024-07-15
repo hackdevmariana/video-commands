@@ -220,6 +220,13 @@ def plasteredwall(input, output):
     """Transforms the received image into a mask with a plastered wall texture."""
     apply_filter(input, output, 'texturize_canvas 106,4,88 fx_paper 18,60 luminance', 'mask_plasteredwall')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def coatedpaper(input, output):
+    """Transforms the received image into a mask with a coated paper texture."""
+    apply_filter(input, output, 'texturize_canvas 65,5,0 luminance', 'mask_coatedpaper')
+
 
 
 if __name__ == '__main__':
