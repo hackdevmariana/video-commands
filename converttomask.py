@@ -248,6 +248,13 @@ def sincitybw(input, output):
     """Transforms the received image into a mask with a Sin City texture."""
     apply_filter(input, output, 'unsharp 149,70 luminance', 'mask_sincitybw')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def detail(input, output):
+    """Transforms the received image into a mask with a detailed texture."""
+    apply_filter(input, output, 'unsharp 1,37 luminance', 'mask_detail')
+
 
 
 if __name__ == '__main__':
