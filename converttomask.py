@@ -262,6 +262,13 @@ def street(input, output):
     """Transforms the received image into a mask with a street portrait texture."""
     apply_filter(input, output, 'unsharp 2,103 luminance', 'mask_street')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def intensified(input, output):
+    """Transforms the received image into a mask with an intensified texture."""
+    apply_filter(input, output, 'unsharp 4,4 luminance', 'mask_street')
+
 
 
 
