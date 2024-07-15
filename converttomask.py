@@ -255,6 +255,14 @@ def detail(input, output):
     """Transforms the received image into a mask with a detailed texture."""
     apply_filter(input, output, 'unsharp 1,37 luminance', 'mask_detail')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def street(input, output):
+    """Transforms the received image into a mask with a street portrait texture."""
+    apply_filter(input, output, 'unsharp 2,103 luminance', 'mask_street')
+
+
 
 
 if __name__ == '__main__':
