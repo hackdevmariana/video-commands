@@ -199,8 +199,15 @@ def pixelate(input, output):
     """Transforms the received image into a mask with an pixelate texture."""
     apply_filter(input, output, 'tetris 18,132 luminance', 'mask_pixelate')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def tissue(input, output):
+    """Transforms the received image into a mask with a tissue texture."""
+    apply_filter(input, output, 'texturize_canvas 59,150,38 fx_paper 10,66 luminance', 'mask_tissue')
 
-    
+
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
