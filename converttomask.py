@@ -213,6 +213,13 @@ def sack(input, output):
     """Transforms the received image into a mask with a sack texture."""
     apply_filter(input, output, 'texturize_canvas 69,94,60 fx_paper 26,97 luminance', 'mask_sack')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def plasteredwall(input, output):
+    """Transforms the received image into a mask with a plastered wall texture."""
+    apply_filter(input, output, 'texturize_canvas 106,4,88 fx_paper 18,60 luminance', 'mask_plasteredwall')
+
 
 
 if __name__ == '__main__':
