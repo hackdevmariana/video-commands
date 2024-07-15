@@ -234,6 +234,13 @@ def burlap(input, output):
     """Transforms the received image into a mask with a burlap texture."""
     apply_filter(input, output, 'texturize_canvas 80,17,109 luminance', 'mask_burlap')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def charcoal(input, output):
+    """Transforms the received image into a mask with a charcoal texture."""
+    apply_filter(input, output, 'unsharp 49,104 luminance', 'mask_charcoal')
+
 
 
 if __name__ == '__main__':
