@@ -206,6 +206,13 @@ def tissue(input, output):
     """Transforms the received image into a mask with a tissue texture."""
     apply_filter(input, output, 'texturize_canvas 59,150,38 fx_paper 10,66 luminance', 'mask_tissue')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def sack(input, output):
+    """Transforms the received image into a mask with a sack texture."""
+    apply_filter(input, output, 'texturize_canvas 69,94,60 fx_paper 26,97 luminance', 'mask_sack')
+
 
 
 if __name__ == '__main__':
