@@ -227,6 +227,13 @@ def coatedpaper(input, output):
     """Transforms the received image into a mask with a coated paper texture."""
     apply_filter(input, output, 'texturize_canvas 65,5,0 luminance', 'mask_coatedpaper')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def burlap(input, output):
+    """Transforms the received image into a mask with a burlap texture."""
+    apply_filter(input, output, 'texturize_canvas 80,17,109 luminance', 'mask_burlap')
+
 
 
 if __name__ == '__main__':
