@@ -269,6 +269,12 @@ def intensified(input, output):
     """Transforms the received image into a mask with an intensified texture."""
     apply_filter(input, output, 'unsharp 4,4 luminance', 'mask_street')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def contrasted(input, output):
+    """Transforms the received image into a mask with an contrasted texture."""
+    apply_filter(input, output, 'unsharp 5,145 luminance', 'mask_contrasted')
 
 
 
