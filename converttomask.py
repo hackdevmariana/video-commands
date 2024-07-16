@@ -304,6 +304,14 @@ def irregular(input, output):
     """Transforms the received image into a mask with a irregular texture."""
     apply_filter(input, output, 'wave , fx_unsharp_richardsonlucy 8,132,74,6,96 luminance', 'mask_irregular')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def brushstroke(input, output):
+    """Transforms the received image into a mask with an brushstroke texture."""
+    apply_filter(input, output, 'wave , fx_unsharp_richardsonlucy 13,38,137,78,11 luminance', 'mask_brushstroke')
+
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
