@@ -297,6 +297,13 @@ def concentricglitch(input, output):
     """Transforms the received image into a mask with a concentric glitch texture."""
     apply_filter(input, output, 'wave , fx_unsharp_richardsonlucy 4,137,139,51,67 luminance', 'mask_concentricglitch')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def irregular(input, output):
+    """Transforms the received image into a mask with a irregular texture."""
+    apply_filter(input, output, 'wave , fx_unsharp_richardsonlucy 8,132,74,6,96 luminance', 'mask_irregular')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
