@@ -311,6 +311,12 @@ def brushstroke(input, output):
     """Transforms the received image into a mask with an brushstroke texture."""
     apply_filter(input, output, 'wave , fx_unsharp_richardsonlucy 13,38,137,78,11 luminance', 'mask_brushstroke')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def diagonaldoodle(input, output):
+    """Transforms the received image into a mask with a diagonal doodle texture."""
+    apply_filter(input, output, 'apply_gamma 1.0,2.0,0.3 fx_pencil_portraitbw 122,134,3,129,119,72,147,54 luminance', 'mask_diagonaldoodle')
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
