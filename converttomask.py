@@ -276,6 +276,12 @@ def contrasted(input, output):
     """Transforms the received image into a mask with an contrasted texture."""
     apply_filter(input, output, 'unsharp 5,145 luminance', 'mask_contrasted')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def nuanced(input, output):
+    """Transforms the received image into a mask with a nuanced contrast texture."""
+    apply_filter(input, output, 'unsharp 5,145 blur 5 luminance', 'mask_nuanced')
 
 
 if __name__ == '__main__':
