@@ -318,6 +318,13 @@ def diagonaldoodle(input, output):
     """Transforms the received image into a mask with a diagonal doodle texture."""
     apply_filter(input, output, 'apply_gamma 1.0,2.0,0.3 fx_pencil_portraitbw 122,134,3,129,119,72,147,54 luminance', 'mask_diagonaldoodle')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def microlines(input, output):
+    """Transforms the received image into a mask with a micro lines texture."""
+    apply_filter(input, output, 'apply_gamma 1.2,1.5,0.3 fx_pencil_portraitbw 18,43,5,107,103,11,108,130 luminance', 'mask_microlines')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
