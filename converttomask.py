@@ -290,6 +290,12 @@ def trembling(input, output):
     """Transforms the received image into a mask with a trembling texture."""
     apply_filter(input, output, 'wave , fx_unsharp_richardsonlucy 12,108,91,40,141 luminance', 'mask_trembling')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def concentricglitch(input, output):
+    """Transforms the received image into a mask with a concentric glitch texture."""
+    apply_filter(input, output, 'wave , fx_unsharp_richardsonlucy 4,137,139,51,67 luminance', 'mask_concentricglitch')
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
