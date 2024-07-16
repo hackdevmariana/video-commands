@@ -283,6 +283,13 @@ def nuanced(input, output):
     """Transforms the received image into a mask with a nuanced contrast texture."""
     apply_filter(input, output, 'unsharp 5,145 blur 5 luminance', 'mask_nuanced')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def trembling(input, output):
+    """Transforms the received image into a mask with a trembling texture."""
+    apply_filter(input, output, 'wave , fx_unsharp_richardsonlucy 12,108,91,40,141 luminance', 'mask_trembling')
+
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
