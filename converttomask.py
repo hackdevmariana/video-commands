@@ -367,6 +367,13 @@ def treetrunk(input, output):
     """Transforms the received image into a mask with a tree trunk texture."""
     apply_filter(input, output, 'apply_gamma 1.8,1.5,0.9 fx_pencil_portraitbw 130,88,0,52,91,107,21,57 luminance', 'mask_treetrunk')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def aquarelle(input, output):
+    """Transforms the received image into a mask with a aquarelle texture."""
+    apply_filter(input, output, 'apply_gamma 1.9,1.2,0.6 fx_pencil_portraitbw 138,98,14,120,62,13,12,147 luminance', 'mask_aquarelle')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
