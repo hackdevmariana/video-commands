@@ -360,6 +360,13 @@ def fallingstrokes(input, output):
     """Transforms the received image into a mask with a falling strokes texture."""
     apply_filter(input, output, 'apply_gamma 1.8,1.0,2.0 fx_pencil_portraitbw 113,76,4,87,54,96,121,82 luminance', 'mask_fallingstrokes')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def treetrunk(input, output):
+    """Transforms the received image into a mask with a tree trunk texture."""
+    apply_filter(input, output, 'apply_gamma 1.8,1.5,0.9 fx_pencil_portraitbw 130,88,0,52,91,107,21,57 luminance', 'mask_treetrunk')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
