@@ -325,6 +325,13 @@ def microlines(input, output):
     """Transforms the received image into a mask with a micro lines texture."""
     apply_filter(input, output, 'apply_gamma 1.2,1.5,0.3 fx_pencil_portraitbw 18,43,5,107,103,11,108,130 luminance', 'mask_microlines')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def washink(input, output):
+    """Transforms the received image into a mask with a wash ink texture."""
+    apply_filter(input, output, 'apply_gamma 1.3,0.3,0.6 fx_pencil_portraitbw 25,144,35,54,82,8,85,40 luminance', 'mask_washink')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
