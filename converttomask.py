@@ -374,6 +374,13 @@ def aquarelle(input, output):
     """Transforms the received image into a mask with a aquarelle texture."""
     apply_filter(input, output, 'apply_gamma 1.9,1.2,0.6 fx_pencil_portraitbw 138,98,14,120,62,13,12,147 luminance', 'mask_aquarelle')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def onlylight(input, output):
+    """Transforms the received image into a mask with a only light texture."""
+    apply_filter(input, output, 'apply_gamma 0.1,0.4,0.5 fx_pencil_portraitbw 7,20,26,59,26,59,113,39 luminance', 'mask_onlylight')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
