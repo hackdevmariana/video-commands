@@ -339,6 +339,13 @@ def dottedoutline(input, output):
     """Transforms the received image into a mask with a dotted outline texture."""
     apply_filter(input, output, 'apply_gamma 1.5,0.7,0.9 fx_pencil_portraitbw 6,146,7,138,125,89,118,109 luminance', 'mask_dottedoutline')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def diagonalstrokes(input, output):
+    """Transforms the received image into a mask with a diagonal strokes texture."""
+    apply_filter(input, output, 'apply_gamma 1.7,0.9,0.1 fx_pencil_portraitbw 87,139,6,59,18,66,56,89 luminance', 'mask_diagonalstrokes')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
