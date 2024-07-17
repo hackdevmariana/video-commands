@@ -332,6 +332,13 @@ def washink(input, output):
     """Transforms the received image into a mask with a wash ink texture."""
     apply_filter(input, output, 'apply_gamma 1.3,0.3,0.6 fx_pencil_portraitbw 25,144,35,54,82,8,85,40 luminance', 'mask_washink')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def dottedoutline(input, output):
+    """Transforms the received image into a mask with a dotted outline texture."""
+    apply_filter(input, output, 'apply_gamma 1.5,0.7,0.9 fx_pencil_portraitbw 6,146,7,138,125,89,118,109 luminance', 'mask_dottedoutline')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
