@@ -402,6 +402,13 @@ def hair(input, output):
     """Transforms the received image into a mask with a hair texture."""
     apply_filter(input, output, 'apply_gamma 0.4,1.7,1.8 fx_pencil_portraitbw 86,52,7,149,43,61,92,100 luminance', 'mask_hair')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def sketch(input, output):
+    """Transforms the received image into a mask with a sketch texture."""
+    apply_filter(input, output, 'apply_gamma 0.8,1.7,0.5 fx_pencil_portraitbw 43,93,7,138,52,53,133,124 luminance', 'mask_sketch')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
