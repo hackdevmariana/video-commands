@@ -353,6 +353,13 @@ def verticalstrokes(input, output):
     """Transforms the received image into a mask with a vertical strokes texture."""
     apply_filter(input, output, 'apply_gamma 1.8,0.2,1.4 fx_pencil_portraitbw 103,88,5,113,0,113,41,28 luminance', 'mask_verticalstrokes')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def fallingstrokes(input, output):
+    """Transforms the received image into a mask with a falling strokes texture."""
+    apply_filter(input, output, 'apply_gamma 1.8,1.0,2.0 fx_pencil_portraitbw 113,76,4,87,54,96,121,82 luminance', 'mask_fallingstrokes')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
