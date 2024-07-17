@@ -395,6 +395,13 @@ def waxpaint(input, output):
     """Transforms the received image into a mask with a wax paint texture."""
     apply_filter(input, output, 'apply_gamma 0.4,0.5,0.2 fx_pencil_portraitbw 38,83,26,72,108,118,50,94 luminance', 'mask_waxpaint')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def hair(input, output):
+    """Transforms the received image into a mask with a hair texture."""
+    apply_filter(input, output, 'apply_gamma 0.4,1.7,1.8 fx_pencil_portraitbw 86,52,7,149,43,61,92,100 luminance', 'mask_hair')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
