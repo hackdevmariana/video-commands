@@ -416,6 +416,13 @@ def embossed(input, output):
     """Transforms the received image into a mask with an embossed texture."""
     apply_filter(input, output, 'apply_gamma 0.5,1.3,0.9 structuretensors sqrt luminance', 'mask_embossed')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def silver(input, output):
+    """Transforms the received image into a mask with a silver texture."""
+    apply_filter(input, output, 'apply_gamma 0.5,1.9,1.1 structuretensors gt luminance', 'mask_silver')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
