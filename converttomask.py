@@ -409,6 +409,13 @@ def sketch(input, output):
     """Transforms the received image into a mask with a sketch texture."""
     apply_filter(input, output, 'apply_gamma 0.8,1.7,0.5 fx_pencil_portraitbw 43,93,7,138,52,53,133,124 luminance', 'mask_sketch')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def embossed(input, output):
+    """Transforms the received image into a mask with an embossed texture."""
+    apply_filter(input, output, 'apply_gamma 0.5,1.3,0.9 structuretensors sqrt luminance', 'mask_embossed')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
