@@ -423,6 +423,13 @@ def silver(input, output):
     """Transforms the received image into a mask with a silver texture."""
     apply_filter(input, output, 'apply_gamma 0.5,1.9,1.1 structuretensors gt luminance', 'mask_silver')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def iron(input, output):
+    """Transforms the received image into a mask with an iron texture."""
+    apply_filter(input, output, 'apply_gamma 0.6,0.9,1.8 structuretensors lt luminance', 'mask_iron')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
