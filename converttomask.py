@@ -450,6 +450,13 @@ def whiteboard(input, output):
 def diagonalscraping(input, output):
     """Transforms the received image into a mask with a diagonal scraping texture."""
     apply_filter(input, output, 'fx_pencil_portraitbw 63,122,3,142,139,93,2,124 structuretensors abs luminance', 'mask_diagonalscraping')
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def scratchedsilver(input, output):
+    """Transforms the received image into a mask with a scratched silver texture."""
+    apply_filter(input, output, 'fx_pencil_portraitbw 83,21,0,115,4,3,66,53 structuretensors bsr luminance', 'mask_scratchedsilver')
     
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
