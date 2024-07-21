@@ -465,6 +465,13 @@ def chalk(input, output):
     """Transforms the received image into a mask with a chalk texture."""
     apply_filter(input, output, 'fx_pencil_portraitbw 103,1,61,6,69,71,6,33 structuretensors mul luminance', 'mask_chalk')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def shell(input, output):
+    """Transforms the received image into a mask with a shell texture."""
+    apply_filter(input, output, 'fx_pencil_portraitbw 13,44,146,10,142,69,71,26 structuretensors sqrt luminance', 'mask_shell')
+    
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
