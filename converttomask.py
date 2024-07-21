@@ -437,6 +437,13 @@ def ironmaiden(input, output):
     """Transforms the received image into a mask with an iron maiden texture."""
     apply_filter(input, output, 'apply_gamma 0.6,1.4,0.8 structuretensors xor luminance', 'mask_ironmaiden')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def whiteboard(input, output):
+    """Transforms the received image into a mask with a whiteboard texture."""
+    apply_filter(input, output, 'fx_pencil_portraitbw 33,40,73,77,44,136 structuretensors mod luminance', 'mask_whiteboard')
+    
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
