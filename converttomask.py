@@ -485,6 +485,13 @@ def greasepencil(input, output):
 def airbrushedoutline(input, output):
     """Transforms the received image into a mask with a airbrushed outline texture."""
     apply_filter(input, output, 'blend 77 sketchbw 73,93.4', 'mask_airbrushedoutline')
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def darling(input, output):
+    """Transforms the received image into a mask with a darling texture."""
+    apply_filter(input, output, 'cracks 61,94.1,48.7,91.7,57.2 fx_pen_drawing 48.6,98,41,36 luminance', 'mask_darling')
     
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
