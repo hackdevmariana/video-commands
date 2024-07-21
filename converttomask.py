@@ -478,6 +478,13 @@ def shell(input, output):
 def greasepencil(input, output):
     """Transforms the received image into a mask with a grease pencil texture."""
     apply_filter(input, output, 'balance_gamma 65.2 sketchbw 56,11', 'mask_greasepencil')
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def airbrushedoutline(input, output):
+    """Transforms the received image into a mask with a airbrushed outline texture."""
+    apply_filter(input, output, 'blend 77 sketchbw 73,93.4', 'mask_airbrushedoutline')
     
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
