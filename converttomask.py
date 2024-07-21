@@ -443,6 +443,13 @@ def ironmaiden(input, output):
 def whiteboard(input, output):
     """Transforms the received image into a mask with a whiteboard texture."""
     apply_filter(input, output, 'fx_pencil_portraitbw 33,40,73,77,44,136 structuretensors mod luminance', 'mask_whiteboard')
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def diagonalscraping(input, output):
+    """Transforms the received image into a mask with a diagonal scraping texture."""
+    apply_filter(input, output, 'fx_pencil_portraitbw 63,122,3,142,139,93,2,124 structuretensors abs luminance', 'mask_diagonalscraping')
     
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
