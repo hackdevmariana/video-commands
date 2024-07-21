@@ -471,6 +471,13 @@ def chalk(input, output):
 def shell(input, output):
     """Transforms the received image into a mask with a shell texture."""
     apply_filter(input, output, 'fx_pencil_portraitbw 13,44,146,10,142,69,71,26 structuretensors sqrt luminance', 'mask_shell')
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def greasepencil(input, output):
+    """Transforms the received image into a mask with a grease pencil texture."""
+    apply_filter(input, output, 'balance_gamma 65.2 sketchbw 56,11', 'mask_greasepencil')
     
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
