@@ -513,6 +513,13 @@ def spectrum(input, output):
 def gosh(input, output):
     """Transforms the received image into a mask with a gosh texture."""
     apply_filter(input, output, 'cracks 112,65,88,145,100 fx_pen_drawing 131,1,114 luminance', 'mask_gosh')
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def spook(input, output):
+    """Transforms the received image into a mask with a spook texture."""
+    apply_filter(input, output, 'cracks 133,20,37,116,141 fx_pen_drawing 55,55,92 luminance', 'mask_spook')
     
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
