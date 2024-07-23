@@ -556,6 +556,13 @@ def silky(input, output):
     """Transforms the received image into a mask with a silky texture."""
     apply_filter(input, output, 'cracks 0,135,73,88,62 fx_pen_drawing 41,18,112 luminance', 'mask_silky')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def sharp(input, output):
+    """Transforms the received image into a mask with a sharp texture."""
+    apply_filter(input, output, 'cracks 4,71,112,73,50 fx_pen_drawing 7,34,28 luminance', 'mask_sharp')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
