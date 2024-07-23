@@ -563,6 +563,14 @@ def sharp(input, output):
     """Transforms the received image into a mask with a sharp texture."""
     apply_filter(input, output, 'cracks 4,71,112,73,50 fx_pen_drawing 7,34,28 luminance', 'mask_sharp')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def spider(input, output):
+    """Transforms the received image into a mask with a spider web texture."""
+    apply_filter(input, output, 'cracks 12,144,135,30,34 fx_pen_drawing 36,66,39 luminance', 'mask_spider')
+
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
