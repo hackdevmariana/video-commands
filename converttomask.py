@@ -506,6 +506,13 @@ def uniformareas(input, output):
 def spectrum(input, output):
     """Transforms the received image into a mask with a spectrum texture."""
     apply_filter(input, output, 'cracks 110,4,125,28,0 fx_pen_drawing 105,136,25 luminance', 'mask_spectrum')
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def gosh(input, output):
+    """Transforms the received image into a mask with a gosh texture."""
+    apply_filter(input, output, 'cracks 112,65,88,145,100 fx_pen_drawing 131,1,114 luminance', 'mask_gosh')
     
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
