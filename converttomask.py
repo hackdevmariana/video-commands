@@ -549,6 +549,13 @@ def bogey(input, output):
     """Transforms the received image into a mask with a bogey texture."""
     apply_filter(input, output, 'cracks 140,93,5,131,105 fx_pen_drawing 31,1,79 luminance', 'mask_bogey')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def silky(input, output):
+    """Transforms the received image into a mask with a silky texture."""
+    apply_filter(input, output, 'cracks 0,135,73,88,62 fx_pen_drawing 41,18,112 luminance', 'mask_silky')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
