@@ -570,6 +570,12 @@ def spider(input, output):
     """Transforms the received image into a mask with a spider web texture."""
     apply_filter(input, output, 'cracks 12,144,135,30,34 fx_pen_drawing 36,66,39 luminance', 'mask_spider')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def spiderweb(input, output):
+    """Transforms the received image into a mask with a spider web texture."""
+    apply_filter(input, output, 'cracks 14,37,62,42,77 fx_pen_drawing 38,79,46 luminance', 'mask_spiderweb')
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
