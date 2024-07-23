@@ -520,6 +520,13 @@ def gosh(input, output):
 def spook(input, output):
     """Transforms the received image into a mask with a spook texture."""
     apply_filter(input, output, 'cracks 133,20,37,116,141 fx_pen_drawing 55,55,92 luminance', 'mask_spook')
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def greyspook(input, output):
+    """Transforms the received image into a mask with a grey spook texture."""
+    apply_filter(input, output, 'cracks 135,33,34,116,43 fx_pen_drawing 25,68,138 luminance', 'mask_greyspook')
     
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
