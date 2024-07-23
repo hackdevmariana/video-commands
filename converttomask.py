@@ -541,7 +541,14 @@ def mild(input, output):
 def stencil(input, output):
     """Transforms the received image into a mask with a stencil texture."""
     apply_filter(input, output, 'cracks 137,113,36,123,93 fx_pen_drawing 8,31,103 luminance', 'mask_stencil')
-    
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def bogey(input, output):
+    """Transforms the received image into a mask with a bogey texture."""
+    apply_filter(input, output, 'cracks 140,93,5,131,105 fx_pen_drawing 31,1,79 luminance', 'mask_bogey')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
