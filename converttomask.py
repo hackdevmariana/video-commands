@@ -578,6 +578,13 @@ def cobweb(input, output):
     """Transforms the received image into a mask with a spider web texture."""
     apply_filter(input, output, 'cracks 15,45,21,12,43 fx_pen_drawing 147,75,111 luminance', 'mask_cobweb')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def neuronal(input, output):
+    """Transforms the received image into a mask with a neuronal texture."""
+    apply_filter(input, output, 'cracks 29,123,78,123,66 fx_pen_drawing 134,2,61 luminance', 'mask_neuronal')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
