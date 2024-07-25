@@ -606,6 +606,13 @@ def slippery(input, output):
     """Transforms the received image into a mask with a slippery texture."""
     apply_filter(input, output, 'cracks 48,105,81,34,45 fx_pen_drawing 150,14,138 luminance', 'mask_slippery')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def splashes(input, output):
+    """Transforms the received image into a mask with a splashes texture."""
+    apply_filter(input, output, 'cracks 49,141,18,43,111 fx_pen_drawing 114,130,4 luminance', 'mask_splashes')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
