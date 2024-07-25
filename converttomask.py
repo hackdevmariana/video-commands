@@ -620,6 +620,13 @@ def dripping(input, output):
     """Transforms the received image into a mask with a dripping texture."""
     apply_filter(input, output, 'cracks 50,93,3,54,139 fx_pen_drawing 66,147,82 luminance', 'mask_dripping')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def scratches(input, output):
+    """Transforms the received image into a mask with a scratches texture."""
+    apply_filter(input, output, 'cracks 63,58,13,141,81 fx_pen_drawing 33,23,85 luminance', 'mask_scratches')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
