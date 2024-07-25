@@ -641,6 +641,13 @@ def dottedgray(input, output):
     """Transforms the received image into a mask with a dotted gray texture."""
     apply_filter(input, output, 'cracks 77,9,143,74,81 fx_pen_drawing 142,46,148 luminance', 'mask_dottedgray')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def diffuseoutline(input, output):
+    """Transforms the received image into a mask with a diffuse outline texture."""
+    apply_filter(input, output, 'dog 33,24,93,150,20,11 whirls 55,100,72,85,70,10,6,119,121 luminance', 'mask_diffuseoutline')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
