@@ -634,6 +634,13 @@ def stenciled(input, output):
     """Transforms the received image into a mask with a stenciled texture."""
     apply_filter(input, output, 'cracks 74,103,88,41,145 fx_pen_drawing 38,27,112 luminance', 'mask_stenciled')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def dottedgray(input, output):
+    """Transforms the received image into a mask with a dotted gray texture."""
+    apply_filter(input, output, 'cracks 77,9,143,74,81 fx_pen_drawing 142,46,148 luminance', 'mask_dottedgray')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
