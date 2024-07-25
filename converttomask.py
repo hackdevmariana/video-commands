@@ -585,6 +585,13 @@ def neuronal(input, output):
     """Transforms the received image into a mask with a neuronal texture."""
     apply_filter(input, output, 'cracks 29,123,78,123,66 fx_pen_drawing 134,2,61 luminance', 'mask_neuronal')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def scrapedcoating(input, output):
+    """Transforms the received image into a mask with a scraped coating texture."""
+    apply_filter(input, output, 'cracks 35,5,129,127,22 fx_pen_drawing 117,70,75 luminance', 'mask_scrapedcoating')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
