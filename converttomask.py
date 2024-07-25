@@ -409,20 +409,10 @@ def sketch(input, output):
     """Transforms the received image into a mask with a sketch texture."""
     apply_filter(input, output, 'apply_gamma 0.8,1.7,0.5 fx_pencil_portraitbw 43,93,7,138,52,53,133,124 luminance', 'mask_sketch')
 
-<<<<<<< HEAD
-@cli.command()
-@click.argument('input', type=click.Path(exists=True))
-@click.option('--output', '-o', default='', help='Output file path')
-def embossed(input, output):
-    """Transforms the received image into a mask with an embossed texture."""
-    apply_filter(input, output, 'apply_gamma 0.5,1.3,0.9 structuretensors sqrt luminance', 'mask_embossed')
-=======
->>>>>>> 79617c8 (Add the cobweb subcommand to the converttomask.py command.)
 
 @cli.command()
 @click.argument('input', type=click.Path(exists=True))
 @click.option('--output', '-o', default='', help='Output file path')
-<<<<<<< HEAD
 def silver(input, output):
     """Transforms the received image into a mask with a silver texture."""
     apply_filter(input, output, 'apply_gamma 0.5,1.9,1.1 structuretensors gt luminance', 'mask_silver')
@@ -580,11 +570,13 @@ def spider(input, output):
 def spiderweb(input, output):
     """Transforms the received image into a mask with a spider web texture."""
     apply_filter(input, output, 'cracks 14,37,62,42,77 fx_pen_drawing 38,79,46 luminance', 'mask_spiderweb')
-=======
+
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
 def cobweb(input, output):
     """Transforms the received image into a mask with a spider web texture."""
     apply_filter(input, output, 'cracks 15,45,21,12,43 fx_pen_drawing 147,75,111 luminance', 'mask_cobweb')
->>>>>>> 79617c8 (Add the cobweb subcommand to the converttomask.py command.)
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
