@@ -592,6 +592,13 @@ def scrapedcoating(input, output):
     """Transforms the received image into a mask with a scraped coating texture."""
     apply_filter(input, output, 'cracks 35,5,129,127,22 fx_pen_drawing 117,70,75 luminance', 'mask_scrapedcoating')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def granite(input, output):
+    """Transforms the received image into a mask with a granite texture."""
+    apply_filter(input, output, 'cracks 35,76,118,94,134 fx_pen_drawing 87,84,36 luminance', 'mask_granite')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
