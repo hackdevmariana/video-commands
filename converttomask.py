@@ -697,6 +697,13 @@ def contourandwaves(input, output):
     """Transforms the received image into a mask with contour and waves texture."""
     apply_filter(input, output, 'dog 55,58,47,147,79,90 whirls 5,12,0,47,93,103,137,57,63 luminance', 'mask_contourandwaves')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def darkoutline(input, output):
+    """Transforms the received image into a mask with a dark image and black outline."""
+    apply_filter(input, output, 'dog 56,18,63 luminance', 'mask_darkoutline')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
