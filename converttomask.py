@@ -648,6 +648,13 @@ def diffuseoutline(input, output):
     """Transforms the received image into a mask with a diffuse outline texture."""
     apply_filter(input, output, 'dog 33,24,93,150,20,11 whirls 55,100,72,85,70,10,6,119,121 luminance', 'mask_diffuseoutline')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def blurredoutline(input, output):
+    """Transforms the received image into a mask with a blurred outline texture."""
+    apply_filter(input, output, 'dog 39,29,91,108,110,108 whirls 17,52,18,50,147,9,101,140,126 luminance', 'mask_blurredoutline')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
