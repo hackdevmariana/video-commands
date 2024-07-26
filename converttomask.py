@@ -711,6 +711,14 @@ def gaussianoutline(input, output):
     """Transforms the received image into a mask with a dark image and black outline."""
     apply_filter(input, output, 'dog 117,2,49 luminance', 'mask_gaussianoutline')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def darksilhouette(input, output):
+    """Transforms the received image into a mask with a dark image with silhouette and black outline."""
+    apply_filter(input, output, 'dog 64,22,32 luminance', 'mask_darksilhouette')
+
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
