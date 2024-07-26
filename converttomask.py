@@ -669,6 +669,13 @@ def spray(input, output):
     """Transforms the received image into a mask with a spray outline texture."""
     apply_filter(input, output, 'dog 43,33,121,69,118,58 whirls 15,145,0,10,74,129,84,41,132 luminance', 'mask_sprayutline')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def contrastedgaussian(input, output):
+    """Transforms the received image into a mask with a contrasted gaussian outline texture."""
+    apply_filter(input, output, 'dog 43,49,17,28,147,113 whirls 87,77,108,15,3,26,134,80,42 luminance', 'mask_contrastedgaussian')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
