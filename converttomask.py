@@ -676,6 +676,13 @@ def contrastedgaussian(input, output):
     """Transforms the received image into a mask with a contrasted gaussian outline texture."""
     apply_filter(input, output, 'dog 43,49,17,28,147,113 whirls 87,77,108,15,3,26,134,80,42 luminance', 'mask_contrastedgaussian')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def barbwire(input, output):
+    """Transforms the received image into a mask with a barbwire outline texture."""
+    apply_filter(input, output, 'dog 47,118,119,111,108,1 whirls 71,16,2,63,76,74,57,113,104 luminance', 'mask_barbwire')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
