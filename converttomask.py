@@ -690,6 +690,13 @@ def waterylines(input, output):
     """Transforms the received image into a mask with a watery lines texture."""
     apply_filter(input, output, 'dog 53,46,53,66,147,48 whirls 89,62,8,92,58,78,85,19,13 luminance', 'mask_waterylines')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def contourandwaves(input, output):
+    """Transforms the received image into a mask with contour and waves texture."""
+    apply_filter(input, output, 'dog 55,58,47,147,79,90 whirls 5,12,0,47,93,103,137,57,63 luminance', 'mask_contourandwaves')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
