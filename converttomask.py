@@ -683,6 +683,13 @@ def barbwire(input, output):
     """Transforms the received image into a mask with a barbwire outline texture."""
     apply_filter(input, output, 'dog 47,118,119,111,108,1 whirls 71,16,2,63,76,74,57,113,104 luminance', 'mask_barbwire')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def waterylines(input, output):
+    """Transforms the received image into a mask with a watery lines texture."""
+    apply_filter(input, output, 'dog 53,46,53,66,147,48 whirls 89,62,8,92,58,78,85,19,13 luminance', 'mask_waterylines')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
