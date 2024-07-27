@@ -788,6 +788,13 @@ def burned(input, output):
     """Transforms the received image into a mask with burned texture."""
     apply_filter(input, output, 'unsharp 36,17,9 luminance', 'mask_burned')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def excesslight(input, output):
+    """Transforms the received image into a mask with excess light texture."""
+    apply_filter(input, output, 'unsharp 73,55,91 luminance', 'mask_excesslight')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
