@@ -809,6 +809,13 @@ def glitchwave(input, output):
     """Transforms the received image into a mask with glitch wave texture."""
     apply_filter(input, output, 'wave 14,1,33,81,20 luminance', 'mask_glitchwave')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def overflow(input, output):
+    """Transforms the received image into a mask with overflow outline texture."""
+    apply_filter(input, output, 'fx_sponge 37,24,3 fx_unsharp_richardsonlucy 20,2,14,3,46 luminance', 'mask_overflow')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
