@@ -795,6 +795,13 @@ def excesslight(input, output):
     """Transforms the received image into a mask with excess light texture."""
     apply_filter(input, output, 'unsharp 73,55,91 luminance', 'mask_excesslight')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def oldfanzine(input, output):
+    """Transforms the received image into a mask with old fanzine texture."""
+    apply_filter(input, output, 'unsharp 126,107,4 luminance', 'mask_oldfanzine')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
