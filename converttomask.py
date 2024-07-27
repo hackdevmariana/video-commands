@@ -802,6 +802,13 @@ def oldfanzine(input, output):
     """Transforms the received image into a mask with old fanzine texture."""
     apply_filter(input, output, 'unsharp 126,107,4 luminance', 'mask_oldfanzine')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def glitchwave(input, output):
+    """Transforms the received image into a mask with glitch wave texture."""
+    apply_filter(input, output, 'wave 14,1,33,81,20 luminance', 'mask_glitchwave')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
