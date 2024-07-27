@@ -781,6 +781,13 @@ def sparkles(input, output):
     """Transforms the received image into a mask with sparkles texture."""
     apply_filter(input, output, 'unsharp 6,52,33 blur 2 luminance', 'mask_sparkles')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def burned(input, output):
+    """Transforms the received image into a mask with burned texture."""
+    apply_filter(input, output, 'unsharp 36,17,9 luminance', 'mask_burned')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
