@@ -767,6 +767,13 @@ def paperandcharcoal(input, output):
     """Transforms the received image into a mask with paper and charcoal texture."""
     apply_filter(input, output, 'dog 9,103,145,12,132,33 whirls 125,71,1,2,42,3,131,18,85 luminance', 'mask_paperandcharcoal')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def carvedtrunk(input, output):
+    """Transforms the received image into a mask with carved trunk texture."""
+    apply_filter(input, output, 'stencil 2,141,31,59,23 drawing , luminance', 'mask_carvedtrunk')
+
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
