@@ -753,6 +753,13 @@ def densespiderweb(input, output):
     """Transforms the received image into a mask with dense spider web texture."""
     apply_filter(input, output, 'cracks 27,146,5,71,67 fx_pen_drawing 65,59,89 luminance', 'mask_densespiderweb')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def eyeline(input, output):
+    """Transforms the received image into a mask with a dark image with eyeline outline texture."""
+    apply_filter(input, output, 'dog 3,89,50 luminance', 'mask_eyeline')
+
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
