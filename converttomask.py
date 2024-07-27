@@ -746,6 +746,13 @@ def sketchedoutline(input, output):
     """Transforms the received image into a mask with sketched outline texture."""
     apply_filter(input, output, 'dog 108,4,44,105,56,69 whirls 52,134,80,57,74,38,54,67,45 luminance', 'mask_sketchedoutline')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def densespiderweb(input, output):
+    """Transforms the received image into a mask with dense spider web texture."""
+    apply_filter(input, output, 'cracks 27,146,5,71,67 fx_pen_drawing 65,59,89 luminance', 'mask_densespiderweb')
+
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
