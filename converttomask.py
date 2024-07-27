@@ -760,6 +760,13 @@ def eyeline(input, output):
     """Transforms the received image into a mask with a dark image with eyeline outline texture."""
     apply_filter(input, output, 'dog 3,89,50 luminance', 'mask_eyeline')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def paperandcharcoal(input, output):
+    """Transforms the received image into a mask with paper and charcoal texture."""
+    apply_filter(input, output, 'dog 9,103,145,12,132,33 whirls 125,71,1,2,42,3,131,18,85 luminance', 'mask_paperandcharcoal')
+
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
