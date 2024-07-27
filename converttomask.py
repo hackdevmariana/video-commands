@@ -774,6 +774,12 @@ def carvedtrunk(input, output):
     """Transforms the received image into a mask with carved trunk texture."""
     apply_filter(input, output, 'stencil 2,141,31,59,23 drawing , luminance', 'mask_carvedtrunk')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def sparkles(input, output):
+    """Transforms the received image into a mask with sparkles texture."""
+    apply_filter(input, output, 'unsharp 6,52,33 blur 2 luminance', 'mask_sparkles')
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
