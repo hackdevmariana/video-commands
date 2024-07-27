@@ -739,6 +739,13 @@ def gaussianshapes(input, output):
     """Transforms the received image into a mask with a dark image with shapes and black outline."""
     apply_filter(input, output, 'dog 97,10,86 luminance', 'mask_gaussianshapes')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def sketchedoutline(input, output):
+    """Transforms the received image into a mask with sketched outline texture."""
+    apply_filter(input, output, 'dog 108,4,44,105,56,69 whirls 52,134,80,57,74,38,54,67,45 luminance', 'mask_sketchedoutline')
+
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
