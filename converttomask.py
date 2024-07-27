@@ -732,6 +732,13 @@ def darkshapes(input, output):
     """Transforms the received image into a mask with a dark image with shapes and black outline."""
     apply_filter(input, output, 'dog 95,16,73 luminance', 'mask_darkshapes')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def gaussianshapes(input, output):
+    """Transforms the received image into a mask with a dark image with shapes and black outline."""
+    apply_filter(input, output, 'dog 97,10,86 luminance', 'mask_gaussianshapes')
+
 
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
