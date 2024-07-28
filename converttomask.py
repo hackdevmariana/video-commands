@@ -900,6 +900,13 @@ def cleardetails(input, output):
     """Transforms the received image into a mask with a clear details texture."""
     apply_filter(input, output, 'fx_deblur 148,101,63,9,121,28,57,40,88 drawing , luminance', 'mask_cleardetails')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def graylava(input, output):
+    """Transforms the received image into a mask with a gray lava texture."""
+    apply_filter(input, output, 'fx_lava 9,30,145,30,55,96,29,102,4 drawing , luminance', 'mask_graylava')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
