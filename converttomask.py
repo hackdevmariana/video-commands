@@ -907,6 +907,13 @@ def graylava(input, output):
     """Transforms the received image into a mask with a gray lava texture."""
     apply_filter(input, output, 'fx_lava 9,30,145,30,55,96,29,102,4 drawing , luminance', 'mask_graylava')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def graybrushstrokes(input, output):
+    """Transforms the received image into a mask with a gray brush strokes texture."""
+    apply_filter(input, output, 'fx_lava 9,30,145,30,55,96,29,102,4 luminance', 'mask_graybrushstrokes')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
