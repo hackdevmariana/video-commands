@@ -865,6 +865,13 @@ def flattened(input, output):
     """Transforms the received image into a mask with a flattened texture."""
     apply_filter(input, output, 'fx_deblur 148,101,63,9,121,25,57,40,88 luminance', 'mask_flattened')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def waxedoutline(input, output):
+    """Transforms the received image into a mask with a waxed outline texture."""
+    apply_filter(input, output, 'fx_deblur 16,69,128,95,123,29,109,88,1 drawing , luminance', 'mask_waxedoutline')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
