@@ -816,6 +816,13 @@ def overflow(input, output):
     """Transforms the received image into a mask with overflow outline texture."""
     apply_filter(input, output, 'fx_sponge 37,24,3 fx_unsharp_richardsonlucy 20,2,14,3,46 luminance', 'mask_overflow')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def stainededges(input, output):
+    """Transforms the received image into a mask with stained edges texture."""
+    apply_filter(input, output, 'fx_sponge 41,20,5 fx_unsharp_richardsonlucy 6,43,43,20,12 luminance', 'mask_stainededges')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
