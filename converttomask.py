@@ -844,6 +844,13 @@ def drawnraccoon(input, output):
     """Transforms the received image into a mask with a drawn raccoon texture."""
     apply_filter(input, output, 'fx_vector_painting 9 drawing , luminance', 'mask_drawnraccoon')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def darkendetails(input, output):
+    """Transforms the received image into a mask with a darken details texture."""
+    apply_filter(input, output, 'fx_deblur 20,70,144,75,150,25,126,69,2 luminance', 'mask_darkendetails')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
