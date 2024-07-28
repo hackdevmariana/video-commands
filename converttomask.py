@@ -830,6 +830,13 @@ def contrastededges(input, output):
     """Transforms the received image into a mask with contrasted edges texture."""
     apply_filter(input, output, 'fx_sponge 5,21,22 fx_unsharp_richardsonlucy 10,28,22,37,50 luminance', 'mask_contrastededges')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def raccoon(input, output):
+    """Transforms the received image into a mask with a raccoon texture."""
+    apply_filter(input, output, 'fx_vector_painting 9 luminance', 'mask_raccoon')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
