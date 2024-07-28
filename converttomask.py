@@ -858,6 +858,13 @@ def spectruminblack(input, output):
     """Transforms the received image into a mask with a spectrum in black texture."""
     apply_filter(input, output, 'fx_deblur 76,131,67,8,2,13,130,70,144,137,99 luminance', 'mask_spectruminblack')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def flattened(input, output):
+    """Transforms the received image into a mask with a flattened texture."""
+    apply_filter(input, output, 'fx_deblur 148,101,63,9,121,25,57,40,88 luminance', 'mask_flattened')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
