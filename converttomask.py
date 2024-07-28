@@ -851,6 +851,13 @@ def darkendetails(input, output):
     """Transforms the received image into a mask with a darken details texture."""
     apply_filter(input, output, 'fx_deblur 20,70,144,75,150,25,126,69,2 luminance', 'mask_darkendetails')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def spectruminblack(input, output):
+    """Transforms the received image into a mask with a spectrum in black texture."""
+    apply_filter(input, output, 'fx_deblur 76,131,67,8,2,13,130,70,144,137,99 luminance', 'mask_spectruminblack')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
