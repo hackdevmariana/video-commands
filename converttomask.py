@@ -893,6 +893,13 @@ def hazywax(input, output):
     """Transforms the received image into a mask with a hazy wax texture."""
     apply_filter(input, output, 'fx_deblur 129,105,79,6,82,17,7,69,80 drawing , luminance', 'mask_hazywax')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def cleardetails(input, output):
+    """Transforms the received image into a mask with a clear details texture."""
+    apply_filter(input, output, 'fx_deblur 148,101,63,9,121,28,57,40,88 drawing , luminance', 'mask_cleardetails')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
