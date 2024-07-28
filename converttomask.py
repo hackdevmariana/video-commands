@@ -872,6 +872,13 @@ def waxedoutline(input, output):
     """Transforms the received image into a mask with a waxed outline texture."""
     apply_filter(input, output, 'fx_deblur 16,69,128,95,123,29,109,88,1 drawing , luminance', 'mask_waxedoutline')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def waxedcontrast(input, output):
+    """Transforms the received image into a mask with a waxed contrast texture."""
+    apply_filter(input, output, 'fx_deblur 20,70,144,75,150,25,126,69,2 drawing , luminance', 'mask_waxedcontrast')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
