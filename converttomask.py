@@ -935,6 +935,13 @@ def inkbrushstrokes(input, output):
     """Transforms the received image into a mask with a ink brush strokes texture."""
     apply_filter(input, output, 'fx_painting 18,6,24 drawing , luminance', 'mask_inkbrushstrokes')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def childish(input, output):
+    """Transforms the received image into a mask with a childish texture."""
+    apply_filter(input, output, 'fx_painting 53,5,61 drawing , luminance', 'mask_childish')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
