@@ -970,6 +970,13 @@ def catrina(input, output):
     """Transforms the received image into a mask with a catrina skull texture."""
     apply_filter(input, output, 'fx_painting 126,3,21 drawing , luminance', 'mask_catrina')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def skull(input, output):
+    """Transforms the received image into a mask with a skull texture."""
+    apply_filter(input, output, 'fx_painting 130,2,88 drawing , luminance', 'mask_skull')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
