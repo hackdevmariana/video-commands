@@ -984,6 +984,13 @@ def enhancemedia(input, output):
     """Transforms the received image into a mask with a enhance the media texture."""
     apply_filter(input, output, 'fx_whirls 9,94,67,83,36,55,76,132,55,35 luminance', 'mask_enhancemedia')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def gothic(input, output):
+    """Transforms the received image into a mask with a gothic texture."""
+    apply_filter(input, output, 'fx_whirls 13,90,4,4,20,12,144,76,71,51 luminance', 'mask_gothic')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
