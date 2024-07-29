@@ -991,6 +991,13 @@ def gothic(input, output):
     """Transforms the received image into a mask with a gothic texture."""
     apply_filter(input, output, 'fx_whirls 13,90,4,4,20,12,144,76,71,51 luminance', 'mask_gothic')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def offoutline(input, output):
+    """Transforms the received image into a mask with contours and muted colors texture."""
+    apply_filter(input, output, 'fx_whirls 16,15,106,23,12,96,132,123,96,76 luminance', 'mask_offoutline')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
