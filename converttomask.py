@@ -949,6 +949,13 @@ def tracer(input, output):
     """Transforms the received image into a mask with a tracer texture."""
     apply_filter(input, output, 'fx_painting 78,0,36 drawing , luminance', 'mask_tracer')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def alice(input, output):
+    """Transforms the received image into a mask with a Alice in wonderland texture."""
+    apply_filter(input, output, 'fx_painting 95,19,124,61,112,78 fx_lava 11,103,95,104,73,101,137,91,83 drawing , luminance', 'mask_alice')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
