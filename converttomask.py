@@ -977,6 +977,13 @@ def skull(input, output):
     """Transforms the received image into a mask with a skull texture."""
     apply_filter(input, output, 'fx_painting 130,2,88 drawing , luminance', 'mask_skull')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def enhancemedia(input, output):
+    """Transforms the received image into a mask with a enhance the media texture."""
+    apply_filter(input, output, 'fx_whirls 9,94,67,83,36,55,76,132,55,35 luminance', 'mask_enhancemedia')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
