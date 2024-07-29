@@ -928,6 +928,13 @@ def scraper(input, output):
     """Transforms the received image into a mask with a scraped wall texture."""
     apply_filter(input, output, 'fx_lava 11,100,54,54,130,6,19,31,35 luminance', 'mask_scraper')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def inkbrushstrokes(input, output):
+    """Transforms the received image into a mask with a ink brush strokes texture."""
+    apply_filter(input, output, 'fx_painting 18,6,24 drawing , luminance', 'mask_inkbrushstrokes')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
