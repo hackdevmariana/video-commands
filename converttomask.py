@@ -963,6 +963,13 @@ def indelible(input, output):
     """Transforms the received image into a mask with a indelible marker texture."""
     apply_filter(input, output, 'fx_painting 104,1,15 drawing , luminance', 'mask_indelible')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def catrina(input, output):
+    """Transforms the received image into a mask with a catrina skull texture."""
+    apply_filter(input, output, 'fx_painting 126,3,21 drawing , luminance', 'mask_catrina')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
