@@ -921,6 +921,13 @@ def leopard(input, output):
     """Transforms the received image into a mask with a leopard spots texture."""
     apply_filter(input, output, 'fx_lava 11,100,54,54,130,6,19,31,35 drawing , luminance', 'mask_leopard')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def scraper(input, output):
+    """Transforms the received image into a mask with a scraped wall texture."""
+    apply_filter(input, output, 'fx_lava 11,100,54,54,130,6,19,31,35 luminance', 'mask_scraper')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
