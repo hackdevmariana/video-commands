@@ -1068,6 +1068,13 @@ def cave(input, output):
     """Transforms the received image into a mask with a cave picture texture."""
     apply_filter(input, output, 'pencilbw 48,133,75,129 unsharp 21,31 drawing , luminance', 'mask_cave')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def bullfighting(input, output):
+    """Transforms the received image into a mask with a bullfighting poster texture."""
+    apply_filter(input, output, 'normalize_local 35,3 drawing , luminance', 'mask_bullfighting')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
