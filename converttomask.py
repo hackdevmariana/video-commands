@@ -1005,6 +1005,13 @@ def graypencil(input, output):
     """Transforms the received image into a mask with a gray pencil texture."""
     apply_filter(input, output, 'fx_whirls 93,55,60,104,9,28,16,4,107,51 luminance', 'mask_graypencil')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def wornmarker(input, output):
+    """Transforms the received image into a mask with a worn marker texture."""
+    apply_filter(input, output, 'fx_whirls 83,15,150,43,25,119,106,105,124,106 luminance', 'mask_wornmarker')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
