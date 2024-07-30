@@ -1012,6 +1012,13 @@ def wornmarker(input, output):
     """Transforms the received image into a mask with a worn marker texture."""
     apply_filter(input, output, 'fx_whirls 83,15,150,43,25,119,106,105,124,106 luminance', 'mask_wornmarker')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def strongcontrast(input, output):
+    """Transforms the received image into a mask with a strong contrast texture."""
+    apply_filter(input, output, 'fx_whirls 81,80,69,141,8,2,96,83,120,124 luminance', 'mask_strongcontrast')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
