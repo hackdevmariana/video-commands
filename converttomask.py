@@ -1082,6 +1082,13 @@ def batman(input, output):
     """Transforms the received image into a mask with a Batman comic texture."""
     apply_filter(input, output, 'normalize_local 39,26 drawing , luminance', 'mask_batman')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def cape(input, output):
+    """Transforms the received image into a mask with a Batman comic texture."""
+    apply_filter(input, output, 'normalize_local 43,12 drawing , luminance', 'mask_cape')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
