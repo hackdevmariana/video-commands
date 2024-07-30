@@ -1047,6 +1047,13 @@ def gothan(input, output):
     """Transforms the received image into a mask with a Gothan texture."""
     apply_filter(input, output, 'fx_painting 150,1,109 drawing , luminance', 'mask_gothan')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def multilineripple(input, output):
+    """Transforms the received image into a mask with a multiline ripple texture."""
+    apply_filter(input, output, 'pencilbw 41,12,50 fx_freaky_details 133,22,105,5,73,127,22,64,75 drawing , luminance', 'mask_multilineripple')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
