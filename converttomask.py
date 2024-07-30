@@ -1033,6 +1033,13 @@ def loosesketch(input, output):
     """Transforms the received image into a mask with a loose sketch texture."""
     apply_filter(input, output, 'fx_whirls 35,99,110,143,26,148,12,46,17,13 luminance', 'mask_loosesketch')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def geometricsketch(input, output):
+    """Transforms the received image into a mask with a geometric sketch texture."""
+    apply_filter(input, output, 'fx_whirls 13,90,4,4,20,12,144,76,71,51 luminance', 'mask_geometricsketch')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
