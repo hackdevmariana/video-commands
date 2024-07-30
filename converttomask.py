@@ -1040,6 +1040,13 @@ def geometricsketch(input, output):
     """Transforms the received image into a mask with a geometric sketch texture."""
     apply_filter(input, output, 'fx_whirls 13,90,4,4,20,12,144,76,71,51 luminance', 'mask_geometricsketch')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def gothan(input, output):
+    """Transforms the received image into a mask with a Gothan texture."""
+    apply_filter(input, output, 'fx_painting 150,1,109 drawing , luminance', 'mask_gothan')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
