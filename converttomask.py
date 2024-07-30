@@ -1019,6 +1019,13 @@ def strongcontrast(input, output):
     """Transforms the received image into a mask with a strong contrast texture."""
     apply_filter(input, output, 'fx_whirls 81,80,69,141,8,2,96,83,120,124 luminance', 'mask_strongcontrast')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def onlymidtones(input, output):
+    """Transforms the received image into a mask with a texture with only midtones."""
+    apply_filter(input, output, 'fx_whirls 51,79,101,28,36,49,85,31,87,118 luminance', 'mask_onlymidtones')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
