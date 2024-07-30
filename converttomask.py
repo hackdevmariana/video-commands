@@ -1061,6 +1061,13 @@ def predator(input, output):
     """Transforms the received image into a mask with a predator hair texture."""
     apply_filter(input, output, 'pencilbw 45,4,7 fx_freaky_details 10,13,91,25,83,145,142,37,95 drawing , luminance', 'mask_predator')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def cave(input, output):
+    """Transforms the received image into a mask with a cave picture texture."""
+    apply_filter(input, output, 'pencilbw 48,133,75,129 unsharp 21,31 drawing , luminance', 'mask_cave')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
