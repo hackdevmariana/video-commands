@@ -998,6 +998,13 @@ def offoutline(input, output):
     """Transforms the received image into a mask with contours and muted colors texture."""
     apply_filter(input, output, 'fx_whirls 16,15,106,23,12,96,132,123,96,76 luminance', 'mask_offoutline')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def graypencil(input, output):
+    """Transforms the received image into a mask with a gray pencil texture."""
+    apply_filter(input, output, 'fx_whirls 93,55,60,104,9,28,16,4,107,51 luminance', 'mask_graypencil')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
