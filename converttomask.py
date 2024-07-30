@@ -1026,6 +1026,13 @@ def onlymidtones(input, output):
     """Transforms the received image into a mask with a texture with only midtones."""
     apply_filter(input, output, 'fx_whirls 51,79,101,28,36,49,85,31,87,118 luminance', 'mask_onlymidtones')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def loosesketch(input, output):
+    """Transforms the received image into a mask with a loose sketch texture."""
+    apply_filter(input, output, 'fx_whirls 35,99,110,143,26,148,12,46,17,13 luminance', 'mask_loosesketch')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
