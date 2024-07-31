@@ -1152,6 +1152,13 @@ def diffuseshapes(input, output):
     """Transforms the received image into a mask with a diffuse shapes texture."""
     apply_filter(input, output, 'pencilbw 24,87,33,65 unsharp 69,10 drawing , luminance', 'mask_diffuseshapes')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def outlineongray(input, output):
+    """Transforms the received image into a mask with a outline on gray texture."""
+    apply_filter(input, output, 'pencilbw 31,5,48 dog 150,0,13,66,59,84 drawing , luminance', 'mask_outlineongray')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
