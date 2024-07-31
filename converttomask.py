@@ -1159,6 +1159,13 @@ def outlineongray(input, output):
     """Transforms the received image into a mask with a outline on gray texture."""
     apply_filter(input, output, 'pencilbw 31,5,48 dog 150,0,13,66,59,84 drawing , luminance', 'mask_outlineongray')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def embossedtiles(input, output):
+    """Transforms the received image into a mask with a embossed tiles texture."""
+    apply_filter(input, output, 'pencilbw 31,145,45 fx_freaky_details 57,122,64,13,15,92,49,1,101 drawing , luminance', 'mask_embossedtiles')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
