@@ -1145,6 +1145,13 @@ def maritime(input, output):
     """Transforms the received image into a mask with a maritime texture."""
     apply_filter(input, output, 'pencilbw 21,93,93 fx_freaky_details 39,20,139,8,128,133,141,133,111 drawing , luminance', 'mask_maritime')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def diffuseshapes(input, output):
+    """Transforms the received image into a mask with a diffuse shapes texture."""
+    apply_filter(input, output, 'pencilbw 24,87,33,65 unsharp 69,10 drawing , luminance', 'mask_diffuseshapes')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
