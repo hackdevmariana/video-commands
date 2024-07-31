@@ -1103,6 +1103,13 @@ def chiaroscuro(input, output):
     """Transforms the received image into a mask with a chiaroscuro texture."""
     apply_filter(input, output, 'normalize_local 92,11 drawing , luminance', 'mask_chiaroscuro')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def barbecue(input, output):
+    """Transforms the received image into a mask with a barbecue texture."""
+    apply_filter(input, output, 'pencilbw 2,118,121,79 unsharp 80,76 drawing , luminance', 'mask_barbecue')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
