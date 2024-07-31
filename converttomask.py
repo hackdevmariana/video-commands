@@ -1166,6 +1166,13 @@ def embossedtiles(input, output):
     """Transforms the received image into a mask with a embossed tiles texture."""
     apply_filter(input, output, 'pencilbw 31,145,45 fx_freaky_details 57,122,64,13,15,92,49,1,101 drawing , luminance', 'mask_embossedtiles')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def stainedtiles(input, output):
+    """Transforms the received image into a mask with a stained tiles texture."""
+    apply_filter(input, output, 'pencilbw 36,41,70 fx_freaky_details 19,25,52,34,91,10,146,30,87 drawing , luminance', 'mask_stainedtiles')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
