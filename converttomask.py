@@ -1117,6 +1117,13 @@ def watercolor(input, output):
     """Transforms the received image into a mask with a watercolor texture."""
     apply_filter(input, output, 'pencilbw 10,13,91,25 unsharp 45,4 drawing , luminance', 'mask_watercolor')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def rorschach(input, output):
+    """Transforms the received image into a mask with a Rorschach test texture."""
+    apply_filter(input, output, 'pencilbw 10,111,73,137 unsharp 22,94 drawing , luminance', 'mask_rorschach')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
