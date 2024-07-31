@@ -1124,6 +1124,13 @@ def rorschach(input, output):
     """Transforms the received image into a mask with a Rorschach test texture."""
     apply_filter(input, output, 'pencilbw 10,111,73,137 unsharp 22,94 drawing , luminance', 'mask_rorschach')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def aura(input, output):
+    """Transforms the received image into a mask with a aura texture."""
+    apply_filter(input, output, 'pencilbw 15,65 drawing , luminance', 'mask_aura')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
