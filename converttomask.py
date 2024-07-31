@@ -1131,6 +1131,13 @@ def aura(input, output):
     """Transforms the received image into a mask with a aura texture."""
     apply_filter(input, output, 'pencilbw 15,65 drawing , luminance', 'mask_aura')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def grates(input, output):
+    """Transforms the received image into a mask with a grates texture."""
+    apply_filter(input, output, 'pencilbw 17,99 drawing , luminance', 'mask_grates')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
