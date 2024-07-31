@@ -1110,6 +1110,13 @@ def barbecue(input, output):
     """Transforms the received image into a mask with a barbecue texture."""
     apply_filter(input, output, 'pencilbw 2,118,121,79 unsharp 80,76 drawing , luminance', 'mask_barbecue')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def watercolor(input, output):
+    """Transforms the received image into a mask with a watercolor texture."""
+    apply_filter(input, output, 'pencilbw 10,13,91,25 unsharp 45,4 drawing , luminance', 'mask_watercolor')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
