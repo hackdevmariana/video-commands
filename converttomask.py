@@ -1215,6 +1215,13 @@ def woodknot(input, output):
     """Transforms the received image into a mask with a wood knot texture."""
     apply_filter(input, output, 'pencilbw 92,11 drawing , luminance', 'mask_woodknot')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def radiance(input, output):
+    """Transforms the received image into a mask with a radiance texture."""
+    apply_filter(input, output, 'pencilbw 97,13,3,15 unsharp 17,99 drawing , luminance', 'mask_radiance')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
