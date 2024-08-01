@@ -1222,6 +1222,13 @@ def radiance(input, output):
     """Transforms the received image into a mask with a radiance texture."""
     apply_filter(input, output, 'pencilbw 97,13,3,15 unsharp 17,99 drawing , luminance', 'mask_radiance')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def zebra(input, output):
+    """Transforms the received image into a mask with a zebra texture."""
+    apply_filter(input, output, 'pencilbw 116,73,55,27 unsharp 15,121 drawing , luminance', 'mask_zebra')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
