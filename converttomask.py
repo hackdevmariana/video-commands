@@ -1243,6 +1243,13 @@ def stripped(input, output):
     """Transforms the received image into a mask with a stripped wood texture."""
     apply_filter(input, output, 'pencilbw 144,106,61,66 unsharp 28,76 drawing , luminance', 'mask_stripped')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def candles(input, output):
+    """Transforms the received image into a mask with a candles texture."""
+    apply_filter(input, output, 'pixelize 15,65,18,92,94,74,77,98 fire_edges 11 luminance', 'mask_candles')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
