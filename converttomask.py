@@ -1187,6 +1187,13 @@ def glasstiles(input, output):
     """Transforms the received image into a mask with a glass tiles texture."""
     apply_filter(input, output, 'pencilbw 59,7,135 fx_freaky_details 106,10,32,14,89,36,30,116,145 drawing , luminance', 'mask_glasstiles')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def drips(input, output):
+    """Transforms the received image into a mask with a drips texture."""
+    apply_filter(input, output, 'pencilbw 64,72,115 unsharp 9,52 drawing , luminance', 'mask_drips')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
