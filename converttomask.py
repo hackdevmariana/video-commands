@@ -1194,6 +1194,13 @@ def drips(input, output):
     """Transforms the received image into a mask with a drips texture."""
     apply_filter(input, output, 'pencilbw 64,72,115 unsharp 9,52 drawing , luminance', 'mask_drips')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def beech(input, output):
+    """Transforms the received image into a mask with a beech wood texture."""
+    apply_filter(input, output, 'pencilbw 85,36,150,52 unsharp 47,3 drawing , luminance', 'mask_beech')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
