@@ -1236,6 +1236,13 @@ def scrapedwood(input, output):
     """Transforms the received image into a mask with a scraped wood texture."""
     apply_filter(input, output, 'pencilbw 130,5 drawing , luminance', 'mask_scrapedwood')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def stripped(input, output):
+    """Transforms the received image into a mask with a stripped wood texture."""
+    apply_filter(input, output, 'pencilbw 144,106,61,66 unsharp 28,76 drawing , luminance', 'mask_stripped')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
