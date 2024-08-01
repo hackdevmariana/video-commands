@@ -1250,6 +1250,13 @@ def candles(input, output):
     """Transforms the received image into a mask with a candles texture."""
     apply_filter(input, output, 'pixelize 15,65,18,92,94,74,77,98 fire_edges 11 luminance', 'mask_candles')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def flaming(input, output):
+    """Transforms the received image into a mask with a flaming texture."""
+    apply_filter(input, output, 'pixelize 142,33,122,99,29,127,116,72 fire_edges 1 luminance', 'mask_flaming')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
