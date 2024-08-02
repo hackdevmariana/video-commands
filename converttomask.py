@@ -1320,6 +1320,13 @@ def around(input, output):
     """Transforms the received image into a mask with a clear around the contour texture."""
     apply_filter(input, output, 'pencilbw 17,36,113 dog 26,8,113,36,68,18 luminance', 'mask_around')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def contouronclear(input, output):
+    """Transforms the received image into a mask with a contour on clear texture."""
+    apply_filter(input, output, 'pencilbw 18,71,85 dog 12,150,101,23,68,110 luminance', 'mask_contouronclear')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
