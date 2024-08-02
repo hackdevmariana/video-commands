@@ -1278,6 +1278,13 @@ def impressed(input, output):
     """Transforms the received image into a mask with a impressed in wood texture."""
     apply_filter(input, output, 'stencilbw 26,135 pencilbw 3,128,102 luminance', 'mask_impressed')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def diagonalshading(input, output):
+    """Transforms the received image into a mask with a diagonal shading texture."""
+    apply_filter(input, output, 'stencilbw 37,8 fx_pencil_portraitbw 61,52,0,68,1,2,43 drawing , luminance', 'mask_diagonalshading')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
