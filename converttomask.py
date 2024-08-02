@@ -1313,6 +1313,13 @@ def doodle(input, output):
     """Transforms the received image into a mask with a doodle texture."""
     apply_filter(input, output, 'stencilbw 88,4 fx_pencil_portraitbw 48,129,12,110,41,24,133 drawing , pencilbw 0,1', 'mask_doodle')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def around(input, output):
+    """Transforms the received image into a mask with a clear around the contour texture."""
+    apply_filter(input, output, 'pencilbw 17,36,113 dog 26,8,113,36,68,18 luminance', 'mask_around')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
