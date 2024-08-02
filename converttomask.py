@@ -1334,6 +1334,13 @@ def glaze(input, output):
     """Transforms the received image into a mask with a glaze texture."""
     apply_filter(input, output, 'pencilbw 68,47,108 fx_freaky_details 73,29,136,18,79,144,0,95 drawing , luminance', 'mask_glaze')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def darkcomic(input, output):
+    """Transforms the received image into a mask with a dark comic texture."""
+    apply_filter(input, output, 'stencilbw 15,51 pencilbw 2,105,52 luminance', 'mask_darkcomic')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
