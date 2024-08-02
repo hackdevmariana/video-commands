@@ -1257,6 +1257,13 @@ def flaming(input, output):
     """Transforms the received image into a mask with a flaming texture."""
     apply_filter(input, output, 'pixelize 142,33,122,99,29,127,116,72 fire_edges 1 luminance', 'mask_flaming')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def phantasmagoric(input, output):
+    """Transforms the received image into a mask with a phantasmagoric texture."""
+    apply_filter(input, output, 'stencilbw 15,150 pencilbw 10,103,83 luminance', 'mask_phantasmagoric')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
