@@ -1327,6 +1327,13 @@ def contouronclear(input, output):
     """Transforms the received image into a mask with a contour on clear texture."""
     apply_filter(input, output, 'pencilbw 18,71,85 dog 12,150,101,23,68,110 luminance', 'mask_contouronclear')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def glaze(input, output):
+    """Transforms the received image into a mask with a glaze texture."""
+    apply_filter(input, output, 'pencilbw 68,47,108 fx_freaky_details 73,29,136,18,79,144,0,95 drawing , luminance', 'mask_glaze')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
