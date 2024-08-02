@@ -1264,6 +1264,13 @@ def phantasmagoric(input, output):
     """Transforms the received image into a mask with a phantasmagoric texture."""
     apply_filter(input, output, 'stencilbw 15,150 pencilbw 10,103,83 luminance', 'mask_phantasmagoric')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def messyhair(input, output):
+    """Transforms the received image into a mask with a messy hair texture."""
+    apply_filter(input, output, 'stencilbw 19,124 fx_pencil_portraitbw 65,71,17,28,4,1,73 drawing , luminance', 'mask_messyhair')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
