@@ -1285,6 +1285,13 @@ def diagonalshading(input, output):
     """Transforms the received image into a mask with a diagonal shading texture."""
     apply_filter(input, output, 'stencilbw 37,8 fx_pencil_portraitbw 61,52,0,68,1,2,43 drawing , luminance', 'mask_diagonalshading')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def diagonalzebra(input, output):
+    """Transforms the received image into a mask with a diagonal zebra texture."""
+    apply_filter(input, output, 'stencilbw 44,87 fx_pencil_portraitbw 130,12,7,140,10,101,93 drawing , luminance', 'mask_diagonalzebra')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
