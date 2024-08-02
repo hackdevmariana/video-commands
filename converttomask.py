@@ -1299,6 +1299,13 @@ def lightcontour(input, output):
     """Transforms the received image into a mask with a light contour texture."""
     apply_filter(input, output, 'stencilbw 52,53 pencilbw 18,143,76 luminance blur 3', 'mask_lightcontour')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def shadeddoodle(input, output):
+    """Transforms the received image into a mask with a shaded doodle texture."""
+    apply_filter(input, output, 'stencilbw 76,0 fx_pencil_portraitbw 126,60,0,119,56,59,74 drawing , luminance', 'mask_shadeddoodle')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
