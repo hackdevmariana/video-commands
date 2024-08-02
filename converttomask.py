@@ -1306,6 +1306,13 @@ def shadeddoodle(input, output):
     """Transforms the received image into a mask with a shaded doodle texture."""
     apply_filter(input, output, 'stencilbw 76,0 fx_pencil_portraitbw 126,60,0,119,56,59,74 drawing , luminance', 'mask_shadeddoodle')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def doodle(input, output):
+    """Transforms the received image into a mask with a doodle texture."""
+    apply_filter(input, output, 'stencilbw 88,4 fx_pencil_portraitbw 48,129,12,110,41,24,133 drawing , pencilbw 0,1', 'mask_doodle')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
