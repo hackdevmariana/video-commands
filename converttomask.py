@@ -1362,6 +1362,13 @@ def skeleton(input, output):
     """Transforms the received image into a mask with a skeleton texture."""
     apply_filter(input, output, 'fx_unsharp_richardsonlucy 17,72,80,51,84 pencilbw 5,74,53,9,76,113,141,133,76 drawing , luminance', 'mask_skeleton')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def trooper(input, output):
+    """Transforms the received image into a mask with a trooper texture."""
+    apply_filter(input, output, 'fx_unsharp_richardsonlucy 25,86,34,118,17 pencilbw 5,97,99,80,24,116,132,23,47 drawing , luminance', 'mask_trooper')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
