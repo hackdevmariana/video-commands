@@ -1348,6 +1348,13 @@ def stainedwall(input, output):
     """Transforms the received image into a mask with a stained wall texture."""
     apply_filter(input, output, 'stencilbw 16,100 pencilbw 21,64,141 luminance', 'mask_stainedwall')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def dirtyeraser(input, output):
+    """Transforms the received image into a mask with a dirty eraser texture."""
+    apply_filter(input, output, 'stencilbw 58,3 pencilbw 13,14,0 luminance', 'mask_dirtyeraser')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
