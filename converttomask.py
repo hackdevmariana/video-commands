@@ -1376,6 +1376,13 @@ def oilpainting(input, output):
     """Transforms the received image into a mask with a oil painting texture."""
     apply_filter(input, output, 'fx_unsharp_richardsonlucy 77,11,52,83,131 pencilbw 6,18,103,102,1,21,0,95,54 drawing , luminance', 'mask_oilpainting')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def turpentine(input, output):
+    """Transforms the received image into a mask with a oil painting with turpentine texture."""
+    apply_filter(input, output, 'fx_unsharp_richardsonlucy 82,23,78,149,148 pencilbw 0,64,116,110,85,74,87,6,77 drawing , luminance', 'mask_turpentine')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
