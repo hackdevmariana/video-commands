@@ -1355,6 +1355,13 @@ def dirtyeraser(input, output):
     """Transforms the received image into a mask with a dirty eraser texture."""
     apply_filter(input, output, 'stencilbw 58,3 pencilbw 13,14,0 luminance', 'mask_dirtyeraser')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def skeleton(input, output):
+    """Transforms the received image into a mask with a skeleton texture."""
+    apply_filter(input, output, 'fx_unsharp_richardsonlucy 17,72,80,51,84 pencilbw 5,74,53,9,76,113,141,133,76 drawing , luminance', 'mask_skeleton')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
