@@ -1383,6 +1383,13 @@ def turpentine(input, output):
     """Transforms the received image into a mask with a oil painting with turpentine texture."""
     apply_filter(input, output, 'fx_unsharp_richardsonlucy 82,23,78,149,148 pencilbw 0,64,116,110,85,74,87,6,77 drawing , luminance', 'mask_turpentine')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def jocker(input, output):
+    """Transforms the received image into a mask with a Jocker comic texture."""
+    apply_filter(input, output, 'fx_unsharp_richardsonlucy 144,55,85,76,108 pencilbw 3,68,82,18,110,37,75,18,127 drawing , luminance', 'mask_jocker')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
