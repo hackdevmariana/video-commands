@@ -1467,6 +1467,13 @@ def apache(input, output):
     """Transforms the received image into a mask with a apache texture."""
     apply_filter(input, output, 'isophotes 10 drawing , luminance', 'mask_apache')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def mesh(input, output):
+    """Transforms the received image into a mask with a mesh texture."""
+    apply_filter(input, output, 'isophotes 13,36,49 pencilbw 16,71,110 luminance', 'mask_mesh')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
