@@ -1418,6 +1418,13 @@ def topstitching(input, output):
     """Transforms the received image into a mask with a topstitching texture."""
     apply_filter(input, output, 'hardsketchbw 13,36,49 luminance', 'mask_topstitching')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def sewing(input, output):
+    """Transforms the received image into a mask with a sewing texture."""
+    apply_filter(input, output, 'hardsketchbw 19,96,4 luminance', 'mask_sewing')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
