@@ -1439,6 +1439,13 @@ def crazydoodles(input, output):
     """Transforms the received image into a mask with a crazy doodles texture."""
     apply_filter(input, output, 'hardsketchbw 38,36,23,2,78,60 drawing , luminance', 'mask_crazydoodles')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def nightmare(input, output):
+    """Transforms the received image into a mask with a nightmare texture."""
+    apply_filter(input, output, 'hardsketchbw 58,3,13,14,0,72 pencilbw 32,141,77 luminance', 'mask_nightmare')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
