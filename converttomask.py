@@ -1446,6 +1446,13 @@ def nightmare(input, output):
     """Transforms the received image into a mask with a nightmare texture."""
     apply_filter(input, output, 'hardsketchbw 58,3,13,14,0,72 pencilbw 32,141,77 luminance', 'mask_nightmare')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def oldgame(input, output):
+    """Transforms the received image into a mask with a old game texture."""
+    apply_filter(input, output, 'hardsketchbw 85,53,20,12,115,92 drawing , luminance', 'mask_oldgame')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
