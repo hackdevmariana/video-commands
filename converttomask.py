@@ -1397,6 +1397,13 @@ def crossstitch(input, output):
     """Transforms the received image into a mask with a cross-stitch texture."""
     apply_filter(input, output, 'hardsketchbw 10,82,90 luminance', 'mask_crossstitch')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def coffeestains(input, output):
+    """Transforms the received image into a mask with a coffee stains texture."""
+    apply_filter(input, output, 'hardsketchbw 11,14,66 pencilbw 24,101,31 luminance', 'mask_coffeestains')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
