@@ -1404,6 +1404,13 @@ def coffeestains(input, output):
     """Transforms the received image into a mask with a coffee stains texture."""
     apply_filter(input, output, 'hardsketchbw 11,14,66 pencilbw 24,101,31 luminance', 'mask_coffeestains')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def embroidery(input, output):
+    """Transforms the received image into a mask with a embroidery texture."""
+    apply_filter(input, output, 'hardsketchbw 11,14,66,5,72,55 luminance', 'mask_embroidery')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
