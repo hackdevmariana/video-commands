@@ -1411,6 +1411,13 @@ def embroidery(input, output):
     """Transforms the received image into a mask with a embroidery texture."""
     apply_filter(input, output, 'hardsketchbw 11,14,66,5,72,55 luminance', 'mask_embroidery')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def topstitching(input, output):
+    """Transforms the received image into a mask with a topstitching texture."""
+    apply_filter(input, output, 'hardsketchbw 13,36,49 luminance', 'mask_topstitching')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
