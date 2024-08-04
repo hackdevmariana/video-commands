@@ -1425,6 +1425,13 @@ def sewing(input, output):
     """Transforms the received image into a mask with a sewing texture."""
     apply_filter(input, output, 'hardsketchbw 19,96,4 luminance', 'mask_sewing')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def diffusetea(input, output):
+    """Transforms the received image into a mask with a diffuse tea stains texture."""
+    apply_filter(input, output, 'hardsketchbw 31,84,124 pencilbw 28,23,17 luminance blur 15', 'mask_diffusetea')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
