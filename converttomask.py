@@ -1460,6 +1460,13 @@ def whip(input, output):
     """Transforms the received image into a mask with a whip texture."""
     apply_filter(input, output, 'hardsketchbw 97,88,35 drawing , luminance', 'mask_whip')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def apache(input, output):
+    """Transforms the received image into a mask with a apache texture."""
+    apply_filter(input, output, 'isophotes 10 drawing , luminance', 'mask_apache')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
