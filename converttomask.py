@@ -1453,6 +1453,13 @@ def oldgame(input, output):
     """Transforms the received image into a mask with a old game texture."""
     apply_filter(input, output, 'hardsketchbw 85,53,20,12,115,92 drawing , luminance', 'mask_oldgame')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def whip(input, output):
+    """Transforms the received image into a mask with a whip texture."""
+    apply_filter(input, output, 'hardsketchbw 97,88,35 drawing , luminance', 'mask_whip')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
