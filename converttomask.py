@@ -1432,6 +1432,13 @@ def diffusetea(input, output):
     """Transforms the received image into a mask with a diffuse tea stains texture."""
     apply_filter(input, output, 'hardsketchbw 31,84,124 pencilbw 28,23,17 luminance blur 15', 'mask_diffusetea')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def crazydoodles(input, output):
+    """Transforms the received image into a mask with a crazy doodles texture."""
+    apply_filter(input, output, 'hardsketchbw 38,36,23,2,78,60 drawing , luminance', 'mask_crazydoodles')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
