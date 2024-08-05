@@ -1474,6 +1474,13 @@ def mesh(input, output):
     """Transforms the received image into a mask with a mesh texture."""
     apply_filter(input, output, 'isophotes 13,36,49 pencilbw 16,71,110 luminance', 'mask_mesh')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def indian(input, output):
+    """Transforms the received image into a mask with a indian picture texture."""
+    apply_filter(input, output, 'isophotes 35,33,33,112,146,148 drawing , luminance', 'mask_indian')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
