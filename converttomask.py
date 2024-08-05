@@ -1488,6 +1488,13 @@ def gloomy(input, output):
     """Transforms the received image into a mask with a gloomy texture."""
     apply_filter(input, output, 'isophotes 46,34,49,147,8,35 drawing , luminance', 'mask_gloomy')
 
+@cli.command()
+@click.argument('input', type=click.Path(exists=True))
+@click.option('--output', '-o', default='', help='Output file path')
+def murky(input, output):
+    """Transforms the received image into a mask with a gloomy texture."""
+    apply_filter(input, output, 'isophotes 97,41,21,56,114,33 drawing , luminance', 'mask_gloomy')
+
 if __name__ == '__main__':
     colorama.init()  # Initialize colorama
     cli()
